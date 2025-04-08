@@ -7,13 +7,13 @@ import React from "react";
 import TicketSection from "@/components/Home/TicketSection";
 
 export const metadata: Metadata = {
-    title: "Contact | Symposium",
+  title: "Contact | Intellect Pro School",
 };
 
 const page = () => {
   const breadcrumbLinks = [
-    { href: "/", text: "Home" },
-    { href: "/contact", text: "Contact" },
+    { href: "/", text: "Главная" },
+    { href: "/contact", text: "Контакты" },
   ];
   return (
     <>
@@ -25,7 +25,7 @@ const page = () => {
       <ContactInfo />
       <ContactForm />
       <Location />
-      <TicketSection/>
+      <TicketSection />
     </>
   );
 };

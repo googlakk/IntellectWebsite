@@ -1,9 +1,9 @@
-
 import { Documentation } from "@/components/Documentation/Documentation";
-import TicketSection from "@/components/Home/TicketSection";
 import { Metadata } from "next";
+import TicketSection from "@/components/Home/TicketSection";
+
 export const metadata: Metadata = {
-    title: "Featurs | Symposium",
+    title: "Documents | Intellect Pro School",
 };
 
 export default function Page() {

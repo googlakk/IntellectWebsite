@@ -5,25 +5,25 @@ import React from "react";
 import TicketSection from "@/components/Home/TicketSection";
 
 export const metadata: Metadata = {
-  title: "Blog | Symposium",
+  title: "Blog | Intellect Pro School",
 };
 
 const BlogPage = () => {
-    const breadcrumbLinks = [
-        { href: "/", text: "Home" },
-        { href: "/blog", text: "Blog" },
-    ];
-    return (
-        <>
-            <HeroSub
-                title="Blog"
-                description="Discover a wealth of insightful materials meticulously crafted to provide you with a comprehensive understanding of the latest trends."
-                breadcrumbLinks={breadcrumbLinks}
-            />
-            <BlogList />
-            <TicketSection/>
-        </>
-    );
+  const breadcrumbLinks = [
+    { href: "/", text: "Главная" },
+    { href: "/blog", text: "Блог" },
+  ];
+  return (
+    <>
+      <HeroSub
+        title="Blog"
+        description="Discover a wealth of insightful materials meticulously crafted to provide you with a comprehensive understanding of the latest trends."
+        breadcrumbLinks={breadcrumbLinks}
+      />
+      <BlogList />
+      <TicketSection />
+    </>
+  );
 };
 
 export default BlogPage;

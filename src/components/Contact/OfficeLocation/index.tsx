@@ -11,21 +11,22 @@ const Location = () => {
       <section className=" dark:bg-darkmode">
         <div className="container ">
           <div className="flex items-center flex-wrap w-full border border-solid  dark:border-dark_border md:px-14 px-6  rounded-22 ">
-            <div className="flex items-center lg:gap-5 gap-5 flex-wrap justify-between w-full md:py-12 py-5 border-b border-solid dark:border-dark_border last:border-b-0">
-              <div className="leading-[2.2rem]">
+            <div className="flex items-center lg:gap-1 gap-1 flex-wrap justify-between w-full md:py-12 py-5 border-b border-solid dark:border-dark_border last:border-b-0">
+              <div>
                 <h2 className="text-secondary dark:text-white  sm:text-[24px] sm:leading-[2.2rem] text-[24px] font-bold">
                   Intellect Pro School
                 </h2>
+              </div>
+              <div className="leading-[2.2rem]">
                 <p className="sm:text-xl text-xl text-secondary  dark:text-darktext font-normal max-w-266 ">
                   ​Улица Джунусалиева, 177/1
                 </p>
               </div>
 
               <div className="col-span-3 leading-[2.25rem]">
-               
                 <Link
                   href="tel:731-621-5503"
-                  className="sm:text-xl text-xl text-secondary dark:text-primary flex items-center gap-2 hover:text-opacity-100 w-fit hover:dark:text-white"
+                  className="sm:text-xl text-xl text-secondary dark:text-primary flex items-center gap-2 mt-2 hover:text-opacity-100 w-fit hover:dark:text-white"
                 >
                   <span>
                     <svg
@@ -43,26 +44,27 @@ const Location = () => {
                       />
                     </svg>
                   </span>
-                  731-621-5503
+                  +996 555 600 600
                 </Link>
               </div>
             </div>
 
-            <div className="flex items-center lg:gap-0 gap-4 flex-wrap justify-between w-full md:py-12 py-5 border-b border-solid dark:border-dark_border last:border-b-0">
-              <div className="col-span-3 leading-[2.2rem]">
-                <h2 className="text-secondary dark:text-white  sm:text-[24px] sm:leading-[2.4rem] text-[24px]  font-bold">
-                  Intellect Junior
+            <div className="flex items-center lg:gap-1 gap-1 flex-wrap justify-between w-full md:py-12 py-5 border-b border-solid dark:border-dark_border last:border-b-0">
+              <div>
+                <h2 className="text-secondary dark:text-white  sm:text-[24px] sm:leading-[2.2rem] text-[24px] font-bold">
+                  Intellect Pro School
                 </h2>
+              </div>
+              <div className="leading-[2.2rem]">
                 <p className="sm:text-xl text-xl text-secondary  dark:text-darktext font-normal max-w-266 ">
                   ​Улица Джунусалиева, 177/1
                 </p>
               </div>
 
               <div className="col-span-3 leading-[2.25rem]">
-               
                 <Link
                   href="tel:731-621-5503"
-                  className="sm:text-xl text-xl text-secondary dark:text-primary flex items-center gap-2 hover:text-opacity-100 w-fit hover:dark:text-white"
+                  className="sm:text-xl text-xl text-secondary dark:text-primary flex items-center gap-2 mt-2 hover:text-opacity-100 w-fit hover:dark:text-white"
                 >
                   <span>
                     <svg
@@ -80,23 +82,24 @@ const Location = () => {
                       />
                     </svg>
                   </span>
-                  731-621-5503
+                  +996 555 600 600
                 </Link>
               </div>
             </div>
 
-            <div className="flex items-center lg:gap-0 gap-4 flex-wrap justify-between w-full md:py-12 py-5 border-b border-solid dark:border-dark_border last:border-b-0">
-              <div className="col-span-3 leading-[2.2rem]">
-                <h2 className="text-secondary dark:text-white  sm:text-[24px] sm:leading-[2.4rem] text-[24px]  font-bold">
-                  Intellect college
+            <div className="flex items-center lg:gap-1 gap-1 flex-wrap justify-between w-full md:py-12 py-5 border-b border-solid dark:border-dark_border last:border-b-0">
+              <div>
+                <h2 className="text-secondary dark:text-white  sm:text-[24px] text-[24px] font-bold">
+                  Intellect Pro School
                 </h2>
+              </div>
+              <div className="">
                 <p className="sm:text-xl text-xl text-secondary  dark:text-darktext font-normal max-w-266 ">
                   ​Улица Джунусалиева, 177/1
                 </p>
               </div>
 
-              <div className="col-span-3 !leading-[50px]">
-               
+              <div className=" ">
                 <Link
                   href="tel:731-621-5503"
                   className="sm:text-xl text-xl text-secondary dark:text-primary flex items-center gap-2 mt-2 hover:text-opacity-100 w-fit hover:dark:text-white"

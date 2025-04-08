@@ -5,13 +5,13 @@ import { Metadata } from "next";
 import React from "react";
 
 export const metadata: Metadata = {
-  title: "About | Symposium",
+  title: "About | Intelect Pro School",
 };
 
 const AboutPage = () => {
     const breadcrumbLinks = [
-        { href: "/", text: "Home" },
-        { href: "/aboutUs", text: "О нас" },
+      { href: "/", text: "Главная" },
+      { href: "/aboutUs", text: "О нас" },
     ];
     return (
         <>

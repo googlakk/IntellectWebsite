@@ -13,13 +13,12 @@ export const DocNavigation = () => {
     }
 
     const DocsNav = [
-      
-        {
-            id:1,
-            navItem:"Перечень локальных актов",
-            hash:"acts"
-        }
-    ]
+      {
+        id: 1,
+        navItem: "Основные документы",
+        hash: "acts",
+      },
+    ];
 
     return (
         <div className="flex flex-col gap-0.5 mt-4 items-start fixed pe-4" >

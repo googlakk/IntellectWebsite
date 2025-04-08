@@ -6,13 +6,13 @@ import TicketSection from "@/components/Home/TicketSection";
 import WorkSpeakers from "@/components/Home/WorkSpeakers";
 
 export const metadata: Metadata = {
-  title: "Speakers | Symposium",
+  title: "Teams | Intellect Pro School",
 };
 
 const page = () => {
     const breadcrumbLinks = [
-        { href: "/", text: "Home" },
-        { href: "/speakers", text: "Наша команда" },
+        { href: "/", text: "Главная" },
+        { href: "/teams", text: "Наша команда" },
       ];
   return (
     <>
