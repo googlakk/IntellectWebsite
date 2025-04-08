@@ -2,6 +2,7 @@ import AboutSectionOne from '@/components/Home/About';
 import CalendarWithEvents from './EventsCalendar';
 import ContactInfo from '../Contact/ContactInfo';
 import EventTicket from '@/components/Home/EventTicket';
+import FAQSection from "../FAQ";
 import Features from '@/components/Home/Features';
 import Hero from '@/components/Home/Hero';
 import Highlight from '@/components/Home/YearHighlight/page';
@@ -22,24 +23,23 @@ export const metadata: Metadata = {
 export default function Home() {
   return (
     <main>
-      <Preview/>
-      
+      <Preview />
+
       <Hero />
-      <ThumbnailCarousel/>
-      <Mission/>
-      <Features/>
-      <Highlight/>
-      <WorkSpeakers/>
-      <AboutSectionOne/>
-      
-      <EventTicket/>
-      <CalendarWithEvents/>
+      <ThumbnailCarousel />
+      <Mission />
+      <Features />
+      <Highlight />
+      <WorkSpeakers />
+      <AboutSectionOne />
+
+      <EventTicket />
+      <CalendarWithEvents />
       {/* <Testimonials/> */}
-     
-      <ContactInfo/>
-      
-      <TicketSection/>
-      
+      <FAQSection />
+      <ContactInfo />
+
+      <TicketSection />
     </main>
-  )
+  );
 }

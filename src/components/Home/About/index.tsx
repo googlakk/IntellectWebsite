@@ -10,15 +10,7 @@ const checkIcon = (
 );
 
 const AboutSectionOne = () => {
-  const List = ({ text}: {text: string} ) => (
-    <p className="mb-5 flex lg:h-14 xl:h-14   items-start text-lg font-medium text-body-color">
-      <span className="mr-4 flex h-[30px] w-[30px] items-center justify-center rounded-md bg-primary bg-opacity-10 text-primary">
-        {checkIcon}
-      </span>
-      {text}
  
-    </p>
-  );
 
   return (
     <section className="bg-IcyBreeze dark:bg-darklight relative overflow-hidden before:absolute before:content-[''] before:bg-PaleSkyBlu before:dark:bg-secondary before:w-687 before:h-687 before:-bottom-1/2 before:rounded-full before:xl:inline-block before:hidden">
