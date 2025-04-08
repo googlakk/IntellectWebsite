@@ -17,13 +17,13 @@ const page = () => {
   return (
     <>
       <HeroSub
-        title="Our Visionary Speakers"
-        description="Discover a wealth of insightful materials meticulously crafted to provide you with a comprehensive."
+        title="Наша команда"
+        description="Команда Intellect Pro School — опытные педагоги и наставники, которые вдохновляют учеников на достижения. Узнайте, кто создает уникальную образовательную среду!"
         breadcrumbLinks={breadcrumbLinks}
       />
       <WorkSpeakers showTitle={false} />
-      <Testimonials/>
-      <TicketSection/>
+    
+      <TicketSection />
     </>
   );
 };
