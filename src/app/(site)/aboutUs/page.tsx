@@ -9,20 +9,11 @@ export const metadata: Metadata = {
 };
 
 const AboutPage = () => {
-    const breadcrumbLinks = [
-      { href: "/", text: "Главная" },
-      { href: "/aboutUs", text: "О нас" },
-    ];
-    return (
-      <>
-        <HeroSub
-          title="О нас"
-          description="Intellect Pro School — частная школа с инновационной программой. Авторские методики, билингвальное обучение, развитие лидерских качеств. Знакомьтесь с нашей философией!"
-          breadcrumbLinks={breadcrumbLinks}
-        />
-        <AboutUs />
-      </>
-    );
+  return (
+    <>
+      <AboutUs />
+    </>
+  );
 };
 
 export default AboutPage;

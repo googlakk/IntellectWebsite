@@ -16,8 +16,8 @@ const BlogPage = () => {
   return (
     <>
       <HeroSub
-        title="Blog"
-        description="Discover a wealth of insightful materials meticulously crafted to provide you with a comprehensive understanding of the latest trends."
+        title="Наша жизнь"
+        description="Актуальные события школы, советы по обучению и развитию. Будьте в курсе нашего образовательного процесса!"
         breadcrumbLinks={breadcrumbLinks}
       />
       <BlogList />

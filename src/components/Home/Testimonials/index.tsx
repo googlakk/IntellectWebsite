@@ -1,233 +1,327 @@
 "use client";
-import React from "react";
-import Image from "next/image";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-import Slider from "react-slick";
 
-const Testimonials = () => {
-  var settings = {
-    dots: false,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    responsive: [
-      {
-        breakpoint: 1024,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-          infinite: true,
-          dots: true,
-        },
+import { AnimatePresence, motion } from "framer-motion";
+import {
+  FaChevronLeft,
+  FaChevronRight,
+  FaQuoteLeft,
+  FaStar,
+} from "react-icons/fa";
+import React, { useEffect, useState } from "react";
+
+import Image from "next/image";
+
+const TestimonialsGrid = () => {
+  const [activeCard, setActiveCard] = useState(0);
+  const [isAutoPlaying, setIsAutoPlaying] = useState(true);
+  const [direction, setDirection] = useState<"left" | "right">("right");
+  const [containerHeight, setContainerHeight] = useState(0);
+
+  const testimonials = [
+    {
+      id: 1,
+      parent: {
+        name: "Айгуль Сатыбалдиева",
+        photo: "/images/upcoming/profile-1.png",
       },
-      {
-        breakpoint: 768,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-        },
+      child: {
+        name: "Амина, 5 класс",
+        photo: "/images/ThumbnailSlider/1.png",
       },
-      {
-        breakpoint: 480,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-        },
+      rating: 5,
+      quote: "Прекрасная школа с индивидуальным подходом",
+      text: "Моя дочь стала более уверенной в своих знаниях. Учителя находят подход к каждому ребенку, виден реальный прогресс в обучении.",
+    },
+    {
+      id: 2,
+      parent: {
+        name: "Эркин Баялинов",
+        photo: "/images/upcoming/profile-1.png",
       },
-    ],
+      child: {
+        name: "Данияр, 7 класс",
+        photo: "/images/ThumbnailSlider/2.png",
+      },
+      rating: 4,
+      quote: "Отличная подготовка по IT",
+      text: "Сын начал создавать собственные проекты. Преподаватели умеют заинтересовать даже сложными темами.",
+    },
+    {
+      id: 3,
+      parent: {
+        name: "Асель Токтосунова",
+        photo: "/images/upcoming/profile-1.png",
+      },
+      child: {
+        name: "Алиса и Артем",
+        photo: "/images/ThumbnailSlider/4.png",
+      },
+      rating: 5,
+      quote: "Атмосфера вдохновляет",
+      text: "Оба ребенка с радостью идут в школу. Вижу, как развивается их мышление и лидерские качества.",
+    },
+    {
+      id: 4,
+      parent: {
+        name: "Асель Токтосунова",
+        photo: "/images/upcoming/profile-1.png",
+      },
+      child: {
+        name: "Алиса и Артем",
+        photo: "/images/ThumbnailSlider/4.png",
+      },
+      rating: 5,
+      quote: "Атмосфера вдохновляет",
+      text: "Оба ребенка с радостью идут в школу. Вижу, как развивается их мышление и лидерские качества.",
+    },
+  ];
+
+  // Автоматическое переключение
+  useEffect(() => {
+    let interval: NodeJS.Timeout;
+    if (isAutoPlaying) {
+      interval = setInterval(() => {
+        setDirection("right");
+        setActiveCard((prev) => (prev + 1) % testimonials.length);
+      }, 5000);
+    }
+    return () => clearInterval(interval);
+  }, [isAutoPlaying, testimonials.length]);
+
+  const goToNext = () => {
+    setDirection("right");
+    setActiveCard((prev) => (prev + 1) % testimonials.length);
+    setIsAutoPlaying(false);
+    setTimeout(() => setIsAutoPlaying(true), 10000);
   };
+
+  const goToPrev = () => {
+    setDirection("left");
+    setActiveCard(
+      (prev) => (prev - 1 + testimonials.length) % testimonials.length
+    );
+    setIsAutoPlaying(false);
+    setTimeout(() => setIsAutoPlaying(true), 10000);
+  };
+
+  const goToSlide = (index: number) => {
+    setDirection(index > activeCard ? "right" : "left");
+    setActiveCard(index);
+    setIsAutoPlaying(false);
+    setTimeout(() => setIsAutoPlaying(true), 10000);
+  };
+
+  // Новые варианты анимации
+  const variants = {
+    enter: (direction: "left" | "right") => ({
+      x: direction === "right" ? "100%" : "-100%",
+      opacity: 0,
+      position: "absolute",
+    }),
+    center: {
+      x: 0,
+      opacity: 1,
+      position: "relative",
+    },
+    exit: (direction: "left" | "right") => ({
+      x: direction === "right" ? "-100%" : "100%",
+      opacity: 0,
+      position: "absolute",
+    }),
+  };
+
   return (
-    <>
-      <section className="bg-IcyBreeze dark:bg-darklight testimonial">
-        <div className="container">
-          <Slider {...settings}>
-            <div>
-              <div className="grid md:grid-cols-12 grid-cols-1 items-center">
-                <div data-aos="fade-right" data-aos-delay="200" data-aos-duration="1000" className="col-span-4 bg-LightSkyBlue sm:rounded-br-214 rounded-br-182 sm:rounded-tl-214 rounded-tl-182 relative before:content-[''] before:absolute before:bg-[url('/images/testimonials/quotes.png')] before:w-109 before:h-109 before:-right-10 before:top-32 lg:inline-block hidden">
-                  <Image
-                    src="/images/hero/john.png"
-                    alt="testimonials"
-                    width={0}
-                    height={0}
-                    quality={100}
-                    layout="responsive"
-                    sizes="100vh"
-                    className="w-full h-full"
-                  />
-                </div>
-                <div data-aos="fade-left" data-aos-delay="300" data-aos-duration="1000" className="col-span-8 md:ml-28 ml-0">
-                  <h2 className="max-w-72">What Our Attendees Say</h2>
-                  <p className="text-lg font-normal text-SlateBlueText dark:text-opacity-80 py-10 max-w-632">
-                    My busy schedule leaves little, if any, time for blogging
-                    and social media. The Lorem Ipsum Company has been a huge
-                    part of helping me grow my business through.
-                  </p>
-                  <div className="flex items-center gap-8">
-                    <div>
-                      <Image
-                        src="/images/testimonials/testimonials-profile.png"
-                        alt="testimonials-profile"
-                        width={0}
-                        height={0}
-                        quality={100}
-                        layout="responsive"
-                        sizes="100vh"
-                        className="!w-16 !h-16 rounded-full"
-                      />
-                    </div>
-                    <div>
-                      <p className="text-xl font-medium text-secondary dark:text-white pb-1">
-                        Jordhan Daniyel
-                      </p>
-                      <div className="flex items-center">
-                        <svg
-                          className="w-4 h-4 text-yellow-500 ms-1"
-                          aria-hidden="true"
-                          xmlns="http://www.w3.org/2000/svg"
-                          fill="currentColor"
-                          viewBox="0 0 22 20"
-                        >
-                          <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
-                        </svg>
-                        <svg
-                          className="w-4 h-4 text-yellow-500 ms-1"
-                          aria-hidden="true"
-                          xmlns="http://www.w3.org/2000/svg"
-                          fill="currentColor"
-                          viewBox="0 0 22 20"
-                        >
-                          <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
-                        </svg>
-                        <svg
-                          className="w-4 h-4 text-yellow-500 ms-1"
-                          aria-hidden="true"
-                          xmlns="http://www.w3.org/2000/svg"
-                          fill="currentColor"
-                          viewBox="0 0 22 20"
-                        >
-                          <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
-                        </svg>
-                        <svg
-                          className="w-4 h-4 text-yellow-500 ms-1"
-                          aria-hidden="true"
-                          xmlns="http://www.w3.org/2000/svg"
-                          fill="currentColor"
-                          viewBox="0 0 22 20"
-                        >
-                          <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
-                        </svg>
-                        <svg
-                          className="w-4 h-4 text-yellow-500 ms-1"
-                          aria-hidden="true"
-                          xmlns="http://www.w3.org/2000/svg"
-                          fill="currentColor"
-                          viewBox="0 0 22 20"
-                        >
-                          <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
-                        </svg>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div>
-              <div className="grid md:grid-cols-12 grid-cols-1 items-center">
-                <div className="col-span-4 bg-LightSkyBlue sm:rounded-br-214 rounded-br-182 sm:rounded-tl-214 rounded-tl-182 relative before:content-[''] before:absolute before:bg-[url('/images/testimonials/quotes.png')] before:w-109 before:h-109 before:-right-10 before:top-32 lg:inline-block hidden">
-                  <Image
-                    src="/images/hero/john.png"
-                    alt="testimonials"
-                    width={0}
-                    height={0}
-                    quality={100}
-                    layout="responsive"
-                    sizes="100vh"
-                    className="w-full h-full"
-                  />
-                </div>
-                <div className="col-span-8 md:ml-28 ml-0">
-                  <h2 className="max-w-72">What Our Attendees Say</h2>
-                  <p className="text-[22px] leading-[2rem] font-normal text-SlateBlueText dark:text-opacity-80 py-10 max-w-632">
-                    My busy schedule leaves little, if any, time for blogging
-                    and social media. The Lorem Ipsum Company has been a huge
-                    part of helping me grow my business through.
-                  </p>
-                  <div className="flex items-center gap-8">
-                    <div>
-                      <Image
-                        src="/images/testimonials/testimonials-profile.png"
-                        alt="testimonials-profile"
-                        width={0}
-                        height={0}
-                        quality={100}
-                        layout="responsive"
-                        sizes="100vh"
-                        className="!w-16 !h-16 rounded-full"
-                      />
-                    </div>
-                    <div>
-                      <p className="text-xl font-medium text-secondary dark:text-darktext pb-1">
-                        Jordhan Daniyel
-                      </p>
-                      <div className="flex items-center">
-                        <svg
-                          className="w-4 h-4 text-yellow-500 ms-1"
-                          aria-hidden="true"
-                          xmlns="http://www.w3.org/2000/svg"
-                          fill="currentColor"
-                          viewBox="0 0 22 20"
-                        >
-                          <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
-                        </svg>
-                        <svg
-                          className="w-4 h-4 text-yellow-500 ms-1"
-                          aria-hidden="true"
-                          xmlns="http://www.w3.org/2000/svg"
-                          fill="currentColor"
-                          viewBox="0 0 22 20"
-                        >
-                          <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
-                        </svg>
-                        <svg
-                          className="w-4 h-4 text-yellow-500 ms-1"
-                          aria-hidden="true"
-                          xmlns="http://www.w3.org/2000/svg"
-                          fill="currentColor"
-                          viewBox="0 0 22 20"
-                        >
-                          <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
-                        </svg>
-                        <svg
-                          className="w-4 h-4 text-yellow-500 ms-1"
-                          aria-hidden="true"
-                          xmlns="http://www.w3.org/2000/svg"
-                          fill="currentColor"
-                          viewBox="0 0 22 20"
-                        >
-                          <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
-                        </svg>
-                        <svg
-                          className="w-4 h-4 text-yellow-500 ms-1"
-                          aria-hidden="true"
-                          xmlns="http://www.w3.org/2000/svg"
-                          fill="currentColor"
-                          viewBox="0 0 22 20"
-                        >
-                          <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
-                        </svg>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </Slider>
+    <section
+      className="py-16 md:py-24 bg-gray-50 dark:bg-gray-900 relative"
+      onMouseEnter={() => setIsAutoPlaying(false)}
+      onMouseLeave={() => setIsAutoPlaying(true)}
+    >
+      <div className="container mx-auto px-4">
+        <div className="text-center mb-12">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+            Отзывы родителей
+          </h2>
+          <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+            Узнайте, что говорят родители о наших занятиях и успехах их детей
+          </p>
         </div>
-      </section>
-    </>
+
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-5xl mx-auto relative">
+          {/* Кнопки навигации */}
+          <motion.button
+            onClick={goToPrev}
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.95 }}
+            className="absolute -left-4 top-1/2 -translate-y-1/2 z-10 p-3 rounded-full bg-white dark:bg-gray-700 shadow-lg hover:bg-gray-100 dark:hover:bg-gray-600 transition-colors hidden lg:flex items-center justify-center"
+            aria-label="Предыдущий отзыв"
+          >
+            <FaChevronLeft className="text-blue-500 dark:text-blue-400 text-lg" />
+          </motion.button>
+
+          <motion.button
+            onClick={goToNext}
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.95 }}
+            className="absolute -right-4 top-1/2 -translate-y-1/2 z-10 p-3 rounded-full bg-white dark:bg-gray-700 shadow-lg hover:bg-gray-100 dark:hover:bg-gray-600 transition-colors hidden lg:flex items-center justify-center"
+            aria-label="Следующий отзыв"
+          >
+            <FaChevronRight className="text-blue-500 dark:text-blue-400 text-lg" />
+          </motion.button>
+
+          {/* Основная карточка с фиксированной высотой */}
+          <div
+            className="relative bg-white dark:bg-gray-800 rounded-2xl shadow-lg overflow-hidden"
+            style={{ height: "560px" }}
+          >
+            <AnimatePresence mode="wait" custom={direction} initial={false}>
+              <motion.div
+                key={activeCard}
+                custom={direction}
+                variants={variants}
+                initial="enter"
+                animate="center"
+                exit="exit"
+                transition={{
+                  type: "tween",
+                  ease: "easeInOut",
+                  duration: 0.4,
+                }}
+                className="w-full h-full flex flex-col"
+              >
+                {/* Блок с фото (фиксированная высота) */}
+                <div className="relative h-48 md:h-56 w-full flex-shrink-0">
+                  <Image
+                    src={testimonials[activeCard].child.photo}
+                    alt={testimonials[activeCard].child.name}
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 1024px) 100vw, 50vw"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
+
+                  <div className="absolute bottom-4 left-4 flex items-center">
+                    <div className="relative w-12 h-12 rounded-full overflow-hidden border-2 border-white mr-3">
+                      <Image
+                        src={testimonials[activeCard].parent.photo}
+                        alt={testimonials[activeCard].parent.name}
+                        fill
+                        className="object-cover"
+                      />
+                    </div>
+                    <div>
+                      <p className="text-white font-medium">
+                        {testimonials[activeCard].parent.name}
+                      </p>
+                      <p className="text-white/80 text-sm">
+                        {testimonials[activeCard].child.name},{" "}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Блок с текстом (гибкая высота с прокруткой) */}
+                <div className="p-6 md:p-8 flex-grow overflow-y-auto">
+                  <div className="absolute top-6 left-6 text-blue-500 dark:text-blue-400 text-3xl z-10">
+                    <FaQuoteLeft />
+                  </div>
+
+                  <h3 className="text-xl md:text-2xl font-bold text-gray-900 dark:text-white mb-4">
+                    "{testimonials[activeCard].quote}"
+                  </h3>
+                  <p className="text-gray-600 dark:text-gray-300 mb-6">
+                    {testimonials[activeCard].text}
+                  </p>
+                  <div className="flex">
+                    {[...Array(5)].map((_, i) => (
+                      <FaStar
+                        key={i}
+                        className={`w-5 h-5 ${
+                          i < testimonials[activeCard].rating
+                            ? "text-yellow-400"
+                            : "text-gray-300 dark:text-gray-600"
+                        }`}
+                      />
+                    ))}
+                  </div>
+                </div>
+              </motion.div>
+            </AnimatePresence>
+          </div>
+
+          {/* Второстепенные карточки */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {testimonials
+              .filter((_, i) => i !== activeCard)
+              .map((testimonial, index) => (
+                <motion.div
+                  key={testimonial.id}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: index * 0.1 }}
+                  whileHover={{ y: -5 }}
+                  className="bg-white dark:bg-gray-800 rounded-xl shadow-md p-5 transition-all duration-300 hover:shadow-lg cursor-pointer h-full"
+                  onClick={() =>
+                    goToSlide(
+                      testimonials.findIndex((t) => t.id === testimonial.id)
+                    )
+                  }
+                >
+                  <div className="flex items-start mb-4">
+                    <div className="relative w-10 h-10 rounded-full overflow-hidden mr-3 flex-shrink-0">
+                      <Image
+                        src={testimonial.parent.photo}
+                        alt={testimonial.parent.name}
+                        fill
+                        className="object-cover"
+                      />
+                    </div>
+                    <div>
+                      <h4 className="font-medium text-gray-900 dark:text-white">
+                        {testimonial.parent.name}
+                      </h4>
+                    </div>
+                  </div>
+                  <div className="mb-3">
+                    <FaQuoteLeft className="text-blue-500 dark:text-blue-400 text-xl opacity-50 mb-2" />
+                    <p className="text-gray-700 dark:text-gray-300 line-clamp-3">
+                      {testimonial.text}
+                    </p>
+                  </div>
+                  <div className="flex">
+                    {[...Array(5)].map((_, i) => (
+                      <FaStar
+                        key={i}
+                        className={`w-4 h-4 ${
+                          i < testimonial.rating
+                            ? "text-yellow-400"
+                            : "text-gray-300 dark:text-gray-600"
+                        }`}
+                      />
+                    ))}
+                  </div>
+                </motion.div>
+              ))}
+          </div>
+        </div>
+
+        {/* Индикаторы */}
+        <div className="flex justify-center mt-8 gap-2">
+          {testimonials.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => goToSlide(index)}
+              className={`w-3 h-3 rounded-full transition-all ${
+                index === activeCard
+                  ? "bg-blue-500 dark:bg-blue-400 w-6"
+                  : "bg-gray-300 dark:bg-gray-600 hover:bg-gray-400 dark:hover:bg-gray-500"
+              }`}
+              aria-label={`Перейти к отзыву ${index + 1}`}
+            />
+          ))}
+        </div>
+      </div>
+    </section>
   );
 };
 
-export default Testimonials;
+export default TestimonialsGrid;

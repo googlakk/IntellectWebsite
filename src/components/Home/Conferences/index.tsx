@@ -21,17 +21,20 @@ const Conferences = ({ showTitle = true }) => {
               data-aos-delay="200"
               data-aos-duration="1000"
             >
-              <h2 className=" font-bold"> Лучшая школа нового поколения  </h2>
+              <h2 className=" font-bold"> Лучшая школа нового поколения </h2>
               <p className="text-lg font-normal text-SlateBlueText dark:text-white/60 max-w-506 md:pt-9 pt-5 md:pb-14 pb-6">
-              Intellect Pro School -  это частное образовательное учреждение, которое предлагает программы как общего школьного образования, так и дополнительные курсы, направленные на развитие интеллектуальных и профессиональных навыков
+                Intellect Pro School - это частное образовательное учреждение,
+                которое предлагает программы как общего школьного образования,
+                так и дополнительные курсы, направленные на развитие
+                интеллектуальных и профессиональных навыков
               </p>
               {showTitle && (
-                    <Link
-                    href="/"
-                    className="btn_outline btn-2 hover-outline-slide-down"
-                  >
-                    <span>Подробнее</span>
-                  </Link>
+                <Link
+                  href="/aboutUs"
+                  className="btn_outline btn-2 hover-outline-slide-down"
+                >
+                  <span>Подробнее</span>
+                </Link>
               )}
             </div>
           </div>

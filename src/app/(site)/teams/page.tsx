@@ -10,17 +10,10 @@ export const metadata: Metadata = {
 };
 
 const page = () => {
-    const breadcrumbLinks = [
-        { href: "/", text: "Главная" },
-        { href: "/teams", text: "Наша команда" },
-      ];
+
   return (
     <>
-      <HeroSub
-        title="Наша команда"
-        description="Команда Intellect Pro School — опытные педагоги и наставники, которые вдохновляют учеников на достижения. Узнайте, кто создает уникальную образовательную среду!"
-        breadcrumbLinks={breadcrumbLinks}
-      />
+
       <WorkSpeakers showTitle={false} />
     
       <TicketSection />

@@ -10,7 +10,7 @@ import { Metadata } from "next";
 import Mission from '@/components/Home/Mission';
 import Preview from '@/components/Home/Preview';
 import React from 'react'
-import Testimonials from '@/components/Home/Testimonials';
+import TestimonialsGrid from "@/components/Home/Testimonials";
 import ThumbnailCarousel from '@/components/Home/Conferences';
 import TicketSection from '@/components/Home/TicketSection';
 import Upcoming from '@/components/Home/Upcoming';
@@ -35,7 +35,7 @@ export default function Home() {
 
       <EventTicket />
       <CalendarWithEvents />
-      {/* <Testimonials/> */}
+      <TestimonialsGrid />
       <FAQSection />
       <ContactInfo />
 

@@ -1,8 +1,13 @@
+'use client'
+
+import React, { useState } from "react";
+
+import ConsultationModal from "@/components/ConsultationModal";
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
 
 const TicketSection = () => {
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   return (
     <>
       <section className="dark:bg-darkmode pt-0">
@@ -25,14 +30,19 @@ const TicketSection = () => {
                 <p className="sm:text-4xl text-[28px] leading-[2.25rem] font-bold text-white lg:max-w-364 max-w-full pb-9">
                   Откройте своему ребонку дорогу в счастливую жизнь!
                 </p>
-                <Link
-                  href="/"
+                <button
+                  onClick={() => setIsModalOpen(true)}
                   className="btn btn-1 hover-filled-slide-down rounded-lg overflow-hidden before:bg-ElectricAqua"
                 >
                   <span className="sm:!px-20 px-10 !border-ElectricAqua !text-white">
                     Записать
                   </span>
-                </Link>
+                </button>
+
+                <ConsultationModal
+                  isOpen={isModalOpen}
+                  onClose={() => setIsModalOpen(false)}
+                />
               </div>
             </div>
           </div>
