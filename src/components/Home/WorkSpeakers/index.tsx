@@ -1,76 +1,72 @@
-"use client";
+'use client'
+/* eslint-disable react/no-array-index-key */
 
-import Image from "next/image";
-import Link from "next/link";
-import React from "react";
-import { motion } from "framer-motion";
-import { speakers } from "@/app/api/data";
-import { usePathname } from "next/navigation";
+import React, { useState } from 'react'
 
-const WorkSpeakers = ({ showTitle = true }) => {
-  const fadeIn = {
-    hidden: { opacity: 0, y: 30 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
-  };
-  const pathname = usePathname();
+import Image from 'next/image'
+import { usePathname } from 'next/navigation'
+import NoImage from "../../../../public/images/work_speakers/no_image.jpg"
+
+import { TeamTypes } from '@/types/team.interface'
+
+interface Props {
+  team: TeamTypes.ItemResponse | null
+}
+
+const WorkSpeakers: React.FC<Props> = ({ team }) => {
+  const pathname = usePathname()
+  const [visibleItems, setVisibleItems] = useState(5)
+
+  const handleLoadMore = () => {
+    setVisibleItems((prev) => prev + 5)
+  }
+
+  const displayedTeam = team?.data ? team.data.slice(0, visibleItems) : []
+
   return (
     <>
-      <section
-        className={` mt-28 dark:bg-darkmode ${pathname === "/" ? "" : ""}`}
-      >
-        <h2 className="text-center pb-12">
-          {showTitle ? "Руководство" : "Наша команда"}
-        </h2>
-
-        <div className="grid lg:grid-cols-5 sm:grid-cols-2 grid-cols-1 items-stretch gap-8 mx-7">
-          {(showTitle ? speakers.slice(0, 5) : speakers).map(
-            (speaker, index) => (
-              <div
-                key={speaker.id}
-                data-aos="fade-up"
-                data-aos-delay={`${index * 300}`}
-                data-aos-duration="1000"
-                className={`col-span-1 group overflow-hidden ${
-                  index % 2 === 1 ? "lg:mt-28 mt-0" : ""
-                }`}
-              >
-                <div className="overflow-hidden rounded-lg">
-                  <Image
-                    src={speaker.src}
-                    alt={speaker.alt}
-                    width={0}
-                    height={0}
-                    quality={100}
-                    layout="responsive"
-                    sizes="100vh"
-                    className=" object-cover w-full h-full transition-all duration-0.4s group-hover:scale-110"
-                  />
-                </div>
-                <div className="pt-6">
-                  <h6 className="text-[28px] leading-[2.25rem] font-bold text-secondary dark:text-white">
-                    {speaker.name}
-                  </h6>
-                  <span className="text-lg font-normal text-SlateBlueText dark:text-opacity-80">
-                    {speaker.designation}
-                  </span>
-                </div>
+      <section className={`dark:bg-darkmode ${pathname === '/' ? '' : ''}`}>
+        <div className="grid lg:grid-cols-5 sm:grid-cols-2 grid-cols-1 items-stretch gap-8 mx-8">
+          {displayedTeam.map((item, index) => (
+            <div
+              key={index}
+              data-aos="fade-up"
+              data-aos-delay={`${index * 300}`}
+              data-aos-duration="1000"
+              className={`col-span-1 group overflow-hidden ${index % 2 === 1 ? 'lg:mt-28 mt-0' : ''}`}
+            >
+              <div className="relative w-full h-72 overflow-hidden rounded-lg">
+                <Image
+                  src={`${item.avatar ? `https://intellect.soulist.life${item.avatar.url}` : NoImage.src}`}
+                  alt={item.role}
+                  fill
+                  className="object-cover transition-all duration-300 group-hover:scale-110"
+                />
               </div>
-            )
-          )}
-          <div className="flex justify-center col-span-full mt-8">
-            {showTitle && (
-              <Link
-                href="/teams"
-                className="btn_outline btn-2 hover-outline-slide-down"
-              >
-                <span>Узнать больше</span>
-              </Link>
-            )}
-          </div>
+              <div className="pt-6">
+                <h6 className="text-[28px] leading-[2.25rem] font-bold text-secondary dark:text-white">
+                  {item.last_name} {item.first_name}
+                </h6>
+                <span className="text-lg font-normal text-SlateBlueText dark:text-opacity-80">
+                  {item.role}
+                </span>
+              </div>
+            </div>
+          ))}
         </div>
+        {team?.data && visibleItems < team.data.length && (
+          <div className="flex justify-center my-8">
+            <button
+              onClick={handleLoadMore}
+              className="px-4 py-2 bg-primary text-white rounded hover:bg-opacity-80 transition-all duration-300"
+            >
+              Загрузить ещё
+            </button>
+          </div>
+        )}
       </section>
     </>
-  );
-};
+  )
+}
 
-export default WorkSpeakers;
+export default WorkSpeakers
