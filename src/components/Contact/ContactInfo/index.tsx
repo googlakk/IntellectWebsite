@@ -1,29 +1,33 @@
+'use client'
+
+import Loader from "@/components/Common/Loader";
+import { Api } from "@/services";
+import { ContactsTypes } from "@/types/contacts.interface";
 import Link from "next/link";
+import React from "react";
 
 const ContactsSection = () => {
+  const [contact, setContact] = React.useState<ContactsTypes.Item[] | null>(null)
+
+  const loadContact = async () => {
+    try {
+      const response = await Api.contacts.ContactsGET()
+
+      setContact(response.data.data)
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  React.useEffect(() => {
+    loadContact()
+  }, [])
+
   const socialLinks = [
     { name: "Instagram", url: "#", icon: "instagram" },
     { name: "Facebook", url: "#", icon: "facebook" },
     { name: "WhatsApp", url: "#", icon: "whatsapp" },
     { name: "YouTube", url: "#", icon: "youtube" },
-  ];
-
-  const contacts = [
-    {
-      title: "Intellect Pro School",
-      address: "Улица Джунусалиева, 177/1, Бишкек",
-      phone: "+996 555 600 600",
-    },
-    {
-      title: "Intellect Junior",
-      address: "Улица Бакаева, 119, Бишкек",
-      phone: "+996 555 600 601",
-    },
-    {
-      title: "Intellect College",
-      address: "Улица Ибраимова, 103, БЦ VICTORY, Бишкек",
-      phone: "+996 555 600 602",
-    },
   ];
 
   const SocialIcon = ({ icon }: { icon: string }) => {
@@ -62,7 +66,6 @@ const ContactsSection = () => {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12">
-          {/* Карта */}
           <div className="rounded-xl overflow-hidden shadow-lg h-full min-h-[400px]">
             <iframe
               className="w-full h-full"
@@ -71,20 +74,19 @@ const ContactsSection = () => {
             ></iframe>
           </div>
 
-          {/* Контактная информация */}
           <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6 md:p-8">
             <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
               Наши контакты
             </h3>
 
             <div className="space-y-6">
-              {contacts.map((contact, index) => (
+              {contact?.map((item, index) => (
                 <div
                   key={index}
                   className="border-b border-gray-200 dark:border-gray-700 pb-6 last:border-0 last:pb-0"
                 >
                   <h4 className="text-xl font-semibold text-gray-800 dark:text-gray-100 mb-3">
-                    {contact.title}
+                    {item.title}
                   </h4>
                   <div className="space-y-3">
                     <div className="flex items-start">
@@ -108,7 +110,7 @@ const ContactsSection = () => {
                         />
                       </svg>
                       <p className="text-gray-600 dark:text-gray-300">
-                        {contact.address}
+                        {item.address}
                       </p>
                     </div>
                     <div className="flex items-center">
@@ -126,10 +128,10 @@ const ContactsSection = () => {
                         />
                       </svg>
                       <Link
-                        href={`tel:${contact.phone.replace(/\s+/g, "")}`}
+                        href={`tel:${item.phone.replace(/\s+/g, "")}`}
                         className="text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-blue-400 transition-colors"
                       >
-                        {contact.phone}
+                        {item.phone}
                       </Link>
                     </div>
                   </div>

@@ -1,18 +1,21 @@
-import BlogList from "@/components/Blog/BlogList";
-import HeroSub from "@/components/SharedComponent/HeroSub";
-import { Metadata } from "next";
-import React from "react";
-import TicketSection from "@/components/Home/TicketSection";
+import React from 'react'
+
+import { Metadata } from 'next'
+
+import TicketSection from '@/components/Home/TicketSection'
+import HeroSub from '@/components/SharedComponent/HeroSub'
+import BlogList from '@/components/Blog/BlogList'
 
 export const metadata: Metadata = {
-  title: "Blog | Intellect Pro School",
-};
+  title: 'Blog | Intellect Pro School',
+}
 
 const BlogPage = () => {
   const breadcrumbLinks = [
-    { href: "/", text: "Главная" },
-    { href: "/blog", text: "Блог" },
-  ];
+    { href: '/', text: 'Главная' },
+    { href: '/blog', text: 'Блог' },
+  ]
+
   return (
     <>
       <HeroSub
@@ -23,7 +26,7 @@ const BlogPage = () => {
       <BlogList />
       <TicketSection />
     </>
-  );
-};
+  )
+}
 
-export default BlogPage;
+export default BlogPage

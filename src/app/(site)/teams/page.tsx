@@ -1,24 +1,28 @@
-import HeroSub from "@/components/SharedComponent/HeroSub";
-import { Metadata } from "next";
-import React from "react";
-import Testimonials from "@/components/Home/Testimonials";
-import TicketSection from "@/components/Home/TicketSection";
-import WorkSpeakers from "@/components/Home/WorkSpeakers";
+import TicketSection from '@/components/Home/TicketSection'
+import HeroSub from '@/components/SharedComponent/HeroSub'
+import Testimonial from '@/components/SharedComponent/Testimonial'
+import Team from '@/components/Team'
+import { Metadata } from 'next'
+
 
 export const metadata: Metadata = {
-  title: "Teams | Intellect Pro School",
-};
+  title: 'Teams | Intellect Pro School',
+}
 
-const page = () => {
-
+export default function Page() {
+  const breadcrumbLinks = [
+    { href: '/', text: 'Главная' },
+    { href: '/teams', text: 'Наша команда' },
+  ]
   return (
     <>
-
-      <WorkSpeakers showTitle={false} />
-    
-      <TicketSection />
+    <HeroSub
+      title="Наша Команда"
+      description="Вдохновляющие педагоги и увлечённые специалисты, которые каждый день делают обучение ярким, современным и доступным для каждого ученика."
+      breadcrumbLinks={breadcrumbLinks}
+    />
+    <Team/>
+    <TicketSection/>
     </>
-  );
-};
-
-export default page;
+  )
+}

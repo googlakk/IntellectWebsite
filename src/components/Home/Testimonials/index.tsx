@@ -8,127 +8,125 @@ import {
   FaStar,
 } from "react-icons/fa";
 import React, { useEffect, useState } from "react";
-
 import Image from "next/image";
+import { ReviewTypes } from "@/types/review.interface";
 
-const TestimonialsGrid = () => {
-  const [activeCard, setActiveCard] = useState(0);
+interface Testimonial {
+  id: number;
+  parent: { name: string; photo: string };
+  child: { name: string; photo: string };
+  rating: number;
+  quote: string;
+  text: string;
+}
+
+interface Props {
+  reviews: ReviewTypes.ItemResponse | null;
+}
+
+const TestimonialsGrid: React.FC<Props> = ({ reviews }) => {
+  const [currentPage, setCurrentPage] = useState(0);
+  const [activeReview, setActiveReview] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
   const [direction, setDirection] = useState<"left" | "right">("right");
-  const [containerHeight, setContainerHeight] = useState(0);
 
-  const testimonials = [
-    {
-      id: 1,
-      parent: {
-        name: "Айгуль Сатыбалдиева",
-        photo: "/images/upcoming/profile-1.png",
-      },
-      child: {
-        name: "Амина, 5 класс",
-        photo: "/images/ThumbnailSlider/1.png",
-      },
-      rating: 5,
-      quote: "Прекрасная школа с индивидуальным подходом",
-      text: "Моя дочь стала более уверенной в своих знаниях. Учителя находят подход к каждому ребенку, виден реальный прогресс в обучении.",
-    },
-    {
-      id: 2,
-      parent: {
-        name: "Эркин Баялинов",
-        photo: "/images/upcoming/profile-1.png",
-      },
-      child: {
-        name: "Данияр, 7 класс",
-        photo: "/images/ThumbnailSlider/2.png",
-      },
-      rating: 4,
-      quote: "Отличная подготовка по IT",
-      text: "Сын начал создавать собственные проекты. Преподаватели умеют заинтересовать даже сложными темами.",
-    },
-    {
-      id: 3,
-      parent: {
-        name: "Асель Токтосунова",
-        photo: "/images/upcoming/profile-1.png",
-      },
-      child: {
-        name: "Алиса и Артем",
-        photo: "/images/ThumbnailSlider/4.png",
-      },
-      rating: 5,
-      quote: "Атмосфера вдохновляет",
-      text: "Оба ребенка с радостью идут в школу. Вижу, как развивается их мышление и лидерские качества.",
-    },
-    {
-      id: 4,
-      parent: {
-        name: "Асель Токтосунова",
-        photo: "/images/upcoming/profile-1.png",
-      },
-      child: {
-        name: "Алиса и Артем",
-        photo: "/images/ThumbnailSlider/4.png",
-      },
-      rating: 5,
-      quote: "Атмосфера вдохновляет",
-      text: "Оба ребенка с радостью идут в школу. Вижу, как развивается их мышление и лидерские качества.",
-    },
-  ];
+  const testimonials: Testimonial[] =
+    reviews?.data.map((item) => ({
+      id: item.id,
+      parent: { name: item.parent_name, photo: item.avatar.url },
+      child: { name: item.parent_info, photo: item.main_image.url },
+      rating: item.stars,
+      quote: item.title,
+      text: item.description,
+    })) || [];
 
-  // Автоматическое переключение
-  useEffect(() => {
-    let interval: NodeJS.Timeout;
-    if (isAutoPlaying) {
-      interval = setInterval(() => {
-        setDirection("right");
-        setActiveCard((prev) => (prev + 1) % testimonials.length);
-      }, 5000);
-    }
-    return () => clearInterval(interval);
-  }, [isAutoPlaying, testimonials.length]);
+  const pages: Testimonial[][] = [];
+  for (let i = 0; i < testimonials.length; i += 5) {
+    pages.push(testimonials.slice(i, i + 5));
+  }
+  const currentPageTestimonials: Testimonial[] = pages[currentPage] || [];
 
   const goToNext = () => {
     setDirection("right");
-    setActiveCard((prev) => (prev + 1) % testimonials.length);
+    if (activeReview < currentPageTestimonials.length - 1) {
+      setActiveReview((prev) => prev + 1);
+    } else {
+      if (currentPage < pages.length - 1) {
+        setCurrentPage((prev) => prev + 1);
+      } else {
+        setCurrentPage(0);
+      }
+      setActiveReview(0);
+    }
     setIsAutoPlaying(false);
     setTimeout(() => setIsAutoPlaying(true), 10000);
   };
 
   const goToPrev = () => {
     setDirection("left");
-    setActiveCard(
-      (prev) => (prev - 1 + testimonials.length) % testimonials.length
-    );
+    if (activeReview > 0) {
+      setActiveReview((prev) => prev - 1);
+    } else {
+      if (currentPage > 0) {
+        const prevPage = currentPage - 1;
+        setCurrentPage(prevPage);
+        setActiveReview(pages[prevPage].length - 1);
+      } else {
+        const lastPage = pages.length - 1;
+        setCurrentPage(lastPage);
+        setActiveReview(pages[lastPage].length - 1);
+      }
+    }
     setIsAutoPlaying(false);
     setTimeout(() => setIsAutoPlaying(true), 10000);
   };
 
-  const goToSlide = (index: number) => {
-    setDirection(index > activeCard ? "right" : "left");
-    setActiveCard(index);
+  const goToReview = (index: number) => {
+    setDirection(index > activeReview ? "right" : "left");
+    setActiveReview(index);
     setIsAutoPlaying(false);
     setTimeout(() => setIsAutoPlaying(true), 10000);
   };
 
-  // Новые варианты анимации
+  const goToPage = (pageIndex: number) => {
+    setDirection(pageIndex > currentPage ? "right" : "left");
+    setCurrentPage(pageIndex);
+    setActiveReview(0);
+    setIsAutoPlaying(false);
+    setTimeout(() => setIsAutoPlaying(true), 10000);
+  };
+
+  useEffect(() => {
+    let interval: NodeJS.Timeout;
+    if (isAutoPlaying) {
+      interval = setInterval(() => {
+        goToNext();
+      }, 5000);
+    }
+    return () => clearInterval(interval);
+  }, [isAutoPlaying, currentPage, activeReview, currentPageTestimonials.length, pages.length]);
+
   const variants = {
     enter: (direction: "left" | "right") => ({
       x: direction === "right" ? "100%" : "-100%",
       opacity: 0,
-      position: "absolute",
+      position: "absolute" as const,
     }),
     center: {
       x: 0,
       opacity: 1,
-      position: "relative",
+      position: "relative" as const,
     },
     exit: (direction: "left" | "right") => ({
       x: direction === "right" ? "-100%" : "100%",
       opacity: 0,
-      position: "absolute",
+      position: "absolute" as const,
     }),
   };
+
+  if (testimonials.length === 0) {
+    return null;
+  }
 
   return (
     <section
@@ -147,7 +145,6 @@ const TestimonialsGrid = () => {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-5xl mx-auto relative">
-          {/* Кнопки навигации */}
           <motion.button
             onClick={goToPrev}
             whileHover={{ scale: 1.1 }}
@@ -168,14 +165,13 @@ const TestimonialsGrid = () => {
             <FaChevronRight className="text-blue-500 dark:text-blue-400 text-lg" />
           </motion.button>
 
-          {/* Основная карточка с фиксированной высотой */}
           <div
             className="relative bg-white dark:bg-gray-800 rounded-2xl shadow-lg overflow-hidden"
             style={{ height: "560px" }}
           >
             <AnimatePresence mode="wait" custom={direction} initial={false}>
               <motion.div
-                key={activeCard}
+                key={`${currentPage}-${activeReview}`}
                 custom={direction}
                 variants={variants}
                 initial="enter"
@@ -188,11 +184,10 @@ const TestimonialsGrid = () => {
                 }}
                 className="w-full h-full flex flex-col"
               >
-                {/* Блок с фото (фиксированная высота) */}
                 <div className="relative h-48 md:h-56 w-full flex-shrink-0">
                   <Image
-                    src={testimonials[activeCard].child.photo}
-                    alt={testimonials[activeCard].child.name}
+                    src={`https://intellect.soulist.life${currentPageTestimonials[activeReview].child.photo}`}
+                    alt={currentPageTestimonials[activeReview].child.name}
                     fill
                     className="object-cover"
                     sizes="(max-width: 1024px) 100vw, 50vw"
@@ -202,41 +197,40 @@ const TestimonialsGrid = () => {
                   <div className="absolute bottom-4 left-4 flex items-center">
                     <div className="relative w-12 h-12 rounded-full overflow-hidden border-2 border-white mr-3">
                       <Image
-                        src={testimonials[activeCard].parent.photo}
-                        alt={testimonials[activeCard].parent.name}
+                        src={`https://intellect.soulist.life${currentPageTestimonials[activeReview].parent.photo}`}
+                        alt={currentPageTestimonials[activeReview].parent.name}
                         fill
                         className="object-cover"
                       />
                     </div>
                     <div>
                       <p className="text-white font-medium">
-                        {testimonials[activeCard].parent.name}
+                        {currentPageTestimonials[activeReview].parent.name}
                       </p>
                       <p className="text-white/80 text-sm">
-                        {testimonials[activeCard].child.name},{" "}
+                        {currentPageTestimonials[activeReview].child.name}
                       </p>
                     </div>
                   </div>
                 </div>
 
-                {/* Блок с текстом (гибкая высота с прокруткой) */}
                 <div className="p-6 md:p-8 flex-grow overflow-y-auto">
                   <div className="absolute top-6 left-6 text-blue-500 dark:text-blue-400 text-3xl z-10">
                     <FaQuoteLeft />
                   </div>
 
                   <h3 className="text-xl md:text-2xl font-bold text-gray-900 dark:text-white mb-4">
-                    "{testimonials[activeCard].quote}"
+                    "{currentPageTestimonials[activeReview].quote}"
                   </h3>
                   <p className="text-gray-600 dark:text-gray-300 mb-6">
-                    {testimonials[activeCard].text}
+                    {currentPageTestimonials[activeReview].text}
                   </p>
                   <div className="flex">
                     {[...Array(5)].map((_, i) => (
                       <FaStar
                         key={i}
                         className={`w-5 h-5 ${
-                          i < testimonials[activeCard].rating
+                          i < currentPageTestimonials[activeReview].rating
                             ? "text-yellow-400"
                             : "text-gray-300 dark:text-gray-600"
                         }`}
@@ -248,43 +242,42 @@ const TestimonialsGrid = () => {
             </AnimatePresence>
           </div>
 
-          {/* Второстепенные карточки */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {testimonials
-              .filter((_, i) => i !== activeCard)
-              .map((testimonial, index) => (
+            {currentPageTestimonials
+              .filter((_, i) => i !== activeReview)
+              .map((review, index) => (
                 <motion.div
-                  key={testimonial.id}
+                  key={review.id}
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: index * 0.1 }}
                   whileHover={{ y: -5 }}
                   className="bg-white dark:bg-gray-800 rounded-xl shadow-md p-5 transition-all duration-300 hover:shadow-lg cursor-pointer h-full"
                   onClick={() =>
-                    goToSlide(
-                      testimonials.findIndex((t) => t.id === testimonial.id)
+                    goToReview(
+                      currentPageTestimonials.findIndex((r) => r.id === review.id)
                     )
                   }
                 >
                   <div className="flex items-start mb-4">
                     <div className="relative w-10 h-10 rounded-full overflow-hidden mr-3 flex-shrink-0">
                       <Image
-                        src={testimonial.parent.photo}
-                        alt={testimonial.parent.name}
+                        src={`https://intellect.soulist.life${review.parent.photo}`}
+                        alt={review.parent.name}
                         fill
                         className="object-cover"
                       />
                     </div>
                     <div>
                       <h4 className="font-medium text-gray-900 dark:text-white">
-                        {testimonial.parent.name}
+                        {review.parent.name}
                       </h4>
                     </div>
                   </div>
                   <div className="mb-3">
                     <FaQuoteLeft className="text-blue-500 dark:text-blue-400 text-xl opacity-50 mb-2" />
                     <p className="text-gray-700 dark:text-gray-300 line-clamp-3">
-                      {testimonial.text}
+                      {review.text}
                     </p>
                   </div>
                   <div className="flex">
@@ -292,7 +285,7 @@ const TestimonialsGrid = () => {
                       <FaStar
                         key={i}
                         className={`w-4 h-4 ${
-                          i < testimonial.rating
+                          i < review.rating
                             ? "text-yellow-400"
                             : "text-gray-300 dark:text-gray-600"
                         }`}
@@ -304,18 +297,17 @@ const TestimonialsGrid = () => {
           </div>
         </div>
 
-        {/* Индикаторы */}
         <div className="flex justify-center mt-8 gap-2">
-          {testimonials.map((_, index) => (
+          {pages.map((_, index) => (
             <button
               key={index}
-              onClick={() => goToSlide(index)}
+              onClick={() => goToPage(index)}
               className={`w-3 h-3 rounded-full transition-all ${
-                index === activeCard
+                index === currentPage
                   ? "bg-blue-500 dark:bg-blue-400 w-6"
                   : "bg-gray-300 dark:bg-gray-600 hover:bg-gray-400 dark:hover:bg-gray-500"
               }`}
-              aria-label={`Перейти к отзыву ${index + 1}`}
+              aria-label={`Перейти к слайду ${index + 1}`}
             />
           ))}
         </div>
