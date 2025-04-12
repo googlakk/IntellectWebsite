@@ -73,9 +73,6 @@ export default function Home() {
     loadReviews()
   }, [])
 
-  console.log(reviews);
-  
-
   return (
     <main>
       <Preview/>

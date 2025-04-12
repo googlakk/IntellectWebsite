@@ -1,12 +1,7 @@
 'use client';
 
+import { Api } from '@/services';
 import { useEffect, useRef, useState } from 'react';
-
-type FormData = {
-  fullName: string;
-  childClass: string;
-  phone: string;
-};
 
 type ConsultationModalProps = {
   isOpen: boolean;
@@ -14,16 +9,15 @@ type ConsultationModalProps = {
 };
 
 const ConsultationModal = ({ isOpen, onClose }: ConsultationModalProps) => {
-  const [formData, setFormData] = useState<FormData>({
-    fullName: '',
-    childClass: '',
+  const [formData, setFormData] = useState<any>({
+    name: '',
+    class: '',
     phone: '+996 '
   });
 
   const [isSubmitted, setIsSubmitted] = useState(false);
   const phoneInputRef = useRef<HTMLInputElement>(null);
 
-  // Фиксация прокрутки фона
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = 'hidden';
@@ -36,34 +30,28 @@ const ConsultationModal = ({ isOpen, onClose }: ConsultationModalProps) => {
     };
   }, [isOpen]);
 
-  // Обработчик ввода телефона
   const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
-    const digits = value.replace(/\D/g, '').slice(0, 12); // Получаем только цифры
+    const digits = value.replace(/\D/g, '').slice(0, 12); 
     
-    // Если ввод начинается не с 996, добавляем код страны
     if (!digits.startsWith('996') && digits.length > 0) {
       const formatted = `+996 ${digits.slice(0, 9)}`;
-      setFormData(prev => ({ ...prev, phone: formatted }));
+      setFormData((prev: any) => ({ ...prev, phone: formatted }));
       return;
     }
     
-    // Форматируем номер с пробелами
     let formatted = '+996 ';
     if (digits.length > 3) formatted += `${digits.slice(3, 6)} `;
     if (digits.length > 6) formatted += `${digits.slice(6, 9)} `;
     if (digits.length > 9) formatted += digits.slice(9, 12);
     
-    setFormData(prev => ({ ...prev, phone: formatted }));
+    setFormData((prev: any) => ({ ...prev, phone: formatted }));
   };
 
-  // Запрет ввода нецифровых символов
   const handlePhoneKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    // Разрешаем: backspace, delete, tab, escape, enter, стрелки
     if ([8, 9, 27, 13, 37, 38, 39, 40].includes(e.keyCode)) {
       return;
     }
-    // Запрещаем все, кроме цифр
     if ((e.keyCode < 48 || e.keyCode > 57) && (e.keyCode < 96 || e.keyCode > 105)) {
       e.preventDefault();
     }
@@ -71,14 +59,13 @@ const ConsultationModal = ({ isOpen, onClose }: ConsultationModalProps) => {
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
+    setFormData((prev: any) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
-    // Проверяем, что номер заполнен полностью (9 цифр после +996)
-    const phoneDigits = formData.phone.replace(/\D/g, '').slice(3); // Убираем +996
+    const phoneDigits = formData.phone.replace(/\D/g, '').slice(3);
     if (phoneDigits.length !== 9) {
       alert('Пожалуйста, введите полный номер телефона (9 цифр после +996)');
       phoneInputRef.current?.focus();
@@ -86,16 +73,16 @@ const ConsultationModal = ({ isOpen, onClose }: ConsultationModalProps) => {
     }
     
     setIsSubmitted(true);
-    console.log('Form data:', {
-      ...formData,
-      phone: formData.phone.replace(/\s/g, '') // Удаляем пробелы для сохранения
-    });
     
-    setTimeout(() => {
-      setIsSubmitted(false);
-      onClose();
-      setFormData({ fullName: '', childClass: '', phone: '+996 ' });
-    }, 2000);
+    const newFormData = {
+      ...formData,
+      class: parseInt(formData.class),
+      phone: formData.phone.replace(/\s/g, '')
+    }
+
+    const request = await Api.request.RequestPOST(newFormData)
+    
+    return request
   };
 
   if (!isOpen) return null;
@@ -135,14 +122,14 @@ const ConsultationModal = ({ isOpen, onClose }: ConsultationModalProps) => {
 
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div>
-                  <label htmlFor="fullName" className="block text-lg font-medium text-gray-700 mb-2">
+                  <label htmlFor="name" className="block text-lg font-medium text-gray-700 mb-2">
                     ФИО родителя <span className=' text-red-600'>* </span>
                   </label>
                   <input
                     type="text"
-                    id="fullName"
-                    name="fullName"
-                    value={formData.fullName}
+                    id="name"
+                    name="name"
+                    value={formData.name}
                     onChange={handleChange}
                     required
                     className="w-full px-5 py-3 text-lg text-center border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
@@ -150,14 +137,14 @@ const ConsultationModal = ({ isOpen, onClose }: ConsultationModalProps) => {
                 </div>
 
                 <div>
-                  <label htmlFor="childClass" className="block text-lg font-medium text-gray-700 mb-2">
+                  <label htmlFor="class" className="block text-lg font-medium text-gray-700 mb-2">
                     Класс ребенка <span className=' text-red-600'>* </span>
                   </label>
                   <input
                     type="text"
-                    id="childClass"
-                    name="childClass"
-                    value={formData.childClass}
+                    id="class"
+                    name="class"
+                    value={formData.class}
                     onChange={handleChange}
                     required
                     className="w-full px-5 py-3 text-lg text-center border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
