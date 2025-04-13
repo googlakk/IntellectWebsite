@@ -1,12 +1,77 @@
 'use client'
 
-import HeroSub from '@/components/SharedComponent/HeroSub';
-import { Metadata } from 'next';
+import { Api } from '@/services';
 import { motion } from 'framer-motion';
-import { useState } from 'react';
+import React from 'react';
 
 const AdmissionProcess = () => {
-  const [activeStep, setActiveStep] = useState(0);
+  const [activeStep, setActiveStep] = React.useState(0);
+  const phoneInputRef = React.useRef<HTMLInputElement>(null);
+  const [formData , setFormData] = React.useState<any>({
+    name: '',
+    phone: '+996'
+  })
+  const [submitted, setSubmitted] = React.useState(false)
+
+  const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+    const digits = value.replace(/\D/g, '').slice(0, 12); 
+    
+    if (!digits.startsWith('996') && digits.length > 0) {
+      const formatted = `+996 ${digits.slice(0, 9)}`;
+      setFormData((prev: any) => ({ ...prev, phone: formatted }));
+      return;
+    }
+    
+    let formatted = '+996 ';
+    if (digits.length > 3) formatted += `${digits.slice(3, 6)} `;
+    if (digits.length > 6) formatted += `${digits.slice(6, 9)} `;
+    if (digits.length > 9) formatted += digits.slice(9, 12);
+    
+    setFormData((prev: any) => ({ ...prev, phone: formatted }));
+  };
+
+  const handlePhoneKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if ([8, 9, 27, 13, 37, 38, 39, 40].includes(e.keyCode)) {
+      return;
+    }
+    if ((e.keyCode < 48 || e.keyCode > 57) && (e.keyCode < 96 || e.keyCode > 105)) {
+      e.preventDefault();
+    }
+  };
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setFormData((prev: any) => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setSubmitted(true)
+
+    try {
+      const phoneDigits = formData.phone.replace(/\D/g, '').slice(3);
+      if (phoneDigits.length !== 9) {
+        alert('Пожалуйста, введите полный номер телефона (9 цифр после +996)');
+        phoneInputRef.current?.focus();
+        return;
+      }
+
+      const newFormData = {
+        ...formData
+      }
+
+      await Api.email.EmailSendForParents(newFormData)
+
+      setFormData({name: '', phone: '+996'})
+      alert('Вы успешно отправили заявку')
+    } catch (error) {
+      console.log('error', error);
+      alert('Произошла ошибка, попробуйте позже')
+    } finally {
+      setSubmitted(false)
+    }
+  }
 
   const steps = [
     {
@@ -57,10 +122,6 @@ const AdmissionProcess = () => {
     "Заявление на имя директора",
     "Анкета поступающего ученика",
     "Личное дело ученика с предыдущей школы"
-  ];
-  const breadcrumbLinks = [
-    { href: "/", text: "Главная" },
-    { href: "/For parents", text: "Для родителей" },
   ];
   return (
     <>
@@ -168,26 +229,36 @@ const AdmissionProcess = () => {
                 уточнения деталей
               </p>
 
-              <form className="space-y-4">
+              <form onSubmit={handleSubmit} className="space-y-4">
                 <div>
                   <input
                     type="text"
+                    name='name'
+                    value={formData.name}
                     placeholder="Ваше имя"
+                    onChange={handleChange}
                     className="w-full px-4 py-3 rounded-lg bg-blue-500 bg-opacity-20 border border-blue-400 placeholder-blue-200 focus:outline-none focus:ring-2 focus:ring-white"
                   />
                 </div>
                 <div>
                   <input
                     type="tel"
+                    name='phone'
+                    value={formData.phone}
+                    ref={phoneInputRef}
                     placeholder="Телефон"
+                    onKeyDown={handlePhoneKeyDown}
+                    onChange={handlePhoneChange}
+                    required
                     className="w-full px-4 py-3 rounded-lg bg-blue-500 bg-opacity-20 border border-blue-400 placeholder-blue-200 focus:outline-none focus:ring-2 focus:ring-white"
                   />
                 </div>
                 <button
                   type="submit"
+                  disabled={submitted}
                   className="w-full bg-white text-blue-600 font-medium py-3 px-6 rounded-lg hover:bg-gray-100 transition-colors"
                 >
-                  Отправить заявку
+                  {submitted ? 'Загрузка...' : 'Отправить заявку'}
                 </button>
               </form>
             </motion.div>
