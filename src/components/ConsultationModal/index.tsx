@@ -11,7 +11,7 @@ type ConsultationModalProps = {
 const ConsultationModal = ({ isOpen, onClose }: ConsultationModalProps) => {
   const [formData, setFormData] = useState<any>({
     name: '',
-    class: '',
+    schoolClass: '',
     phone: '+996 '
   });
 
@@ -75,14 +75,20 @@ const ConsultationModal = ({ isOpen, onClose }: ConsultationModalProps) => {
     setIsSubmitted(true);
     
     const newFormData = {
-      ...formData,
-      class: parseInt(formData.class),
+      name: formData.name,
+      schoolClass: parseInt(formData.schoolClass),
       phone: formData.phone.replace(/\s/g, '')
     }
 
-    const request = await Api.request.RequestPOST(newFormData)
-    
-    return request
+    const response = await Api.email.EmailSendMain(newFormData)
+
+    setTimeout(() => {
+      setIsSubmitted(false);
+      onClose();
+      setFormData({ fullName: '', childClass: '', phone: '+996 ' });
+    }, 2000);
+
+    return response
   };
 
   if (!isOpen) return null;
@@ -137,14 +143,14 @@ const ConsultationModal = ({ isOpen, onClose }: ConsultationModalProps) => {
                 </div>
 
                 <div>
-                  <label htmlFor="class" className="block text-lg font-medium text-gray-700 mb-2">
+                  <label htmlFor="schoolClass" className="block text-lg font-medium text-gray-700 mb-2">
                     Класс ребенка <span className=' text-red-600'>* </span>
                   </label>
                   <input
                     type="text"
-                    id="class"
-                    name="class"
-                    value={formData.class}
+                    id="schoolClass"
+                    name="schoolClass"
+                    value={formData.schoolClass}
                     onChange={handleChange}
                     required
                     className="w-full px-5 py-3 text-lg text-center border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
@@ -163,7 +169,6 @@ const ConsultationModal = ({ isOpen, onClose }: ConsultationModalProps) => {
                     value={formData.phone}
                     onChange={handlePhoneChange}
                     onKeyDown={handlePhoneKeyDown}
-                    placeholder="+996 555 123 456"
                     required
                     className="w-full px-5 py-3 text-lg border text-center border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                   />
