@@ -1,42 +1,42 @@
-"use client";
+'use client'
 
-import { FaGlobe, FaGraduationCap, FaTrophy, FaUsers } from "react-icons/fa";
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react'
 
-import { motion } from "framer-motion";
+import { motion } from 'framer-motion'
+import { FaGlobe, FaGraduationCap, FaTrophy, FaUsers } from 'react-icons/fa'
 
 const HistoryAchievements = () => {
   const fadeIn = {
     hidden: { opacity: 0, y: 30 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
-  };
+  }
 
   const achievements = [
     {
       icon: <FaGraduationCap className="text-3xl text-blue-600" />,
-      number: "10 000+",
-      title: "учеников",
-      description: "обучено с 2016 года",
+      number: '10 000+',
+      title: 'учеников',
+      description: 'обучено с 2016 года',
     },
     {
       icon: <FaGlobe className="text-3xl text-green-600" />,
-      number: "20+",
-      title: "филиалов",
-      description: "в 4 странах мира",
+      number: '20+',
+      title: 'филиалов',
+      description: 'в 4 странах мира',
     },
     {
       icon: <FaTrophy className="text-3xl text-amber-600" />,
-      number: "5",
-      title: "чемпионатов мира",
-      description: "официальные представители",
+      number: '5',
+      title: 'чемпионатов мира',
+      description: 'официальные представители',
     },
     {
       icon: <FaUsers className="text-3xl text-purple-600" />,
-      number: "Вундеркинды",
-      title: "из Бишкека",
-      description: "звезды Central Asia's Got Talent",
+      number: 'Вундеркинды',
+      title: 'из Бишкека',
+      description: 'звезды Central Asia\'s Got Talent',
     },
-  ];
+  ]
 
   return (
     <section className="py-16 mt-28 px-4 sm:px-6 lg:px-8 bg-white dark:bg-gray-900">
@@ -113,7 +113,7 @@ const HistoryAchievements = () => {
                 <li className="flex items-start">
                   <span className="text-blue-500 mr-2 mt-1">•</span>
                   <span>
-                    Наши ученики покорили миллионы зрителей на Central Asia's
+                    Наши ученики покорили миллионы зрителей на Central Asia”s
                     Got Talent
                   </span>
                 </li>
@@ -178,17 +178,17 @@ const HistoryAchievements = () => {
           <div className="max-w-4xl mx-auto text-center relative z-10">
             <h3 className="text-2xl font-bold mb-4">Наши звёзды</h3>
             <p className="mb-6 text-blue-100 relative z-10">
-              Команда "Вундеркинды из Бишкека" в составе Арсена Рахымбекова,
+              Команда ”Вундеркинды из Бишкека” в составе Арсена Рахымбекова,
               Байэла Рахымбекова, Альбины Орозакуновой, Нурболота Исматтиллаева
               и Чынгыза Торобаева показала выдающиеся результаты на
               международных соревнованиях и телешоу.
             </p>
             <div className="flex flex-wrap justify-center gap-4 relative z-10">
               {[
-                "Memoriad",
-                "Mental Calculation World Cup",
-                "World Memory Championship",
-                "Central Asia's Got Talent",
+                'Memoriad',
+                'Mental Calculation World Cup',
+                'World Memory Championship',
+                'Central Asia\'s Got Talent',
               ].map((item, i) => (
                 <span
                   key={i}
@@ -202,10 +202,10 @@ const HistoryAchievements = () => {
         </motion.div>
       </div>
     </section>
-  );
-};
+  )
+}
 
-export default HistoryAchievements;
+export default HistoryAchievements
 
 const StarsBackground = () => {
   const [stars, setStars] = useState<
@@ -217,7 +217,7 @@ const StarsBackground = () => {
       rotation: string;
       delay: string;
     }>
-  >([]);
+  >([])
 
   useEffect(() => {
     // Генерируем звёзды только на клиенте
@@ -228,9 +228,10 @@ const StarsBackground = () => {
       size: `${Math.random() * 24 + 8}px`,
       rotation: `${Math.random() * 360}deg`,
       delay: `${Math.random() * 3 + 2}s`,
-    }));
-    setStars(generatedStars);
-  }, []);
+    }))
+
+    setStars(generatedStars)
+  }, [])
 
   return (
     <div className="absolute inset-0 overflow-hidden">
@@ -253,5 +254,5 @@ const StarsBackground = () => {
         </svg>
       ))}
     </div>
-  );
-};
+  )
+}

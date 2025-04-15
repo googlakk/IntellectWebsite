@@ -1,9 +1,5 @@
-import { Configuration } from "./Configuration";
-import { DocNavigation } from "./DocNavigation";
-import { Introduction } from "./Introduction";
-import LocalActs from "./LocalActs";
-import { PackageStructure } from "./PackageStructure";
-import { QuickStart } from "./QuickStart";
+import { DocNavigation } from './DocNavigation'
+import LocalActs from './LocalActs'
 
 export const Documentation = () => {
   return (
@@ -14,7 +10,7 @@ export const Documentation = () => {
             Документации
           </h2>
           <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-             У нас имеются все разрешительные документы
+            У нас имеются все разрешительные документы
           </p>
         </div>
         <div className="grid grid-cols-12 gap-6">
@@ -27,5 +23,5 @@ export const Documentation = () => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}

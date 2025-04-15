@@ -1,14 +1,15 @@
-import React from "react";
-import { signIn } from "next-auth/react";
+import React from 'react'
 
+import { signIn } from 'next-auth/react'
 
 const SocialSignIn = () => {
   const handleGoogleSignIn = async () => {
-    await signIn("google");
-  };
+    await signIn('google')
+  }
   const handleGithubSignIn = async () => {
-    await signIn("github");
-  };
+    await signIn('github')
+  }
+
   return (
     <>
       <div className="flex gap-4">
@@ -75,7 +76,7 @@ const SocialSignIn = () => {
         </button>
       </div>
     </>
-  );
-};
+  )
+}
 
-export default SocialSignIn;
+export default SocialSignIn

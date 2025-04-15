@@ -1,14 +1,15 @@
-'use client';
+'use client'
 
-import { FaGem } from 'react-icons/fa';
-import React from 'react';
-import { motion } from 'framer-motion';
+import React from 'react'
+
+import { motion } from 'framer-motion'
+import { FaGem } from 'react-icons/fa'
 
 interface Student {
   id: number;
   name: string;
   class: string;
-  parallel: string; // пример: "3", "4", ..., "12"
+  parallel: string;
   quarters: {
     q1: 'diamond' | 'gold' | null;
     q2: 'diamond' | 'gold' | null;
@@ -19,48 +20,48 @@ interface Student {
 
 // Примерные данные
 const students: Student[] = Array.from({ length: 10 * 10 }, (_, i) => {
-    const parallels = Array.from({ length: 10 }, (_, j) => (j + 3).toString()); // ['3', ..., '12']
-    const parallel = parallels[Math.floor(i / 10)];
-    const classSuffix = ['A', 'B', 'V'][Math.floor(Math.random() * 3)];
-    const getRandomBadge = () =>
-      Math.random() < 0.33 ? 'gold' : Math.random() < 0.5 ? 'diamond' : null;
-  
-    return {
-      id: i + 1,
-      name: `Баланяаев Баланча ${i + 1}`,
-      class: `${parallel}${classSuffix}`,
-      parallel,
-      quarters: {
-        q1: getRandomBadge(),
-        q2: getRandomBadge(),
-        q3: getRandomBadge(),
-        q4: getRandomBadge(),
-      },
-    };
-  });
+  const parallels = Array.from({ length: 10 }, (_, j) => (j + 3).toString())
+  const parallel = parallels[Math.floor(i / 10)]
+  const classSuffix = ['A', 'B', 'V'][Math.floor(Math.random() * 3)]
+  const getRandomBadge = () =>
+    Math.random() < 0.33 ? 'gold' : Math.random() < 0.5 ? 'diamond' : null
 
+  return {
+    id: i + 1,
+    name: `Баланяаев Баланча ${i + 1}`,
+    class: `${parallel}${classSuffix}`,
+    parallel,
+    quarters: {
+      q1: getRandomBadge(),
+      q2: getRandomBadge(),
+      q3: getRandomBadge(),
+      q4: getRandomBadge(),
+    },
+  }
+})
 
 const getBadge = (type: 'diamond' | 'gold' | null) => {
   const color = {
     diamond: 'text-blue-500',
     gold: 'text-yellow-500',
     null: 'text-gray-300',
-  }[type ?? 'null'];
+  }[type ?? 'null']
 
-  return <FaGem className={`text-lg ${color}`} />;
-};
+  return <FaGem className={`text-lg ${color}`} />
+}
 
 const GroupedTables = () => {
   const grouped = students.reduce((acc, student) => {
-    acc[student.parallel] = acc[student.parallel] || [];
-    acc[student.parallel].push(student);
-    return acc;
-  }, {} as Record<string, Student[]>);
+    acc[student.parallel] = acc[student.parallel] || []
+    acc[student.parallel].push(student)
+
+    return acc
+  }, {} as Record<string, Student[]>)
 
   return (
     <section className="p-4 md:p-6 grid grid-cols-1 md:grid-cols-5 gap-4 mt-16">
       {Object.entries(grouped)
-        .sort(([a], [b]) => +a - +b) // Сортировка по параллелям
+        .sort(([a], [b]) => +a - +b)
         .map(([parallel, group]) => (
           <motion.div
             key={parallel}
@@ -101,7 +102,7 @@ const GroupedTables = () => {
           </motion.div>
         ))}
     </section>
-  );
-};
+  )
+}
 
-export default GroupedTables;
+export default GroupedTables

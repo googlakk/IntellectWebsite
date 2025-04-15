@@ -1,21 +1,21 @@
-import { HeaderItem } from "@/types/menu";
+import { HeaderItem } from '@/types/menu'
 
 export const headerData: HeaderItem[] = [
-  { label: "Главная", href: "/" },
-  { label: "О нас", href: "/aboutUs" },
-  { label: "Наша команда", href: "/teams" },
+  { label: 'Главная', href: '/' },
+  { label: 'О нас', href: '/aboutUs' },
+  { label: 'Наша команда', href: '/teams' },
   {
-    label: "Для родителей",
-    href: "/forParents",
+    label: 'Для родителей',
+    href: '/forParents',
     submenu: [
       {
-        label: "Потеряшки",
-        href: "/google-drive",
+        label: 'Потеряшки',
+        href: '/google-drive',
       },
     ],
   },
-  { label: "ЕЧТ", href: "/results" },
-  { label: "Наш блог", href: "/blog" },
-  { label: "Документации", href: "/documentation" },
-  { label: "Контакты", href: "/contact" },
-];  
+  { label: 'ЕЧТ', href: '/results' },
+  { label: 'Наш блог', href: '/blog' },
+  { label: 'Документации', href: '/documentation' },
+  { label: 'Контакты', href: '/contact' },
+]

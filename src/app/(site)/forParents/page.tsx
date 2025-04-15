@@ -1,18 +1,17 @@
-import AdmissionProcess from '@/components/AdmissionProcess';
-import HeroSub from '@/components/SharedComponent/HeroSub';
-import { Metadata } from 'next';
+import { Metadata } from 'next'
+
+import AdmissionProcess from '@/components/AdmissionProcess'
 
 export const metadata: Metadata = {
-  title: "For parents | Intellect Pro School",
-};
+  title: 'For parents | Intellect Pro School',
+}
 const ForParents = () => {
-  
- 
+
   return (
     <>
       <AdmissionProcess />
     </>
-  );
-};
+  )
+}
 
-export default ForParents;
+export default ForParents

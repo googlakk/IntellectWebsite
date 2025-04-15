@@ -1,42 +1,42 @@
 const LocalActs = () => {
   const documents = [
     {
-      title: "Устав школы ОФ 'ИНТЕЛЛЕКТ ПРО СКУЛ'",
-      type: "pdf",
-      icon: "📄",
-      url: "/documents/charter.pdf",
+      title: 'Устав школы ОФ \'ИНТЕЛЛЕКТ ПРО СКУЛ\'',
+      type: 'pdf',
+      icon: '📄',
+      url: '/documents/charter.pdf',
     },
     {
-      title: "Лицензия на образовательную деятельность",
-      type: "pdf",
-      icon: "📄",
-      url: "/documents/license.pdf",
+      title: 'Лицензия на образовательную деятельность',
+      type: 'pdf',
+      icon: '📄',
+      url: '/documents/license.pdf',
     },
     {
-      title: "Свидетельство о государственной регистрации",
-      type: "pdf",
-      icon: "📄",
-      url: "/documents/registration.pdf",
+      title: 'Свидетельство о государственной регистрации',
+      type: 'pdf',
+      icon: '📄',
+      url: '/documents/registration.pdf',
     },
     {
-      title: "Правила поведения учащихся",
-      type: "pdf",
-      icon: "📝",
-      url: "/documents/student_rules.pdf",
+      title: 'Правила поведения учащихся',
+      type: 'pdf',
+      icon: '📝',
+      url: '/documents/student_rules.pdf',
     },
     {
-      title: "Образовательная программа",
-      type: "pdf",
-      icon: "📚",
-      url: "/documents/program.pdf",
+      title: 'Образовательная программа',
+      type: 'pdf',
+      icon: '📚',
+      url: '/documents/program.pdf',
     },
     {
-      title: "Положение о защите персональных данных",
-      type: "pdf",
-      icon: "🔒",
-      url: "/documents/privacy_policy.pdf",
+      title: 'Положение о защите персональных данных',
+      type: 'pdf',
+      icon: '🔒',
+      url: '/documents/privacy_policy.pdf',
     },
-  ];
+  ]
 
   return (
     <div className="pb-10 md:scroll-m-[180px] scroll-m-28" id="acts">
@@ -56,7 +56,7 @@ const LocalActs = () => {
                   {doc.title}
                 </a>
                 <span className="text-sm text-gray-500 dark:text-gray-400">
-                  {doc.type.toUpperCase()} • {Math.floor(Math.random() * 2) + 1}{" "}
+                  {doc.type.toUpperCase()} • {Math.floor(Math.random() * 2) + 1}{' '}
                   MB
                 </span>
                 <div className="mt-3">
@@ -86,7 +86,7 @@ const LocalActs = () => {
         ))}
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default LocalActs;
+export default LocalActs

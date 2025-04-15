@@ -1,50 +1,51 @@
-"use client";
-import { signIn, useSession } from "next-auth/react";
-import Link from "next/link";
-import { useRouter } from "next/navigation";
-import { useContext, useEffect, useState } from "react";
-import SocialSignIn from "../SocialSignIn";
-import Logo from "@/components/Layout/Header/Logo"
-import Loader from "@/components/Common/Loader";
+'use client'
+import { useContext, useState } from 'react'
+import { Toaster } from 'react-hot-toast'
 
-import toast, { Toaster } from 'react-hot-toast';
-import AuthDialogContext from "@/app/context/AuthDialogContext";
+import Link from 'next/link'
+import { signIn } from 'next-auth/react'
 
+import AuthDialogContext from '@/app/context/AuthDialogContext'
+import Logo from '@/components/Layout/Header/Logo'
 
-const Signin = ({signInOpen}:{signInOpen?:any}) => {
-  const { data: session } = useSession();
-  const [username, setUsername] = useState("admin");
-  const [password, setPassword] = useState("admin123");
-  const [error, setError] = useState("");
-  const authDialog = useContext(AuthDialogContext);
+import SocialSignIn from '../SocialSignIn'
 
+const Signin = ({ signInOpen }:{signInOpen?:any}) => {
+  // const { data: session } = useSession()
+  const [username, setUsername] = useState('admin')
+  const [password, setPassword] = useState('admin123')
+  const [error, setError] = useState('')
+  const authDialog = useContext(AuthDialogContext)
 
   const handleSubmit = async (e: any) => {
-    e.preventDefault();
-    const result = await signIn("credentials", {
+    e.preventDefault()
+    const result = await signIn('credentials', {
       redirect: false,
       username,
       password,
-    });
+    })
+
     if (result?.error) {
       // Handle successful sign-in
-      setError(result.error);
+      setError(result.error)
     }
-    if(result?.status === 200){
-       setTimeout(() => {
-        signInOpen(false);
-       }, 1200);
-      authDialog?.setIsSuccessDialogOpen(true);
+    if (result?.status === 200) {
       setTimeout(() => {
-        authDialog?.setIsSuccessDialogOpen(false);
-      }, 1100);
-    }else{
-      authDialog?.setIsFailedDialogOpen(true);
+        signInOpen(false)
+      }, 1200)
+      authDialog?.setIsSuccessDialogOpen(true)
       setTimeout(() => {
-        authDialog?.setIsFailedDialogOpen(false);
-      }, 1100);
+        authDialog?.setIsSuccessDialogOpen(false)
+      }, 1100)
+    } else {
+      authDialog?.setIsFailedDialogOpen(true)
+      setTimeout(() => {
+        authDialog?.setIsFailedDialogOpen(false)
+      }, 1100)
     }
-  };
+  }
+
+  console.log(error)
 
   return (
     <>
@@ -55,7 +56,7 @@ const Signin = ({signInOpen}:{signInOpen?:any}) => {
       <SocialSignIn />
 
       <span className="z-1 relative my-8 block text-center">
-        <span className="-z-1 absolute left-0 top-1/2 block h-px w-full bg-border dark:bg-dark_border"></span>
+        <span className="-z-1 absolute left-0 top-1/2 block h-px w-full bg-border dark:bg-dark_border" />
         <span className="text-body-secondary relative z-10 inline-block bg-white dark:bg-darklight px-3 text-base dark:bg-dark">
           OR
         </span>
@@ -91,7 +92,7 @@ const Signin = ({signInOpen}:{signInOpen?:any}) => {
             Sign In
             {/* {loading && <Loader />} */}
           </button>
-      
+
         </div>
       </form>
 
@@ -102,13 +103,13 @@ const Signin = ({signInOpen}:{signInOpen?:any}) => {
         Forget Password?
       </Link>
       <p className="text-body-secondary text-base">
-        Not a member yet?{" "}
+        Not a member yet?{' '}
         <Link href="/" className="text-primary hover:underline">
           Sign Up
         </Link>
       </p>
     </>
-  );
-};
+  )
+}
 
-export default Signin;
+export default Signin

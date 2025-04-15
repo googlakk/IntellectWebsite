@@ -1,13 +1,14 @@
 'use client'
 
-import React, { useState } from "react";
+import React, { useState } from 'react'
 
-import ConsultationModal from "@/components/ConsultationModal";
-import Image from "next/image";
-import Link from "next/link";
+import Image from 'next/image'
+
+import ConsultationModal from '@/components/ConsultationModal'
 
 const TicketSection = () => {
-  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false)
+
   return (
     <>
       <section className="dark:bg-darkmode pt-0">
@@ -49,7 +50,7 @@ const TicketSection = () => {
         </div>
       </section>
     </>
-  );
-};
+  )
+}
 
-export default TicketSection;
+export default TicketSection

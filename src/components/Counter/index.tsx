@@ -1,74 +1,73 @@
 'use client'
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react'
 
-import { motion } from 'framer-motion';
+import { motion } from 'framer-motion'
 
 const AchievementCounter = () => {
-  const [studentsCount, setStudentsCount] = useState(0);
-  const [citiesCount, setCitiesCount] = useState(0);
-  const [centersCount, setCentersCount] = useState(0);
+  const [studentsCount, setStudentsCount] = useState(0)
+  const [citiesCount, setCitiesCount] = useState(0)
+  const [centersCount, setCentersCount] = useState(0)
 
   useEffect(() => {
     const animateCounters = () => {
-      // Анимация для учеников (до 10000)
       const studentsInterval = setInterval(() => {
         setStudentsCount(prev => {
-          const step = Math.ceil(10000 / 50); // 50 кадров анимации
-          return prev + step > 10000 ? 10000 : prev + step;
-        });
-      }, 20);
+          const step = Math.ceil(10000 / 50)
 
-      // Анимация для городов (до 15)
+          return prev + step > 10000 ? 10000 : prev + step
+        })
+      }, 20)
+
       const citiesInterval = setInterval(() => {
         setCitiesCount(prev => {
-          const step = Math.ceil(15 / 30);
-          return prev + step > 15 ? 15 : prev + step;
-        });
-      }, 50);
+          const step = Math.ceil(15 / 30)
 
-      // Анимация для центров (до 20)
+          return prev + step > 15 ? 15 : prev + step
+        })
+      }, 50)
+
       const centersInterval = setInterval(() => {
         setCentersCount(prev => {
-          const step = Math.ceil(20 / 30);
-          return prev + step > 20 ? 20 : prev + step;
-        });
-      }, 50);
+          const step = Math.ceil(20 / 30)
+
+          return prev + step > 20 ? 20 : prev + step
+        })
+      }, 50)
 
       return () => {
-        clearInterval(studentsInterval);
-        clearInterval(citiesInterval);
-        clearInterval(centersInterval);
-      };
-    };
+        clearInterval(studentsInterval)
+        clearInterval(citiesInterval)
+        clearInterval(centersInterval)
+      }
+    }
 
-    // Запуск анимации при появлении компонента
     const observer = new IntersectionObserver(
       (entries) => {
         if (entries[0].isIntersecting) {
-          animateCounters();
+          animateCounters()
         }
       },
-      { threshold: 0.1 }
-    );
+      { threshold: 0.1 },
+    )
 
-    const element = document.getElementById('achievement-counters');
-    if (element) observer.observe(element);
+    const element = document.getElementById('achievement-counters')
+
+    if (element) observer.observe(element)
 
     return () => {
-      if (element) observer.unobserve(element);
-    };
-  }, []);
+      if (element) observer.unobserve(element)
+    }
+  }, [])
 
   return (
-    <div 
+    <div
       id="achievement-counters"
       className="bg-white dark:bg-gray-900 py-16 px-4 sm:px-6 lg:px-8"
     >
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-          {/* Ученики */}
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
@@ -82,8 +81,7 @@ const AchievementCounter = () => {
             </div>
           </motion.div>
 
-          {/* Города */}
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
@@ -97,8 +95,7 @@ const AchievementCounter = () => {
             </div>
           </motion.div>
 
-          {/* Центры */}
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.4 }}
@@ -114,7 +111,7 @@ const AchievementCounter = () => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default AchievementCounter;
+export default AchievementCounter

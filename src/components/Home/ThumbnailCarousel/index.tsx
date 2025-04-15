@@ -1,24 +1,24 @@
-"use client";
+'use client'
 
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
+import 'slick-carousel/slick/slick.css'
+import 'slick-carousel/slick/slick-theme.css'
 
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from 'react'
+import Slider from 'react-slick'
 
-import Image from "next/image";
-import Slider from "react-slick";
+import Image from 'next/image'
 
 const ThumbnailCarousel: React.FC = () => {
-  const [activeIndex, setActiveIndex] = useState<number>(0);
-  const mainSliderRef = useRef<Slider | null>(null);
-  const navSliderRef = useRef<Slider | null>(null);
+  const [activeIndex, setActiveIndex] = useState<number>(0)
+  const mainSliderRef = useRef<Slider | null>(null)
+  const navSliderRef = useRef<Slider | null>(null)
 
   const settingsFor = {
     slidesToShow: 1,
     slidesToScroll: 1,
     arrows: false,
     fade: true,
-    asNavFor: navSliderRef.current as Slider, // Ensure proper typing
+    asNavFor: navSliderRef.current as Slider,
     responsive: [
       {
         breakpoint: 1024,
@@ -41,12 +41,12 @@ const ThumbnailCarousel: React.FC = () => {
         },
       },
     ],
-  };
+  }
 
   const settingsNav = {
     slidesToShow: 3,
     slidesToScroll: 1,
-    asNavFor: mainSliderRef.current as Slider, // Ensure proper typing
+    asNavFor: mainSliderRef.current as Slider,
     dots: true,
     centerMode: true,
     focusOnSelect: true,
@@ -81,13 +81,13 @@ const ThumbnailCarousel: React.FC = () => {
         },
       },
     ],
-  };
+  }
 
   useEffect(() => {
     if (mainSliderRef.current) {
-      mainSliderRef.current.slickGoTo(activeIndex);
+      mainSliderRef.current.slickGoTo(activeIndex)
     }
-  }, [activeIndex]);
+  }, [activeIndex])
 
   return (
     <>
@@ -194,7 +194,7 @@ const ThumbnailCarousel: React.FC = () => {
         </Slider>
       </div>
     </>
-  );
-};
+  )
+}
 
-export default ThumbnailCarousel;
+export default ThumbnailCarousel

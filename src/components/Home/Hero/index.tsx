@@ -1,12 +1,14 @@
-"use client";
+'use client'
 
-import ConsultationModal from "@/components/ConsultationModal";
-import Image from "next/image";
-import Link from "next/link";
-import { useState } from "react";
+import { useState } from 'react'
+
+import Image from 'next/image'
+
+import ConsultationModal from '@/components/ConsultationModal'
 
 const Hero = () => {
-  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false)
+
   return (
     <section className="dark:bg-darkmode">
       <div className="container">
@@ -38,7 +40,7 @@ const Hero = () => {
                 className=" bg-primary py-5 px-10 rounded-14 text-xl text-white"
               >
                 <span className="!flex !items-center gap-14">
-                  <i className="bg-[url('/images/hero/tickets.svg')] bg-no-repeat bg-contain w-6 h-6 inline-block"></i>
+                  <i className="bg-[url('/images/hero/tickets.svg')] bg-no-repeat bg-contain w-6 h-6 inline-block" />
                   Записаться
                 </span>
               </button>
@@ -98,7 +100,7 @@ const Hero = () => {
         </div>
       </div>
     </section>
-  );
-};
+  )
+}
 
-export default Hero;
+export default Hero

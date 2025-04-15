@@ -1,11 +1,12 @@
-import SignUp from "@/components/Auth/SignUp";
-import Breadcrumb from "@/components/Common/Breadcrumb";
-import { Metadata } from "next";
+import { Metadata } from 'next'
+
+import SignUp from '@/components/Auth/SignUp'
+import Breadcrumb from '@/components/Common/Breadcrumb'
 
 export const metadata: Metadata = {
   title:
-    "Sign Up | Symposium",
-};
+    'Sign Up | Symposium',
+}
 
 const SignupPage = () => {
   return (
@@ -14,7 +15,7 @@ const SignupPage = () => {
 
       <SignUp />
     </>
-  );
-};
+  )
+}
 
-export default SignupPage;
+export default SignupPage

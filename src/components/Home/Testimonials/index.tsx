@@ -1,15 +1,17 @@
-"use client";
+'use client'
 
-import { AnimatePresence, motion } from "framer-motion";
+import React, { useEffect, useState } from 'react'
+
+import { AnimatePresence, motion } from 'framer-motion'
+import Image from 'next/image'
 import {
   FaChevronLeft,
   FaChevronRight,
   FaQuoteLeft,
   FaStar,
-} from "react-icons/fa";
-import React, { useEffect, useState } from "react";
-import Image from "next/image";
-import { ReviewTypes } from "@/types/review.interface";
+} from 'react-icons/fa'
+
+import { ReviewTypes } from '@/types/review.interface'
 
 interface Testimonial {
   id: number;
@@ -25,10 +27,10 @@ interface Props {
 }
 
 const TestimonialsGrid: React.FC<Props> = ({ reviews }) => {
-  const [currentPage, setCurrentPage] = useState(0);
-  const [activeReview, setActiveReview] = useState(0);
-  const [isAutoPlaying, setIsAutoPlaying] = useState(true);
-  const [direction, setDirection] = useState<"left" | "right">("right");
+  const [currentPage, setCurrentPage] = useState(0)
+  const [activeReview, setActiveReview] = useState(0)
+  const [isAutoPlaying, setIsAutoPlaying] = useState(true)
+  const [direction, setDirection] = useState<'left' | 'right'>('right')
 
   const testimonials: Testimonial[] =
     reviews?.data.map((item) => ({
@@ -38,94 +40,99 @@ const TestimonialsGrid: React.FC<Props> = ({ reviews }) => {
       rating: item.stars,
       quote: item.title,
       text: item.description,
-    })) || [];
+    })) || []
 
-  const pages: Testimonial[][] = [];
+  const pages: Testimonial[][] = []
+
   for (let i = 0; i < testimonials.length; i += 5) {
-    pages.push(testimonials.slice(i, i + 5));
+    pages.push(testimonials.slice(i, i + 5))
   }
-  const currentPageTestimonials: Testimonial[] = pages[currentPage] || [];
+  const currentPageTestimonials: Testimonial[] = pages[currentPage] || []
 
   const goToNext = () => {
-    setDirection("right");
+    setDirection('right')
     if (activeReview < currentPageTestimonials.length - 1) {
-      setActiveReview((prev) => prev + 1);
+      setActiveReview((prev) => prev + 1)
     } else {
       if (currentPage < pages.length - 1) {
-        setCurrentPage((prev) => prev + 1);
+        setCurrentPage((prev) => prev + 1)
       } else {
-        setCurrentPage(0);
+        setCurrentPage(0)
       }
-      setActiveReview(0);
+      setActiveReview(0)
     }
-    setIsAutoPlaying(false);
-    setTimeout(() => setIsAutoPlaying(true), 10000);
-  };
+    setIsAutoPlaying(false)
+    setTimeout(() => setIsAutoPlaying(true), 10000)
+  }
 
   const goToPrev = () => {
-    setDirection("left");
+    setDirection('left')
     if (activeReview > 0) {
-      setActiveReview((prev) => prev - 1);
+      setActiveReview((prev) => prev - 1)
     } else {
       if (currentPage > 0) {
-        const prevPage = currentPage - 1;
-        setCurrentPage(prevPage);
-        setActiveReview(pages[prevPage].length - 1);
+        const prevPage = currentPage - 1
+
+        setCurrentPage(prevPage)
+        setActiveReview(pages[prevPage].length - 1)
       } else {
-        const lastPage = pages.length - 1;
-        setCurrentPage(lastPage);
-        setActiveReview(pages[lastPage].length - 1);
+        const lastPage = pages.length - 1
+
+        setCurrentPage(lastPage)
+        setActiveReview(pages[lastPage].length - 1)
       }
     }
-    setIsAutoPlaying(false);
-    setTimeout(() => setIsAutoPlaying(true), 10000);
-  };
+    setIsAutoPlaying(false)
+    setTimeout(() => setIsAutoPlaying(true), 10000)
+  }
 
   const goToReview = (index: number) => {
-    setDirection(index > activeReview ? "right" : "left");
-    setActiveReview(index);
-    setIsAutoPlaying(false);
-    setTimeout(() => setIsAutoPlaying(true), 10000);
-  };
+    setDirection(index > activeReview ? 'right' : 'left')
+    setActiveReview(index)
+    setIsAutoPlaying(false)
+    setTimeout(() => setIsAutoPlaying(true), 10000)
+  }
 
   const goToPage = (pageIndex: number) => {
-    setDirection(pageIndex > currentPage ? "right" : "left");
-    setCurrentPage(pageIndex);
-    setActiveReview(0);
-    setIsAutoPlaying(false);
-    setTimeout(() => setIsAutoPlaying(true), 10000);
-  };
+    setDirection(pageIndex > currentPage ? 'right' : 'left')
+    setCurrentPage(pageIndex)
+    setActiveReview(0)
+    setIsAutoPlaying(false)
+    setTimeout(() => setIsAutoPlaying(true), 10000)
+  }
 
   useEffect(() => {
-    let interval: NodeJS.Timeout;
+    let interval: NodeJS.Timeout
+
     if (isAutoPlaying) {
       interval = setInterval(() => {
-        goToNext();
-      }, 5000);
+        goToNext()
+      }, 5000)
     }
-    return () => clearInterval(interval);
-  }, [isAutoPlaying, currentPage, activeReview, currentPageTestimonials.length, pages.length]);
+
+    return () => clearInterval(interval)
+  }, [isAutoPlaying, currentPage, activeReview, currentPageTestimonials.length, pages.length])
 
   const variants = {
-    enter: (direction: "left" | "right") => ({
-      x: direction === "right" ? "100%" : "-100%",
+    enter: (direction: 'left' | 'right') => ({
+      x: direction === 'right' ? '100%' : '-100%',
       opacity: 0,
-      position: "absolute" as const,
+      position: 'absolute' as const,
     }),
     center: {
       x: 0,
       opacity: 1,
-      position: "relative" as const,
+      position: 'relative' as const,
     },
-    exit: (direction: "left" | "right") => ({
-      x: direction === "right" ? "-100%" : "100%",
+    exit: (direction: 'left' | 'right') => ({
+      x: direction === 'right' ? '-100%' : '100%',
       opacity: 0,
-      position: "absolute" as const,
+      position: 'absolute' as const,
     }),
-  };
+  }
 
   if (testimonials.length === 0) {
-    return null;
+    return null
   }
 
   return (
@@ -167,7 +174,7 @@ const TestimonialsGrid: React.FC<Props> = ({ reviews }) => {
 
           <div
             className="relative bg-white dark:bg-gray-800 rounded-2xl shadow-lg overflow-hidden"
-            style={{ height: "560px" }}
+            style={{ height: '560px' }}
           >
             <AnimatePresence mode="wait" custom={direction} initial={false}>
               <motion.div
@@ -178,8 +185,8 @@ const TestimonialsGrid: React.FC<Props> = ({ reviews }) => {
                 animate="center"
                 exit="exit"
                 transition={{
-                  type: "tween",
-                  ease: "easeInOut",
+                  type: 'tween',
+                  ease: 'easeInOut',
                   duration: 0.4,
                 }}
                 className="w-full h-full flex flex-col"
@@ -220,7 +227,7 @@ const TestimonialsGrid: React.FC<Props> = ({ reviews }) => {
                   </div>
 
                   <h3 className="text-xl md:text-2xl font-bold text-gray-900 dark:text-white mb-4">
-                    "{currentPageTestimonials[activeReview].quote}"
+                    ”{currentPageTestimonials[activeReview].quote}”
                   </h3>
                   <p className="text-gray-600 dark:text-gray-300 mb-6">
                     {currentPageTestimonials[activeReview].text}
@@ -231,8 +238,8 @@ const TestimonialsGrid: React.FC<Props> = ({ reviews }) => {
                         key={i}
                         className={`w-5 h-5 ${
                           i < currentPageTestimonials[activeReview].rating
-                            ? "text-yellow-400"
-                            : "text-gray-300 dark:text-gray-600"
+                            ? 'text-yellow-400'
+                            : 'text-gray-300 dark:text-gray-600'
                         }`}
                       />
                     ))}
@@ -255,9 +262,8 @@ const TestimonialsGrid: React.FC<Props> = ({ reviews }) => {
                   className="bg-white dark:bg-gray-800 rounded-xl shadow-md p-5 transition-all duration-300 hover:shadow-lg cursor-pointer h-full"
                   onClick={() =>
                     goToReview(
-                      currentPageTestimonials.findIndex((r) => r.id === review.id)
-                    )
-                  }
+                      currentPageTestimonials.findIndex((r) => r.id === review.id),
+                    )}
                 >
                   <div className="flex items-start mb-4">
                     <div className="relative w-10 h-10 rounded-full overflow-hidden mr-3 flex-shrink-0">
@@ -286,8 +292,8 @@ const TestimonialsGrid: React.FC<Props> = ({ reviews }) => {
                         key={i}
                         className={`w-4 h-4 ${
                           i < review.rating
-                            ? "text-yellow-400"
-                            : "text-gray-300 dark:text-gray-600"
+                            ? 'text-yellow-400'
+                            : 'text-gray-300 dark:text-gray-600'
                         }`}
                       />
                     ))}
@@ -304,8 +310,8 @@ const TestimonialsGrid: React.FC<Props> = ({ reviews }) => {
               onClick={() => goToPage(index)}
               className={`w-3 h-3 rounded-full transition-all ${
                 index === currentPage
-                  ? "bg-blue-500 dark:bg-blue-400 w-6"
-                  : "bg-gray-300 dark:bg-gray-600 hover:bg-gray-400 dark:hover:bg-gray-500"
+                  ? 'bg-blue-500 dark:bg-blue-400 w-6'
+                  : 'bg-gray-300 dark:bg-gray-600 hover:bg-gray-400 dark:hover:bg-gray-500'
               }`}
               aria-label={`Перейти к слайду ${index + 1}`}
             />
@@ -313,7 +319,7 @@ const TestimonialsGrid: React.FC<Props> = ({ reviews }) => {
         </div>
       </div>
     </section>
-  );
-};
+  )
+}
 
-export default TestimonialsGrid;
+export default TestimonialsGrid

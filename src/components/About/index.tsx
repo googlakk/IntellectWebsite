@@ -1,20 +1,21 @@
-import AboutSchool from "./School";
-import AchievementCounter from "../Counter";
-import EventTicket from "../Home/EventTicket";
-import FounderBlock from "./Founder";
-import HistoryAchievements from "./HistoryAchivments";
-import Mission from "../Home/Mission";
-import TicketSection from "../Home/TicketSection";
+import AchievementCounter from '../Counter'
+import EventTicket from '../Home/EventTicket'
+import Mission from '../Home/Mission'
+import TicketSection from '../Home/TicketSection'
+
+import FounderBlock from './Founder'
+import HistoryAchievements from './HistoryAchivments'
+import AboutSchool from './School'
 
 const AboutUs = () => {
   return (
     <div>
-      
+
       <HistoryAchievements />
       <AboutSchool />
       <FounderBlock />
       <section>
-       
+
         <AchievementCounter />
 
         <Mission />
@@ -23,6 +24,7 @@ const AboutUs = () => {
 
       <TicketSection />
     </div>
-  );
-};
-export default AboutUs;
+  )
+}
+
+export default AboutUs

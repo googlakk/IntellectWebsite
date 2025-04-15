@@ -1,13 +1,13 @@
 'use client'
-/* eslint-disable react/no-array-index-key */
 
 import React, { useState } from 'react'
 
 import Image from 'next/image'
 import { usePathname } from 'next/navigation'
-import NoImage from "../../../../public/images/work_speakers/no_image.jpg"
 
 import { TeamTypes } from '@/types/team.interface'
+
+import NoImage from '../../../../public/images/work_speakers/no_image.jpg'
 
 interface Props {
   team: TeamTypes.ItemResponse | null

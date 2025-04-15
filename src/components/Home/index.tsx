@@ -16,13 +16,13 @@ import WorkSpeakers from '@/components/Home/WorkSpeakers'
 import Highlight from '@/components/Home/YearHighlight/page'
 import { Api } from '@/services'
 import { EventTypes } from '@/types/event.interface'
+import { ReviewTypes } from '@/types/review.interface'
 import { TeamTypes } from '@/types/team.interface'
 
 import ContactInfo from '../Contact/ContactInfo'
 
 import CalendarWithEvents from './EventsCalendar'
 import TestimonialsGrid from './Testimonials'
-import { ReviewTypes } from '@/types/review.interface'
 
 export const metadata: Metadata = {
   title: 'Intellect pro school',
@@ -61,7 +61,7 @@ export default function Home() {
     try {
       const response = await Api.reviews.ReviewsGET()
 
-      setReviews(response.data);
+      setReviews(response.data)
     } catch (error) {
       console.log('Failed to fetch events', error)
     }

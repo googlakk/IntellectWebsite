@@ -17,13 +17,12 @@ const Mission = () => {
             data-aos-duration="1000"
             className="text-SlateBlueText dark:text-white/60 text-base md:text-lg font-normal max-w-920 mx-auto"
           >
-            В ОФ "Интеллект про Скул" на педагогическом совете была утверждена
+            В ОФ ”Интеллект про Скул” на педагогическом совете была утверждена
             миссия и видение:
           </p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 mb-16">
-          {/* Миссия - карточка */}
           <div
             data-aos="fade-up"
             data-aos-delay="400"
@@ -114,7 +113,7 @@ const Mission = () => {
         </div>
       </div>
     </section>
-  );
-};
+  )
+}
 
-export default Mission;
+export default Mission

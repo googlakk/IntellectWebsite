@@ -1,52 +1,52 @@
-"use client";
+'use client'
 
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
+import 'slick-carousel/slick/slick.css'
+import 'slick-carousel/slick/slick-theme.css'
 
-import { useEffect, useState } from "react";
+import { useState } from 'react'
+import React from 'react'
+import Slider from 'react-slick'
 
-import Image from "next/image";
-import Link from "next/link";
-import React from "react";
-import Slider from "react-slick";
+import Image from 'next/image'
+import Link from 'next/link'
 
 const Highlight = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false)
 
   const openModal = (e: { preventDefault: () => void }) => {
-    e.preventDefault();
-    setIsModalOpen(true);
-  };
+    e.preventDefault()
+    setIsModalOpen(true)
+  }
 
   const closeModal = () => {
-    setIsModalOpen(false);
-  };
+    setIsModalOpen(false)
+  }
 
-  var settings = {
+  const settings = {
     dots: false,
     infinite: true,
     speed: 500,
     slidesToShow: 1,
     arrows: false,
     slidesToScroll: 1,
-    // centerMode: true,
     responsive: [
       {
-        breakpoint: 768, // Tablet
+        breakpoint: 768,
         settings: {
           slidesToShow: 1,
-          centerMode: false, // Disable centerMode on smaller screens
+          centerMode: false,
         },
       },
       {
-        breakpoint: 480, // Mobile
+        breakpoint: 480,
         settings: {
           slidesToShow: 1,
           centerMode: false,
         },
       },
     ],
-  };
+  }
+
   return (
     <>
       <section className="bg-IcyBreeze dark:bg-darklight">
@@ -60,7 +60,7 @@ const Highlight = () => {
             >
               <h2>Highlights Intellect Pro School</h2>
               <p className="text-lg font-normal text-SlateBlueText dark:text-white/60 max-w-404 pt-7 pb-11">
-              В прошлом году Intellect Pro School стал центром вдохновения и знаний! Мы провели десятки образовательных мероприятий, объединили тысячи учеников и открыли новые горизонты обучения.
+                В прошлом году Intellect Pro School стал центром вдохновения и знаний! Мы провели десятки образовательных мероприятий, объединили тысячи учеников и открыли новые горизонты обучения.
               </p>
               <div className="flex items-center flex-wrap gap-30">
                 <div className="text-start sm:pb-0 pb-5">
@@ -100,7 +100,7 @@ const Highlight = () => {
                     quality={100}
                     sizes="100vh"
                     className="rounded-22"
-                  ></Image>
+                  />
                   <Link
                     href="/"
                     className="bg-white group sm:w-12 w-10 sm:h-12 h-10 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-2/4 rounded-full shadow-[0_0px_30px_rgba(24,23,23,0.1)] flex items-center justify-center dark:text-black"
@@ -134,7 +134,7 @@ const Highlight = () => {
                     quality={100}
                     sizes="100vh"
                     className="rounded-22"
-                  ></Image>
+                  />
                   <Link
                     href="/"
                     className="bg-white group sm:w-12 w-10 sm:h-12 h-10 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-2/4 rounded-full shadow-[0_0px_30px_rgba(24,23,23,0.1)] flex items-center justify-center dark:text-black"
@@ -168,7 +168,7 @@ const Highlight = () => {
                     quality={100}
                     sizes="100vh"
                     className="rounded-22"
-                  ></Image>
+                  />
                   <Link
                     href="/"
                     className="bg-white group sm:w-12 w-10 sm:h-12 h-10 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-2/4 rounded-full shadow-[0_0px_30px_rgba(24,23,23,0.1)] flex items-center justify-center dark:text-black"
@@ -205,7 +205,7 @@ const Highlight = () => {
                 <button
                   onClick={closeModal}
                   className="bg-[url('/images/highlight/closed.svg')] bg-no-repeat bg-contain w-5 h-5 inline-block dark:invert"
-                ></button>
+                />
               </div>
               <iframe
                 height="400"
@@ -214,13 +214,13 @@ const Highlight = () => {
                 title="YouTube video player"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
-              ></iframe>
+              />
             </div>
           </div>
         )}
       </section>
     </>
-  );
-};
+  )
+}
 
-export default Highlight;
+export default Highlight

@@ -1,43 +1,44 @@
 'use client'
 
-import ConsultationModal from "../ConsultationModal";
-import { useState } from 'react';
+import { useState } from 'react'
+
+import ConsultationModal from '../ConsultationModal'
 
 const FAQSection = () => {
-  const [activeIndex, setActiveIndex] = useState<number | null>(null);
-  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+  const [activeIndex, setActiveIndex] = useState<number | null>(null)
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false)
   const faqItems = [
     {
-      question: "Какой учебный план используется в школе?",
+      question: 'Какой учебный план используется в школе?',
       answer:
-        "Мы сочетаем государственный образовательный стандарт с международными программами (IB и Cambridge), уделяя особое внимание STEM-дисциплинам и языковой подготовке.",
+        'Мы сочетаем государственный образовательный стандарт с международными программами (IB и Cambridge), уделяя особое внимание STEM-дисциплинам и языковой подготовке.',
     },
     {
-      question: "Есть ли подготовка к поступлению в вузы?",
+      question: 'Есть ли подготовка к поступлению в вузы?',
       answer:
-        "Да, наши студенты получают специализированную подготовку к ОГЭ/ЕГЭ, а также к международным экзаменам (SAT, IELTS, TOEFL). В 10-11 классах работает программа университетского консультирования.",
+        'Да, наши студенты получают специализированную подготовку к ОГЭ/ЕГЭ, а также к международным экзаменам (SAT, IELTS, TOEFL). В 10-11 классах работает программа университетского консультирования.',
     },
     {
-      question: "Предусмотрены ли стипендии для талантливых студентов?",
+      question: 'Предусмотрены ли стипендии для талантливых студентов?',
       answer:
-        "Да, мы предлагаем академические и творческие стипендии, покрывающие от 10% до 100% стоимости обучения. Подробности можно узнать на индивидуальной консультации.",
+        'Да, мы предлагаем академические и творческие стипендии, покрывающие от 10% до 100% стоимости обучения. Подробности можно узнать на индивидуальной консультации.',
     },
     {
-      question: "Сколько стоят ваши дополнительные кружки?",
-      answer: "Посещение всех дополнительных курсов – бесплатное.",
+      question: 'Сколько стоят ваши дополнительные кружки?',
+      answer: 'Посещение всех дополнительных курсов – бесплатное.',
     },
     {
-      question: "Во сколько начинается и заканчивается ваш учебный день?",
-      answer: "Учебный день начинается в 8:30 и заканчивается в 16:30 ",
+      question: 'Во сколько начинается и заканчивается ваш учебный день?',
+      answer: 'Учебный день начинается в 8:30 и заканчивается в 16:30 ',
     },
     {
-      question: "Сколько стоит трансфер от дома до школы и обратно?",
-      answer: "Стоимость трансфера составляет 3000 сом ",
+      question: 'Сколько стоит трансфер от дома до школы и обратно?',
+      answer: 'Стоимость трансфера составляет 3000 сом ',
     },
-  ];
+  ]
   const toggleItem = (index: number) => {
-    setActiveIndex(activeIndex === index ? null : index);
-  };
+    setActiveIndex(activeIndex === index ? null : index)
+  }
 
   return (
     <section className="bg-IcyBreeze dark:bg-darklight relative overflow-hidden ">
@@ -61,7 +62,7 @@ const FAQSection = () => {
                 </h3>
                 <svg
                   className={`w-5 h-5 text-blue-600 transition-transform duration-300 ${
-                    activeIndex === index ? "rotate-180" : ""
+                    activeIndex === index ? 'rotate-180' : ''
                   }`}
                   fill="none"
                   viewBox="0 0 24 24"
@@ -78,7 +79,7 @@ const FAQSection = () => {
 
               <div
                 className={`transition-all duration-300 ease-in-out overflow-hidden ${
-                  activeIndex === index ? "max-h-96" : "max-h-0"
+                  activeIndex === index ? 'max-h-96' : 'max-h-0'
                 }`}
               >
                 <div className="px-6 pb-6 text-gray-600">
@@ -105,7 +106,7 @@ const FAQSection = () => {
         </div>
       </div>
     </section>
-  );
-};
+  )
+}
 
-export default FAQSection;
+export default FAQSection

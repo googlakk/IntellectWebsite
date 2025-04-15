@@ -1,5 +1,6 @@
-import Link from "next/link";
-import { BreadcrumbProps } from "../../types/breadcrumb"; // Adjust the import path based on your project structure
+import Link from 'next/link'
+
+import { BreadcrumbProps } from '../../types/breadcrumb'
 
 const Breadcrumb: React.FC<BreadcrumbProps> = ({
   pageName,
@@ -7,7 +8,7 @@ const Breadcrumb: React.FC<BreadcrumbProps> = ({
 }) => {
   return (
     <div className="dark:bg-darkmode relative z-10 overflow-hidden pb-[60px] pt-[120px] md:pt-[130px] lg:pt-[160px]">
-      <div className="from-stroke/0 via-stroke to-stroke/0 dark:via-dark-3 absolute bottom-0 left-0 h-px w-full bg-gradient-to-r"></div>
+      <div className="from-stroke/0 via-stroke to-stroke/0 dark:via-dark-3 absolute bottom-0 left-0 h-px w-full bg-gradient-to-r" />
       <div className="container mx-auto">
         <div className="-mx-4 flex flex-wrap items-center">
           <div className="w-full px-4">
@@ -40,7 +41,7 @@ const Breadcrumb: React.FC<BreadcrumbProps> = ({
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Breadcrumb;
+export default Breadcrumb

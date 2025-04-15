@@ -1,6 +1,6 @@
-import { ColorConfiguration } from "./ColorConfiguraion";
-import { LogoConfiguration } from "./LogoConfiguration";
-import { TypographyConfiguration } from "./TypographyConfiguration";
+import { ColorConfiguration } from './ColorConfiguraion'
+import { LogoConfiguration } from './LogoConfiguration'
+import { TypographyConfiguration } from './TypographyConfiguration'
 
 export const Configuration = () => {
   return (
@@ -14,5 +14,5 @@ export const Configuration = () => {
         <LogoConfiguration />
       </div>
     </>
-  );
-};
+  )
+}

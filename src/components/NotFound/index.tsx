@@ -1,6 +1,7 @@
-import React from "react";
-import Image from "next/image";
-import Link from "next/link";
+import React from 'react'
+
+import Image from 'next/image'
+import Link from 'next/link'
 
 const NotFound = () => {
   return (
@@ -71,7 +72,7 @@ const NotFound = () => {
         </div>
       </div>
     </section>
-  );
-};
+  )
+}
 
-export default NotFound;
+export default NotFound

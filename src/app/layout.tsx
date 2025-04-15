@@ -1,17 +1,18 @@
-import "./globals.css";
+import './globals.css'
 
-import Aoscompo from "@/utils/aos";
-import { AuthDialogProvider } from "./context/AuthDialogContext";
-import { DM_Sans } from "next/font/google";
-import Footer from "@/components/Layout/Footer";
-import Header from "@/components/Layout/Header";
-import NextTopLoader from 'nextjs-toploader';
-import ScrollToTop from '@/components/ScrollToTop';
-import SessionProviderComp from "@/components/nextauth/SessionProvider";
-import { ThemeProvider } from "next-themes";
+import { DM_Sans } from 'next/font/google'
+import { ThemeProvider } from 'next-themes'
+import NextTopLoader from 'nextjs-toploader'
 
-const dmsans = DM_Sans({ subsets: ["latin"] });
+import Footer from '@/components/Layout/Footer'
+import Header from '@/components/Layout/Header'
+import SessionProviderComp from '@/components/nextauth/SessionProvider'
+import ScrollToTop from '@/components/ScrollToTop'
+import Aoscompo from '@/utils/aos'
 
+import { AuthDialogProvider } from './context/AuthDialogContext'
+
+const dmsans = DM_Sans({ subsets: ['latin'] })
 
 export default function RootLayout({
   children,
@@ -23,24 +24,24 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={dmsans.className}>
-      <AuthDialogProvider>
-      <SessionProviderComp session={session}>
-        <ThemeProvider
-          attribute="class"
-          enableSystem={true}
-          defaultTheme="system"
-        >
-          <Aoscompo>
-            <Header />
-            <NextTopLoader />
-            {children}
-            <Footer />
-          </Aoscompo>
-          <ScrollToTop />
-        </ThemeProvider>
-        </SessionProviderComp>
+        <AuthDialogProvider>
+          <SessionProviderComp session={session}>
+            <ThemeProvider
+              attribute="class"
+              enableSystem={true}
+              defaultTheme="system"
+            >
+              <Aoscompo>
+                <Header />
+                <NextTopLoader />
+                {children}
+                <Footer />
+              </Aoscompo>
+              <ScrollToTop />
+            </ThemeProvider>
+          </SessionProviderComp>
         </AuthDialogProvider>
       </body>
     </html>
-  );
+  )
 }

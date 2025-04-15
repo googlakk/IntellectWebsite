@@ -1,13 +1,12 @@
 'use client'
 
-import Image from 'next/image';
-import { motion } from 'framer-motion';
+import { motion } from 'framer-motion'
+import Image from 'next/image'
 
 const AboutSchool = () => {
   return (
     <section className="py-16 px-4 sm:px-6 lg:px-8 bg-white dark:bg-gray-900">
       <div className="max-w-7xl mx-auto">
-        {/* Заголовок */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -23,9 +22,7 @@ const AboutSchool = () => {
           </p>
         </motion.div>
 
-        {/* Основной контент */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          {/* Текстовая часть */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -36,8 +33,8 @@ const AboutSchool = () => {
             <div>
               <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">О нашей школе</h3>
               <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
-                «INTELLECT SCHOOL» — это общеобразовательная частная школа, основанная на базе одноименного 
-                образовательного центра. Наша программа сочетает классическое образование с инновационными 
+                «INTELLECT SCHOOL» — это общеобразовательная частная школа, основанная на базе одноименного
+                образовательного центра. Наша программа сочетает классическое образование с инновационными
                 методиками развития интеллекта.
               </p>
             </div>
@@ -63,14 +60,13 @@ const AboutSchool = () => {
             <div className="bg-blue-50 dark:bg-blue-900/20 p-6 rounded-xl">
               <h4 className="text-xl font-semibold text-blue-600 dark:text-blue-400 mb-3">Результаты обучения</h4>
               <p className="text-gray-600 dark:text-gray-300">
-                Наши ученики получают не только общеобразовательную базу, но и актуальные IT-навыки, 
-                свободный английский язык, а также уникальные интеллектуальные способности, 
+                Наши ученики получают не только общеобразовательную базу, но и актуальные IT-навыки,
+                свободный английский язык, а также уникальные интеллектуальные способности,
                 развитые через авторские методики.
               </p>
             </div>
           </motion.div>
 
-          {/* Галерея изображений */}
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -117,7 +113,6 @@ const AboutSchool = () => {
           </motion.div>
         </div>
 
-        {/* Блок преимуществ */}
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -130,10 +125,10 @@ const AboutSchool = () => {
           </h3>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
-              "Полноценную общеобразовательную базу",
-              "Продвинутые IT-навыки и программирование",
-              "Свободное владение английским языком",
-              "Развитую память и скорость мышления"
+              'Полноценную общеобразовательную базу',
+              'Продвинутые IT-навыки и программирование',
+              'Свободное владение английским языком',
+              'Развитую память и скорость мышления',
             ].map((item, index) => (
               <div key={index} className="flex items-start">
                 <span className="text-green-500 mr-2 mt-1">✓</span>
@@ -141,10 +136,10 @@ const AboutSchool = () => {
               </div>
             ))}
             {[
-              "Уверенность в своих силах",
-              "Здоровую тягу к знаниям",
-              "Крепкую дружбу с единомышленниками",
-              "Навыки для успешного будущего"
+              'Уверенность в своих силах',
+              'Здоровую тягу к знаниям',
+              'Крепкую дружбу с единомышленниками',
+              'Навыки для успешного будущего',
             ].map((item, index) => (
               <div key={index} className="flex items-start">
                 <span className="text-green-500 mr-2 mt-1">✓</span>
@@ -155,7 +150,7 @@ const AboutSchool = () => {
         </motion.div>
       </div>
     </section>
-  );
-};
+  )
+}
 
-export default AboutSchool;
+export default AboutSchool

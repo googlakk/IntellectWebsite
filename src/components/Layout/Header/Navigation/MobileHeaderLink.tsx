@@ -1,27 +1,28 @@
-import { usePathname, useRouter } from 'next/navigation';
+import { useState } from 'react'
 
-import { HeaderItem } from '../../../../types/menu';
-import Link from 'next/link';
-import { useState } from 'react';
+import Link from 'next/link'
+import { usePathname, useRouter } from 'next/navigation'
+
+import { HeaderItem } from '../../../../types/menu'
 
 const MobileHeaderLink: React.FC<{ item: HeaderItem }> = ({ item }) => {
-  const [submenuOpen, setSubmenuOpen] = useState(false);
-  const router = useRouter();
-  const path = usePathname();
+  const [submenuOpen, setSubmenuOpen] = useState(false)
+  const router = useRouter()
+  const path = usePathname()
 
   const handleToggle = (e: React.MouseEvent) => {
-    e.stopPropagation();
-    setSubmenuOpen(!submenuOpen);
-  };
+    e.stopPropagation()
+    setSubmenuOpen(!submenuOpen)
+  }
 
   const handleItemClick = () => {
     if (item.submenu && item.submenu.length > 0) {
       // Если есть подменю, сначала переходим по основной ссылке
-      router.push(item.href);
+      router.push(item.href)
     } else {
-      router.push(item.href);
+      router.push(item.href)
     }
-  };
+  }
 
   return (
     <div className="relative w-full">
@@ -36,7 +37,7 @@ const MobileHeaderLink: React.FC<{ item: HeaderItem }> = ({ item }) => {
         >
           {item.label}
         </button>
-        
+
         {item.submenu && item.submenu.length > 0 && (
           <button
             onClick={handleToggle}
@@ -53,9 +54,9 @@ const MobileHeaderLink: React.FC<{ item: HeaderItem }> = ({ item }) => {
       {submenuOpen && item.submenu && (
         <div className="ml-4 bg-white dark:bg-gray-800 p-2 w-full">
           {item.submenu.map((subItem, index) => (
-            <Link 
-              key={index} 
-              href={subItem.href} 
+            <Link
+              key={index}
+              href={subItem.href}
               className="block py-2 text-gray-500 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 rounded"
             >
               {subItem.label}
@@ -64,7 +65,7 @@ const MobileHeaderLink: React.FC<{ item: HeaderItem }> = ({ item }) => {
         </div>
       )}
     </div>
-  );
-};
+  )
+}
 
 export default MobileHeaderLink

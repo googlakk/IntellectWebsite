@@ -1,7 +1,7 @@
-import React, { FC } from "react";
+import React, { FC } from 'react'
 
-import Image from "next/image";
-import Link from "next/link";
+import Image from 'next/image'
+import Link from 'next/link'
 
 const Footer: FC = () => {
   return (
@@ -11,13 +11,13 @@ const Footer: FC = () => {
           <div>
             <Link href="/">
               <Image
-                 src="/images/logo/logoInt.jpeg"
-                 alt="logo"
-                 width={70}
-                 height={64}
-                 style={{ width: '80px', height: 'auto' }}
-                 quality={100}
-             
+                src="/images/logo/logoInt.jpeg"
+                alt="logo"
+                width={70}
+                height={64}
+                style={{ width: '80px', height: 'auto' }}
+                quality={100}
+
               />
             </Link>
           </div>
@@ -124,7 +124,7 @@ const Footer: FC = () => {
         <div className="grid md:grid-cols-12 grid-cols-1 items-center py-8">
           <div className="col-span-5">
             <p className="text-base font-normal text-PaleCerulean">
-              © All rights reserved. Made by{" "}
+              © All rights reserved. Made by{' '}
               <Link
                 href="/"
                 className="hover:text-white"
@@ -133,11 +133,11 @@ const Footer: FC = () => {
               </Link>
             </p>
           </div>
-        
+
         </div>
       </div>
     </footer>
-  );
-};
+  )
+}
 
-export default Footer;
+export default Footer

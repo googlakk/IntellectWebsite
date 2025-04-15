@@ -1,6 +1,7 @@
 'use client'
 
 import React from 'react'
+
 import WorkSpeakers from '@/components/Home/WorkSpeakers'
 import { Api } from '@/services'
 import { TeamTypes } from '@/types/team.interface'

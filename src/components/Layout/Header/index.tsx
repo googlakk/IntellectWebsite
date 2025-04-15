@@ -1,89 +1,81 @@
-"use client";
+'use client'
 
-import { useContext, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from 'react'
 
-import AuthDialogContext from "@/app/context/AuthDialogContext";
-import { FailedLogin } from "@/components/Auth/AuthDialog/FailedLogin";
-import HeaderLink from "../Header/Navigation/HeaderLink";
-import { Icon } from "@iconify/react/dist/iconify.js";
-import Link from "next/link";
-import Logo from "./Logo";
-import MobileHeaderLink from "../Header/Navigation/MobileHeaderLink";
-import SignUp from "@/components/Auth/SignUp";
-import Signin from "@/components/Auth/SignIn";
-import { SuccessfullLogin } from "@/components/Auth/AuthDialog/SuccessfulLogin";
-import { UserRegistered } from "@/components/Auth/AuthDialog/UserRegistered";
-import { headerData } from "../Header/Navigation/menuData";
-import { usePathname } from "next/navigation";
-import { useTheme } from "next-themes";
+import { usePathname } from 'next/navigation'
+import { useTheme } from 'next-themes'
+
+import HeaderLink from '../Header/Navigation/HeaderLink'
+import { headerData } from '../Header/Navigation/menuData'
+import MobileHeaderLink from '../Header/Navigation/MobileHeaderLink'
+
+import Logo from './Logo'
 
 const Header: React.FC = () => {
-  const pathUrl = usePathname();
-  const { theme, setTheme } = useTheme();
+  const pathUrl = usePathname()
+  const { theme, setTheme } = useTheme()
 
-  const [navbarOpen, setNavbarOpen] = useState(false);
-  const [sticky, setSticky] = useState(false);
-  const [isSignInOpen, setIsSignInOpen] = useState(false);
-  const [isSignUpOpen, setIsSignUpOpen] = useState(false);
+  const [navbarOpen, setNavbarOpen] = useState(false)
+  const [sticky, setSticky] = useState(false)
+  const [isSignInOpen, setIsSignInOpen] = useState(false)
+  const [isSignUpOpen, setIsSignUpOpen] = useState(false)
 
-  const navbarRef = useRef<HTMLDivElement>(null);
-  const signInRef = useRef<HTMLDivElement>(null);
-  const signUpRef = useRef<HTMLDivElement>(null);
-  const mobileMenuRef = useRef<HTMLDivElement>(null);
+  const signInRef = useRef<HTMLDivElement>(null)
+  const signUpRef = useRef<HTMLDivElement>(null)
+  const mobileMenuRef = useRef<HTMLDivElement>(null)
 
   const handleScroll = () => {
-    setSticky(window.scrollY >= 80);
-  };
+    setSticky(window.scrollY >= 80)
+  }
 
   const handleClickOutside = (event: MouseEvent) => {
     if (
       signInRef.current &&
       !signInRef.current.contains(event.target as Node)
     ) {
-      setIsSignInOpen(false);
+      setIsSignInOpen(false)
     }
     if (
       signUpRef.current &&
       !signUpRef.current.contains(event.target as Node)
     ) {
-      setIsSignUpOpen(false);
+      setIsSignUpOpen(false)
     }
     if (
       mobileMenuRef.current &&
       !mobileMenuRef.current.contains(event.target as Node) &&
       navbarOpen
     ) {
-      setNavbarOpen(false);
+      setNavbarOpen(false)
     }
-  };
+  }
 
   useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
-    document.addEventListener("mousedown", handleClickOutside);
+    window.addEventListener('scroll', handleScroll)
+    document.addEventListener('mousedown', handleClickOutside)
+
     return () => {
-      window.removeEventListener("scroll", handleScroll);
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, [navbarOpen, isSignInOpen, isSignUpOpen]);
+      window.removeEventListener('scroll', handleScroll)
+      document.removeEventListener('mousedown', handleClickOutside)
+    }
+  }, [navbarOpen, isSignInOpen, isSignUpOpen])
 
   useEffect(() => {
     if (isSignInOpen || isSignUpOpen || navbarOpen) {
-      document.body.style.overflow = "hidden";
+      document.body.style.overflow = 'hidden'
     } else {
-      document.body.style.overflow = "";
+      document.body.style.overflow = ''
     }
-  }, [isSignInOpen, isSignUpOpen, navbarOpen]);
-
-  const authDialog = useContext(AuthDialogContext);
+  }, [isSignInOpen, isSignUpOpen, navbarOpen])
 
   return (
     <>
-      <div className="relative"></div>
+      <div className="relative" />
       <header
         className={`fixed h-24 top-0 py-1 z-50 w-full bg-transparent transition-all  ${
           sticky
-            ? "shadow-lg dark:shadow-darkmd bg-white dark:bg-secondary"
-            : "bg-white dark:bg-secondary"
+            ? 'shadow-lg dark:shadow-darkmd bg-white dark:bg-secondary'
+            : 'bg-white dark:bg-secondary'
         }`}
       >
         <div className="container">
@@ -97,13 +89,13 @@ const Header: React.FC = () => {
             <div className="flex items-center space-x-4">
               <button
                 aria-label="Toggle theme"
-                onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+                onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
                 className="flex h-8 w-8 items-center justify-center text-body-color duration-300 dark:text-white"
               >
                 <svg
                   viewBox="0 0 16 16"
                   className={`hidden h-6 w-6 dark:block ${
-                    !sticky && pathUrl === "/" && "text-white"
+                    !sticky && pathUrl === '/' && 'text-white'
                   }`}
                 >
                   <path
@@ -114,7 +106,7 @@ const Header: React.FC = () => {
                 <svg
                   viewBox="0 0 23 23"
                   className={`h-8 w-8 text-dark dark:hidden ${
-                    !sticky && pathUrl === "/" && "text-white"
+                    !sticky && pathUrl === '/' && 'text-white'
                   }`}
                 >
                   <path d="M16.6111 15.855C17.591 15.1394 18.3151 14.1979 18.7723 13.1623C16.4824 13.4065 14.1342 12.4631 12.6795 10.4711C11.2248 8.47905 11.0409 5.95516 11.9705 3.84818C10.8449 3.9685 9.72768 4.37162 8.74781 5.08719C5.7759 7.25747 5.12529 11.4308 7.29558 14.4028C9.46586 17.3747 13.6392 18.0253 16.6111 15.855Z" />
@@ -136,9 +128,9 @@ const Header: React.FC = () => {
                   strokeLinecap="round"
                   strokeLinejoin="round"
                 >
-                  <line x1="3" y1="12" x2="21" y2="12"></line>
-                  <line x1="3" y1="6" x2="21" y2="6"></line>
-                  <line x1="3" y1="18" x2="21" y2="18"></line>
+                  <line x1="3" y1="12" x2="21" y2="12" />
+                  <line x1="3" y1="6" x2="21" y2="6" />
+                  <line x1="3" y1="18" x2="21" y2="18" />
                 </svg>
               </button>
             </div>
@@ -151,7 +143,7 @@ const Header: React.FC = () => {
         <div
           ref={mobileMenuRef}
           className={`lg:hidden fixed top-0 right-0 h-full w-full bg-white dark:bg-darkmode shadow-lg transform transition-transform duration-300 max-w-64 ${
-            navbarOpen ? "translate-x-0" : "translate-x-full"
+            navbarOpen ? 'translate-x-0' : 'translate-x-full'
           } z-50`}
         >
           <div className="flex items-center justify-between p-4">
@@ -188,7 +180,7 @@ const Header: React.FC = () => {
         </div>
       </header>
     </>
-  );
-};
+  )
+}
 
-export default Header;
+export default Header
