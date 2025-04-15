@@ -1,8 +1,9 @@
-'use client';
+'use client'
 
-import { FaGem } from 'react-icons/fa';
-import React from 'react';
-import { motion } from 'framer-motion';
+import React from 'react'
+
+import { motion } from 'framer-motion'
+import { FaGem } from 'react-icons/fa'
 
 interface Student {
   id: number;
@@ -11,21 +12,21 @@ interface Student {
   parallel: string;
   average: number;
   quarters: {
-    q1: "diamond" | "gold" | null;
-    q2: "diamond" | "gold" | null;
-    q3: "diamond" | "gold" | null;
-    q4: "diamond" | "gold" | null;
+    q1: 'diamond' | 'gold' | null;
+    q2: 'diamond' | 'gold' | null;
+    q3: 'diamond' | 'gold' | null;
+    q4: 'diamond' | 'gold' | null;
   };
 }
 
 const students: Student[] = Array.from({ length: 8 * 10 }, (_, i) => {
-  const parallels = ["2", "3", "4", "5", "6", "7", "8", "9", "10"];
-  const parallel = parallels[Math.floor(i / 10)];
-  const classSuffix = ["A", "B", "V"][Math.floor(Math.random() * 3)];
+  const parallels = ['2', '3', '4', '5', '6', '7', '8', '9', '10']
+  const parallel = parallels[Math.floor(i / 10)]
+  const classSuffix = ['A', 'B', 'V'][Math.floor(Math.random() * 3)]
   const getRandomBadge = () =>
-    Math.random() < 0.33 ? "gold" : Math.random() < 0.5 ? "diamond" : null;
+    Math.random() < 0.33 ? 'gold' : Math.random() < 0.5 ? 'diamond' : null
 
-  const average = Math.random() * 10;
+  const average = Math.random() * 10
 
   return {
     id: i + 1,
@@ -39,31 +40,32 @@ const students: Student[] = Array.from({ length: 8 * 10 }, (_, i) => {
       q3: getRandomBadge(),
       q4: getRandomBadge(),
     },
-  };
-});
+  }
+})
 
-const getBadge = (type: "diamond" | "gold" | null) => {
+const getBadge = (type: 'diamond' | 'gold' | null) => {
   const color = {
-    diamond: "text-blue-500 dark:text-blue-400",
-    gold: "text-yellow-500 dark:text-yellow-400",
-    null: "text-gray-300 dark:text-gray-600",
-  }[type ?? "null"];
+    diamond: 'text-blue-500 dark:text-blue-400',
+    gold: 'text-yellow-500 dark:text-yellow-400',
+    null: 'text-gray-300 dark:text-gray-600',
+  }[type ?? 'null']
 
-  return <FaGem className={`text-base ${color}`} />;
-};
+  return <FaGem className={`text-base ${color}`} />
+}
 
 const GroupedTables = () => {
   const grouped = students.reduce((acc, student) => {
-    acc[student.parallel] = acc[student.parallel] || [];
-    acc[student.parallel].push(student);
-    return acc;
-  }, {} as Record<string, Student[]>);
+    acc[student.parallel] = acc[student.parallel] || []
+    acc[student.parallel].push(student)
+
+    return acc
+  }, {} as Record<string, Student[]>)
 
   return (
     <section className="p-4 md:p-6 mt-20 overflow-hidden   ">
       <div
         className="transform scale-90 "
-        style={{ transformOrigin: "top center" }}
+        style={{ transformOrigin: 'top center' }}
       >
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
           {Object.entries(grouped)
@@ -123,7 +125,7 @@ const GroupedTables = () => {
         </div>
       </div>
     </section>
-  );
-};
+  )
+}
 
-export default GroupedTables;
+export default GroupedTables
