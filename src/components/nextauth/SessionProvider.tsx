@@ -1,6 +1,7 @@
-"use client";
-import { SessionProvider } from "next-auth/react";
-import React from "react";
+'use client'
+import React from 'react'
+
+import { SessionProvider } from 'next-auth/react'
 
 export default function SessionProviderComp({
   children,
@@ -13,5 +14,5 @@ export default function SessionProviderComp({
     <>
       <SessionProvider session={session}>{children}</SessionProvider>
     </>
-  );
+  )
 }

@@ -1,13 +1,11 @@
 'use client'
 
-/* eslint-disable react/no-array-index-key */
 import React from 'react'
 
+import PreLoader from '@/components/Common/PreLoader'
 import BlogCard from '@/components/SharedComponent/Blog/blogCard'
 import { Api } from '@/services'
 import { BlogsTypes } from '@/types/blogs.interface'
-import PreLoader from '@/components/Common/PreLoader'
-
 
 const BlogList: React.FC = () => {
   const [blog, setBlog] = React.useState<BlogsTypes.DataBlock | null>(null)

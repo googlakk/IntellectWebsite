@@ -1,52 +1,58 @@
-"use client";
-import Link from "next/link";
-import { useRouter } from "next/navigation";
-import toast from "react-hot-toast";
-import SocialSignUp from "../SocialSignUp";
-import Logo from "@/components/Layout/Header/Logo"
-import { useContext, useState } from "react";
-import Loader from "@/components/Common/Loader";
-import AuthDialogContext from "@/app/context/AuthDialogContext";
-const SignUp = ({signUpOpen}:{signUpOpen?:any}) => {
-  const router = useRouter();
-  const [loading, setLoading] = useState(false);
-  const authDialog = useContext(AuthDialogContext);
+/* eslint-disable @next/next/no-html-link-for-pages */
+'use client'
+import { useContext, useState } from 'react'
+import toast from 'react-hot-toast'
+
+import Link from 'next/link'
+import { useRouter } from 'next/navigation'
+
+import AuthDialogContext from '@/app/context/AuthDialogContext'
+import Loader from '@/components/Common/Loader'
+import Logo from '@/components/Layout/Header/Logo'
+
+import SocialSignUp from '../SocialSignUp'
+
+const SignUp = ({ signUpOpen }:{signUpOpen?:any}) => {
+  const router = useRouter()
+  const [loading, setLoading] = useState(false)
+  const authDialog = useContext(AuthDialogContext)
 
   const handleSubmit = (e: any) => {
-    e.preventDefault();
+    e.preventDefault()
 
-    setLoading(true);
-    const data = new FormData(e.currentTarget);
-    const value = Object.fromEntries(data.entries());
-    const finalData = { ...value };
+    setLoading(true)
+    const data = new FormData(e.currentTarget)
+    const value = Object.fromEntries(data.entries())
+    const finalData = { ...value }
 
-    fetch("/api/register", {
-      method: "POST",
+    fetch('/api/register', {
+      method: 'POST',
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
       body: JSON.stringify(finalData),
     })
       .then((res) => res.json())
       .then((data) => {
-        toast.success("Successfully registered");
-        setLoading(false);
-        router.push("/");
+        toast.success('Successfully registered')
+        console.log('data', data)
+        setLoading(false)
+        router.push('/')
       })
       .catch((err) => {
-        toast.error(err.message);
-        setLoading(false);
-      });
-      setTimeout(() => {
-        signUpOpen(false);
-      }, 1200);
-      authDialog?.setIsUserRegistered(true);
+        toast.error(err.message)
+        setLoading(false)
+      })
+    setTimeout(() => {
+      signUpOpen(false)
+    }, 1200)
+    authDialog?.setIsUserRegistered(true)
 
-      setTimeout(() => {
-        authDialog?.setIsUserRegistered(false);
-      }, 1100);
+    setTimeout(() => {
+      authDialog?.setIsUserRegistered(false)
+    }, 1100)
 
-  };
+  }
 
   return (
     <>
@@ -57,7 +63,7 @@ const SignUp = ({signUpOpen}:{signUpOpen?:any}) => {
       <SocialSignUp />
 
       <span className="z-1 relative my-8 block text-center">
-        <span className="-z-1 absolute left-0 top-1/2 block h-px w-full bg-border dark:bg-dark_border"></span>
+        <span className="-z-1 absolute left-0 top-1/2 block h-px w-full bg-border dark:bg-dark_border" />
         <span className="text-body-secondary relative z-10 inline-block bg-white dark:bg-darklight px-3 text-base dark:bg-dark">
           OR
         </span>
@@ -102,11 +108,11 @@ const SignUp = ({signUpOpen}:{signUpOpen?:any}) => {
       </form>
 
       <p className="text-body-secondary mb-4 text-base">
-        By creating an account you are agree with our{" "}
+        By creating an account you are agree with our{' '}
         <a href="/#" className="text-primary hover:underline">
           Privacy
-        </a>{" "}
-        and{" "}
+        </a>{' '}
+        and{' '}
         <a href="/#" className="text-primary hover:underline">
           Policy
         </a>
@@ -122,7 +128,7 @@ const SignUp = ({signUpOpen}:{signUpOpen?:any}) => {
         </Link>
       </p>
     </>
-  );
-};
+  )
+}
 
-export default SignUp;
+export default SignUp

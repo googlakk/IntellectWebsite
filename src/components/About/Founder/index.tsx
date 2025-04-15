@@ -1,15 +1,14 @@
 'use client'
 
-import Image from 'next/image';
-import { motion } from 'framer-motion';
+import { motion } from 'framer-motion'
+import Image from 'next/image'
 
 const FounderBlock = () => {
   return (
     <section className="py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-blue-50 to-white dark:from-gray-900 dark:to-gray-800">
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          {/* Текстовая часть */}
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
@@ -27,14 +26,14 @@ const FounderBlock = () => {
             <div className="space-y-6 text-gray-700 dark:text-gray-300">
               <div className="relative pl-6 border-l-4 border-blue-500 dark:border-blue-400">
                 <p className="italic">
-                  "Моя миссия — создать среду, где каждый ребенок сможет раскрыть свой потенциал, 
-                  независимо от своего происхождения"
+                  ”Моя миссия — создать среду, где каждый ребенок сможет раскрыть свой потенциал,
+                  независимо от своего происхождения”
                 </p>
               </div>
 
               <p>
-                <span className="font-semibold">В 32 года</span> реализовал детскую мечту — открыл школу 
-                <span className="font-semibold"> Intellect School</span>, пройдя путь от чистки обуви 
+                <span className="font-semibold">В 32 года</span> реализовал детскую мечту — открыл школу
+                <span className="font-semibold"> Intellect School</span>, пройдя путь от чистки обуви
                 на Ошском рынке до создания сети образовательных центров.
               </p>
 
@@ -64,8 +63,7 @@ const FounderBlock = () => {
             </div>
           </motion.div>
 
-          {/* Фотография с цитатой */}
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
@@ -83,8 +81,8 @@ const FounderBlock = () => {
             />
             <div className="absolute bottom-8 left-8 right-8 z-20 text-white">
               <p className="text-lg italic mb-4">
-                "Я знал, что все трудности временны. Меня вела моя мечта дать детям 
-                то образование, которое сам не мог получить в детстве"
+                ”Я знал, что все трудности временны. Меня вела моя мечта дать детям
+                то образование, которое сам не мог получить в детстве”
               </p>
               <div className="bg-white/20 backdrop-blur-sm p-4 rounded-lg inline-block">
                 <p className="font-semibold">Жакшылык Матанов</p>
@@ -94,7 +92,6 @@ const FounderBlock = () => {
           </motion.div>
         </div>
 
-        {/* Блок с историей */}
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -126,7 +123,7 @@ const FounderBlock = () => {
         </motion.div>
       </div>
     </section>
-  );
-};
+  )
+}
 
-export default FounderBlock;
+export default FounderBlock

@@ -1,16 +1,18 @@
-import HeroSub from "@/components/SharedComponent/HeroSub";
-import NotFound from "@/components/NotFound";
-import { Metadata } from "next";
+import { Metadata } from 'next'
+
+import NotFound from '@/components/NotFound'
+import HeroSub from '@/components/SharedComponent/HeroSub'
 
 export const metadata: Metadata = {
-  title: "404 Page | Symposium ",
-};
+  title: '404 Page | Symposium ',
+}
 
 const ErrorPage = () => {
   const breadcrumbLinks = [
-    { href: "/", text: "Home" },
-    { href: "/contact", text: "404" },
-  ];
+    { href: '/', text: 'Home' },
+    { href: '/contact', text: '404' },
+  ]
+
   return (
     <>
       <HeroSub
@@ -20,7 +22,7 @@ const ErrorPage = () => {
       />
       <NotFound />
     </>
-  );
-};
+  )
+}
 
-export default ErrorPage;
+export default ErrorPage

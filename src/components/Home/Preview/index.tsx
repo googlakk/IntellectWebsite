@@ -1,11 +1,13 @@
-"use client";
+'use client'
 
-import ConsultationModal from "@/components/ConsultationModal";
-import Link from "next/link";
-import { useState } from "react";
+import { useState } from 'react'
+
+import Link from 'next/link'
+
+import ConsultationModal from '@/components/ConsultationModal'
 
 const Preview = () => {
-  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false)
 
   return (
     <>
@@ -13,7 +15,6 @@ const Preview = () => {
         id="preview"
         className="relative z-10 h-screen flex items-center justify-center overflow-hidden"
       >
-        {/* Видео на заднем фоне */}
         <video
           autoPlay
           loop
@@ -24,10 +25,8 @@ const Preview = () => {
           Ваш браузер не поддерживает видео.
         </video>
 
-        {/* Затемнение фона для лучшей читаемости текста */}
-        <div className="absolute top-0 left-0 w-full h-full bg-black/50 z-10"></div>
+        <div className="absolute top-0 left-0 w-full h-full bg-black/50 z-10" />
 
-        {/* Контент поверх видео */}
         <div className="container relative z-20">
           <div className="-mx-4 flex flex-wrap">
             <div className="w-full px-4">
@@ -66,7 +65,7 @@ const Preview = () => {
         </div>
       </section>
     </>
-  );
-};
+  )
+}
 
-export default Preview;
+export default Preview

@@ -5,6 +5,7 @@ import React from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 
+import Loader from '@/components/Common/Loader'
 import { Api } from '@/services'
 import { BlogsTypes } from '@/types/blogs.interface'
 import markdownToHtml from '@/utils/markdownToHtml'
@@ -12,7 +13,6 @@ import markdownToHtml from '@/utils/markdownToHtml'
 import telgram from '../../../../public/svgs/blog/telegram.svg'
 import whatsapp from '../../../../public/svgs/blog/whatsapp.svg'
 import TicketSection from '../../Home/TicketSection'
-import Loader from '@/components/Common/Loader'
 
 interface Props {
   params: string

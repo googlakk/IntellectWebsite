@@ -1,6 +1,8 @@
-import Link from "next/link";
-import React from "react";
-import ThumbnailCarousel from "../ThumbnailCarousel";
+import React from 'react'
+
+import Link from 'next/link'
+
+import ThumbnailCarousel from '../ThumbnailCarousel'
 
 const Conferences = ({ showTitle = true }) => {
   return (
@@ -41,7 +43,7 @@ const Conferences = ({ showTitle = true }) => {
         </div>
       </section>
     </>
-  );
-};
+  )
+}
 
-export default Conferences;
+export default Conferences

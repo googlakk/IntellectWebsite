@@ -6,10 +6,10 @@ export const LogoConfiguration = () => {
       </h3>
       <div className="p-6 rounded-md border mt-4 border-border dark:border-dark_border">
         <p className="text-base font-medium text-SlateBlueText dark:text-opacity-80 flex lg:flex-row flex-col">
-          1. Change Logo over here :{" "}
+          1. Change Logo over here :{' '}
           <span className="font-semibold text-base overflow-x-auto">
             src/components/Layout/Header/Logo/index.tsx
-          </span>{" "}
+          </span>{' '}
         </p>
         <div className="py-4 px-3 rounded-md bg-black mt-8">
           <div className="text-sm text-gray-400">
@@ -37,5 +37,5 @@ export const LogoConfiguration = () => {
         </div>
       </div>
     </>
-  );
-};
+  )
+}

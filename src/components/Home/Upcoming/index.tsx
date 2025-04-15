@@ -1,8 +1,10 @@
-import BoxSlider from "../../SharedComponent/BoxSlider";
-import Image from "next/image";
-import Link from "next/link";
-import React from "react";
-import { conferences } from "../../../app/api/data";
+import React from 'react'
+
+import Image from 'next/image'
+import Link from 'next/link'
+
+import { conferences } from '../../../app/api/data'
+import BoxSlider from '../../SharedComponent/BoxSlider'
 
 const Upcoming = () => {
   return (
@@ -20,7 +22,7 @@ const Upcoming = () => {
                   {conferences.slice(0, 2).map((conference, index) => (
                     <div
                       key={index}
-                      data-aos="fade-up" data-aos-delay={`${index*300}`} data-aos-duration="1000"
+                      data-aos="fade-up" data-aos-delay={`${index * 300}`} data-aos-duration="1000"
                       className="flex items-center lg:gap-0 gap-4 flex-wrap justify-between w-full md:py-12 py-5 border-b border-solid  dark:border-dark_border last:border-b-0"
                     >
                       <div>
@@ -42,8 +44,8 @@ const Upcoming = () => {
                               sizes="100vh"
                               className={`!w-16 !h-16 rounded-full ${
                                 profileIndex !== conference.profiles.length - 1
-                                  ? "-mr-3"
-                                  : ""
+                                  ? '-mr-3'
+                                  : ''
                               }`}
                             />
                           ))}
@@ -74,7 +76,7 @@ const Upcoming = () => {
         </div>
       </section>
     </>
-  );
-};
+  )
+}
 
-export default Upcoming;
+export default Upcoming

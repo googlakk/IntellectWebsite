@@ -1,11 +1,11 @@
-"use client"
-import React from "react";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-import Slider from "react-slick";
+'use client'
+import React from 'react'
+import 'slick-carousel/slick/slick.css'
+import 'slick-carousel/slick/slick-theme.css'
+import Slider from 'react-slick'
 
 const BoxSlider = () => {
-  var settings = {
+  const settings = {
     dots: false,
     arrows: true,
     infinite: true,
@@ -14,28 +14,29 @@ const BoxSlider = () => {
     slidesToScroll: 1,
     responsive: [
       {
-        breakpoint: 1024, // screen width <= 1024px
+        breakpoint: 1024,
         settings: {
           slidesToShow: 5,
           slidesToScroll: 1,
         },
       },
       {
-        breakpoint: 768, // screen width <= 768px
+        breakpoint: 768,
         settings: {
           slidesToShow: 3,
-          slidesToScroll: 1,          
+          slidesToScroll: 1,
         },
       },
       {
-        breakpoint: 480, // screen width <= 480px
+        breakpoint: 480,
         settings: {
           slidesToShow: 2,
           slidesToScroll: 1,
         },
       },
     ],
-  };
+  }
+
   return (
     <>
       <Slider {...settings} className="text-center">
@@ -77,7 +78,7 @@ const BoxSlider = () => {
         </div>
       </Slider>
     </>
-  );
-};
+  )
+}
 
-export default BoxSlider;
+export default BoxSlider

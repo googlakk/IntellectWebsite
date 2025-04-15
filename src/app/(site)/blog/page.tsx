@@ -2,9 +2,9 @@ import React from 'react'
 
 import { Metadata } from 'next'
 
+import BlogList from '@/components/Blog/BlogList'
 import TicketSection from '@/components/Home/TicketSection'
 import HeroSub from '@/components/SharedComponent/HeroSub'
-import BlogList from '@/components/Blog/BlogList'
 
 export const metadata: Metadata = {
   title: 'Blog | Intellect Pro School',

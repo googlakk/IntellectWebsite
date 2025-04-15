@@ -1,8 +1,8 @@
-import { NextResponse } from 'next/server';
-import nodemailer from "nodemailer"
+import { NextResponse } from 'next/server'
+import nodemailer from 'nodemailer'
 
 export async function POST(request: Request) {
-  const body = await request.json();
+  const body = await request.json()
 
   const transporter = nodemailer.createTransport({
     service: 'gmail',
@@ -10,7 +10,7 @@ export async function POST(request: Request) {
       user: process.env.EMAIL_USER,
       pass: process.env.EMAIL_PASS,
     },
-  });
+  })
 
   const message = `Класс: ${body.formData.schoolClass}, Номер телефона ${body.formData.phone}`
 
@@ -19,14 +19,15 @@ export async function POST(request: Request) {
     to: process.env.EMAIL_USER,
     subject: `Запись на консультацию от ${body.formData.name}`,
     text: message,
-  };
-
+  }
 
   try {
-    await transporter.sendMail(mailOptions);
-    return NextResponse.json({ success: true });
+    await transporter.sendMail(mailOptions)
+
+    return NextResponse.json({ success: true })
   } catch (error) {
-    console.error(error);
-    return NextResponse.json({ success: false }, { status: 500 });
+    console.error(error)
+
+    return NextResponse.json({ success: false }, { status: 500 })
   }
 }

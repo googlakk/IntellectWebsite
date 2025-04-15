@@ -1,72 +1,80 @@
 'use client'
 
-import { Api } from '@/services';
-import { motion } from 'framer-motion';
-import React from 'react';
+import React from 'react'
+
+import { motion } from 'framer-motion'
+
+import { Api } from '@/services'
 
 const AdmissionProcess = () => {
-  const [activeStep, setActiveStep] = React.useState(0);
-  const phoneInputRef = React.useRef<HTMLInputElement>(null);
+  const [activeStep, setActiveStep] = React.useState(0)
+  const phoneInputRef = React.useRef<HTMLInputElement>(null)
   const [formData , setFormData] = React.useState<any>({
     name: '',
-    phone: '+996'
+    phone: '+996',
   })
   const [submitted, setSubmitted] = React.useState(false)
 
   const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const value = e.target.value;
-    const digits = value.replace(/\D/g, '').slice(0, 12); 
-    
+    const value = e.target.value
+    const digits = value.replace(/\D/g, '').slice(0, 12)
+
     if (!digits.startsWith('996') && digits.length > 0) {
-      const formatted = `+996 ${digits.slice(0, 9)}`;
-      setFormData((prev: any) => ({ ...prev, phone: formatted }));
-      return;
+      const formatted = `+996 ${digits.slice(0, 9)}`
+
+      setFormData((prev: any) => ({ ...prev, phone: formatted }))
+
+      return
     }
-    
-    let formatted = '+996 ';
-    if (digits.length > 3) formatted += `${digits.slice(3, 6)} `;
-    if (digits.length > 6) formatted += `${digits.slice(6, 9)} `;
-    if (digits.length > 9) formatted += digits.slice(9, 12);
-    
-    setFormData((prev: any) => ({ ...prev, phone: formatted }));
-  };
+
+    let formatted = '+996 '
+
+    if (digits.length > 3) formatted += `${digits.slice(3, 6)} `
+    if (digits.length > 6) formatted += `${digits.slice(6, 9)} `
+    if (digits.length > 9) formatted += digits.slice(9, 12)
+
+    setFormData((prev: any) => ({ ...prev, phone: formatted }))
+  }
 
   const handlePhoneKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if ([8, 9, 27, 13, 37, 38, 39, 40].includes(e.keyCode)) {
-      return;
+      return
     }
     if ((e.keyCode < 48 || e.keyCode > 57) && (e.keyCode < 96 || e.keyCode > 105)) {
-      e.preventDefault();
+      e.preventDefault()
     }
-  };
+  }
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    setFormData((prev: any) => ({ ...prev, [name]: value }));
-  };
+    const { name, value } = e.target
+
+    setFormData((prev: any) => ({ ...prev, [name]: value }))
+  }
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
+    e.preventDefault()
     setSubmitted(true)
 
     try {
-      const phoneDigits = formData.phone.replace(/\D/g, '').slice(3);
+      const phoneDigits = formData.phone.replace(/\D/g, '').slice(3)
+
       if (phoneDigits.length !== 9) {
-        alert('Пожалуйста, введите полный номер телефона (9 цифр после +996)');
-        phoneInputRef.current?.focus();
-        return;
+        alert('Пожалуйста, введите полный номер телефона (9 цифр после +996)')
+        phoneInputRef.current?.focus()
+
+        return
       }
 
       const newFormData = {
-        ...formData
+        ...formData,
       }
 
       await Api.email.EmailSendForParents(newFormData)
 
-      setFormData({name: '', phone: '+996'})
+      setFormData({ name: '', phone: '+996' })
       alert('Вы успешно отправили заявку')
     } catch (error) {
-      console.log('error', error);
+      console.log('error', error)
       alert('Произошла ошибка, попробуйте позже')
     } finally {
       setSubmitted(false)
@@ -75,54 +83,55 @@ const AdmissionProcess = () => {
 
   const steps = [
     {
-      title: "Оставьте заявку",
-      description: "Консультация / Экскурсия по школе",
+      title: 'Оставьте заявку',
+      description: 'Консультация / Экскурсия по школе',
       icon: (
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M3 8L10.8906 13.2604C11.5624 13.7083 12.4376 13.7083 13.1094 13.2604L21 8M5 19H19C20.1046 19 21 18.1046 21 17V7C21 5.89543 20.1046 5 19 5H5C3.89543 5 3 5.89543 3 7V17C3 18.1046 3.89543 19 5 19Z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
         </svg>
-      )
+      ),
     },
     {
-      title: "Запишитесь на экзамен",
-      description: "Мы оценим навыки английского языка и математики, чтобы определить академические сильные стороны студентов и области, требующие улучшения",
+      title: 'Запишитесь на экзамен',
+      description: 'Мы оценим навыки английского языка и математики, чтобы определить академические сильные стороны студентов и области, требующие улучшения',
       icon: (
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M12 15L12 19M12 19L9 16M12 19L15 16M9 10V6C9 4.34315 10.3431 3 12 3C13.6569 3 15 4.34315 15 6V10M7 21H17C18.1046 21 19 20.1046 19 19V11C19 9.89543 18.1046 9 17 9H7C5.89543 9 5 9.89543 5 11V19C5 20.1046 5.89543 21 7 21Z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
         </svg>
-      )
+      ),
     },
     {
-      title: "Собеседование",
-      description: "Мы проводим интервью со студентами и их семьями, чтобы понять их образовательные потребности",
+      title: 'Собеседование',
+      description: 'Мы проводим интервью со студентами и их семьями, чтобы понять их образовательные потребности',
       icon: (
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M17 16V18C17 19.1046 16.1046 20 15 20H5C3.89543 20 3 19.1046 3 18V16M21 12V6C21 4.89543 20.1046 4 19 4H8C6.89543 4 6 4.89543 6 6V12M21 12L12 17L3 12M12 17V8" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
         </svg>
-      )
+      ),
     },
     {
-      title: "Сбор документов",
-      description: "Успешные кандидаты должны предоставить документы и подписать соглашение",
+      title: 'Сбор документов',
+      description: 'Успешные кандидаты должны предоставить документы и подписать соглашение',
       icon: (
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M9 13H15M9 17H12M9 9H12M19 21H5C3.89543 21 3 20.1046 3 19V5C3 3.89543 3.89543 3 5 3H14.1716C14.702 3 15.2107 3.21071 15.5858 3.58579L20.4142 8.41421C20.7893 8.78929 21 9.29799 21 9.82843V19C21 20.1046 20.1046 21 19 21Z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
         </svg>
-      )
-    }
-  ];
+      ),
+    },
+  ]
 
   const documents = [
-    "Копия свидетельства о рождении ученика и ИНН",
-    "Копия паспорта отца",
-    "Копия паспорта матери",
-    "Медицинская карта ребенка №026",
-    "Медицинская форма №063",
-    "Фотография (3*4) 3 шт",
-    "Заявление на имя директора",
-    "Анкета поступающего ученика",
-    "Личное дело ученика с предыдущей школы"
-  ];
+    'Копия свидетельства о рождении ученика и ИНН',
+    'Копия паспорта отца',
+    'Копия паспорта матери',
+    'Медицинская карта ребенка №026',
+    'Медицинская форма №063',
+    'Фотография (3*4) 3 шт',
+    'Заявление на имя директора',
+    'Анкета поступающего ученика',
+    'Личное дело ученика с предыдущей школы',
+  ]
+
   return (
     <>
       <section className="py-12 mt-28 ">
@@ -134,7 +143,7 @@ const AdmissionProcess = () => {
             viewport={{ once: true }}
             className="text-3xl font-bold text-center mb-12 text-gray-900"
           >
-            Поступление в{" "}
+            Поступление в{' '}
             <span className=" text-blue-600"> Intellect Pro School </span>
           </motion.h2>
 
@@ -148,16 +157,16 @@ const AdmissionProcess = () => {
                 viewport={{ once: true }}
                 className={`p-6 rounded-xl cursor-pointer transition-all ${
                   activeStep === index
-                    ? "bg-blue-600 text-white"
-                    : "bg-white hover:bg-gray-100"
+                    ? 'bg-blue-600 text-white'
+                    : 'bg-white hover:bg-gray-100'
                 }`}
                 onClick={() => setActiveStep(index)}
               >
                 <div
                   className={`w-12 h-12 rounded-full flex items-center justify-center mb-4 ${
                     activeStep === index
-                      ? "bg-blue-500"
-                      : "bg-blue-100 text-blue-600"
+                      ? 'bg-blue-500'
+                      : 'bg-blue-100 text-blue-600'
                   }`}
                 >
                   {step.icon}
@@ -165,16 +174,16 @@ const AdmissionProcess = () => {
                 <h3 className="font-semibold text-lg mb-2">{step.title}</h3>
                 <p
                   className={`text-sm ${
-                    activeStep === index ? "text-blue-100" : "text-gray-600"
+                    activeStep === index ? 'text-blue-100' : 'text-gray-600'
                   }`}
                 >
                   {step.description}
                 </p>
                 <div
                   className={`mt-4 h-1 w-10 rounded-full ${
-                    activeStep === index ? "bg-white" : "bg-blue-600"
+                    activeStep === index ? 'bg-white' : 'bg-blue-600'
                   }`}
-                ></div>
+                />
               </motion.div>
             ))}
           </div>
@@ -233,7 +242,7 @@ const AdmissionProcess = () => {
                 <div>
                   <input
                     type="text"
-                    name='name'
+                    name="name"
                     value={formData.name}
                     placeholder="Ваше имя"
                     onChange={handleChange}
@@ -243,7 +252,7 @@ const AdmissionProcess = () => {
                 <div>
                   <input
                     type="tel"
-                    name='phone'
+                    name="phone"
                     value={formData.phone}
                     ref={phoneInputRef}
                     placeholder="Телефон"
@@ -264,9 +273,9 @@ const AdmissionProcess = () => {
             </motion.div>
           </div>
         </div>
-      </section>{" "}
+      </section>{' '}
     </>
-  );
-};
+  )
+}
 
-export default AdmissionProcess;
+export default AdmissionProcess

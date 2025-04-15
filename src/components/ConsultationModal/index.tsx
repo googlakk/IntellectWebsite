@@ -1,7 +1,8 @@
-'use client';
+'use client'
 
-import { Api } from '@/services';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react'
+
+import { Api } from '@/services'
 
 type ConsultationModalProps = {
   isOpen: boolean;
@@ -12,91 +13,97 @@ const ConsultationModal = ({ isOpen, onClose }: ConsultationModalProps) => {
   const [formData, setFormData] = useState<any>({
     name: '',
     schoolClass: '',
-    phone: '+996 '
-  });
+    phone: '+996 ',
+  })
 
-  const [isSubmitted, setIsSubmitted] = useState(false);
-  const phoneInputRef = useRef<HTMLInputElement>(null);
+  const [isSubmitted, setIsSubmitted] = useState(false)
+  const phoneInputRef = useRef<HTMLInputElement>(null)
 
   useEffect(() => {
     if (isOpen) {
-      document.body.style.overflow = 'hidden';
+      document.body.style.overflow = 'hidden'
     } else {
-      document.body.style.overflow = '';
+      document.body.style.overflow = ''
     }
 
     return () => {
-      document.body.style.overflow = '';
-    };
-  }, [isOpen]);
+      document.body.style.overflow = ''
+    }
+  }, [isOpen])
 
   const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const value = e.target.value;
-    const digits = value.replace(/\D/g, '').slice(0, 12); 
-    
+    const value = e.target.value
+    const digits = value.replace(/\D/g, '').slice(0, 12)
+
     if (!digits.startsWith('996') && digits.length > 0) {
-      const formatted = `+996 ${digits.slice(0, 9)}`;
-      setFormData((prev: any) => ({ ...prev, phone: formatted }));
-      return;
+      const formatted = `+996 ${digits.slice(0, 9)}`
+
+      setFormData((prev: any) => ({ ...prev, phone: formatted }))
+
+      return
     }
-    
-    let formatted = '+996 ';
-    if (digits.length > 3) formatted += `${digits.slice(3, 6)} `;
-    if (digits.length > 6) formatted += `${digits.slice(6, 9)} `;
-    if (digits.length > 9) formatted += digits.slice(9, 12);
-    
-    setFormData((prev: any) => ({ ...prev, phone: formatted }));
-  };
+
+    let formatted = '+996 '
+
+    if (digits.length > 3) formatted += `${digits.slice(3, 6)} `
+    if (digits.length > 6) formatted += `${digits.slice(6, 9)} `
+    if (digits.length > 9) formatted += digits.slice(9, 12)
+
+    setFormData((prev: any) => ({ ...prev, phone: formatted }))
+  }
 
   const handlePhoneKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if ([8, 9, 27, 13, 37, 38, 39, 40].includes(e.keyCode)) {
-      return;
+      return
     }
     if ((e.keyCode < 48 || e.keyCode > 57) && (e.keyCode < 96 || e.keyCode > 105)) {
-      e.preventDefault();
+      e.preventDefault()
     }
-  };
+  }
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    setFormData((prev: any) => ({ ...prev, [name]: value }));
-  };
+    const { name, value } = e.target
+
+    setFormData((prev: any) => ({ ...prev, [name]: value }))
+  }
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    
-    const phoneDigits = formData.phone.replace(/\D/g, '').slice(3);
+    e.preventDefault()
+
+    const phoneDigits = formData.phone.replace(/\D/g, '').slice(3)
+
     if (phoneDigits.length !== 9) {
-      alert('Пожалуйста, введите полный номер телефона (9 цифр после +996)');
-      phoneInputRef.current?.focus();
-      return;
+      alert('Пожалуйста, введите полный номер телефона (9 цифр после +996)')
+      phoneInputRef.current?.focus()
+
+      return
     }
-    
-    setIsSubmitted(true);
-    
+
+    setIsSubmitted(true)
+
     const newFormData = {
       name: formData.name,
       schoolClass: parseInt(formData.schoolClass),
-      phone: formData.phone.replace(/\s/g, '')
+      phone: formData.phone.replace(/\s/g, ''),
     }
 
     const response = await Api.email.EmailSendMain(newFormData)
 
     setTimeout(() => {
-      setIsSubmitted(false);
-      onClose();
-      setFormData({ fullName: '', childClass: '', phone: '+996 ' });
-    }, 2000);
+      setIsSubmitted(false)
+      onClose()
+      setFormData({ fullName: '', childClass: '', phone: '+996 ' })
+    }, 2000)
 
     return response
-  };
+  }
 
-  if (!isOpen) return null;
+  if (!isOpen) return null
 
   return (
     <div className="fixed inset-0 z-50 text-center flex items-center justify-center p-4 bg-black/30">
       <div className="relative bg-white rounded-xl shadow-2xl w-full max-w-2xl mx-4 max-h-[90vh] overflow-y-auto">
-        <button 
+        <button
           onClick={onClose}
           className="absolute top-4 right-4 text-gray-500 hover:text-gray-700 transition-colors z-10"
           aria-label="Закрыть"
@@ -129,7 +136,7 @@ const ConsultationModal = ({ isOpen, onClose }: ConsultationModalProps) => {
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div>
                   <label htmlFor="name" className="block text-lg font-medium text-gray-700 mb-2">
-                    ФИО родителя <span className=' text-red-600'>* </span>
+                    ФИО родителя <span className=" text-red-600">* </span>
                   </label>
                   <input
                     type="text"
@@ -144,7 +151,7 @@ const ConsultationModal = ({ isOpen, onClose }: ConsultationModalProps) => {
 
                 <div>
                   <label htmlFor="schoolClass" className="block text-lg font-medium text-gray-700 mb-2">
-                    Класс ребенка <span className=' text-red-600'>* </span>
+                    Класс ребенка <span className=" text-red-600">* </span>
                   </label>
                   <input
                     type="text"
@@ -159,7 +166,7 @@ const ConsultationModal = ({ isOpen, onClose }: ConsultationModalProps) => {
 
                 <div>
                   <label htmlFor="phone" className="block text-lg font-medium text-gray-700 mb-2">
-                    Телефон <span className=' text-red-600'>* </span>
+                    Телефон <span className=" text-red-600">* </span>
                   </label>
                   <input
                     type="tel"
@@ -189,7 +196,7 @@ const ConsultationModal = ({ isOpen, onClose }: ConsultationModalProps) => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default ConsultationModal;
+export default ConsultationModal

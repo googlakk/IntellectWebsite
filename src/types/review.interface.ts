@@ -17,21 +17,21 @@ export namespace ReviewTypes {
         };
         uri: string
     }
-      
+
     export interface PaginationMeta {
         page: number;
         pageSize: number;
         pageCount: number;
         total: number;
     }
-      
+
     export interface Meta {
         pagination: PaginationMeta;
     }
-      
+
     export interface ItemResponse {
         data: Item[];
         meta: Meta;
     }
-      
+
 }
