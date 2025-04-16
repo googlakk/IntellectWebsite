@@ -7,10 +7,10 @@ import 'aos/dist/aos.css'
 import { format, isSameDay, parseISO } from 'date-fns'
 import { ru } from 'date-fns/locale'
 
-import { EventTypes } from '@/types/event.interface'
+import { HomeTypes } from '@/types/home.interface'
 
 interface Props {
-  event: EventTypes.Item[]
+  event: HomeTypes.EventItem[]
 }
 
 const CalendarWithEvents: React.FC<Props> = (props) => {
