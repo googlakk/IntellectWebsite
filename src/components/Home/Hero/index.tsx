@@ -5,8 +5,13 @@ import { useState } from 'react'
 import Image from 'next/image'
 
 import ConsultationModal from '@/components/ConsultationModal'
+import { HomeTypes } from '@/types/home.interface'
 
-const Hero = () => {
+interface Props {
+  invite: HomeTypes.Invite
+}
+
+const Hero: React.FC<Props> = ({ invite }) => {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false)
 
   return (
@@ -20,7 +25,7 @@ const Hero = () => {
               data-aos-duration="1000"
               className="relative z-0  inline-block text-primary text-lg font-bold before:absolute before:content-[''] before:bg-primary/20  before:w-full before:h-1 before:-z-1 dark:before:-z-1 before:bottom-0"
             >
-              c 10:00 до 17:00
+              {invite.time}
             </p>
             <h1
               className="py-4"
@@ -28,7 +33,7 @@ const Hero = () => {
               data-aos-delay="300"
               data-aos-duration="1000"
             >
-              Приглашаем на ежедневные экскурсии
+              {invite.title}
             </h1>
 
             <div className="flex items-center md:justify-normal lg:justify-start justify-start flex-wrap gap-4 ">
@@ -52,6 +57,7 @@ const Hero = () => {
             </div>
           </div>
 
+          {/* // TODO переделать под новый organizations */}
           <div
             data-aos="fade-left"
             data-aos-delay="200"
