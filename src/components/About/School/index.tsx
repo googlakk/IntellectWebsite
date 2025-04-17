@@ -3,6 +3,8 @@
 import { motion } from 'framer-motion'
 import Image from 'next/image'
 
+import AboutUsImage from '../../../../public/images/aboutUS/img1.png'
+
 const AboutSchool = () => {
   return (
     <section className="py-16 px-4 sm:px-6 lg:px-8 bg-white dark:bg-gray-900">
@@ -76,7 +78,7 @@ const AboutSchool = () => {
           >
             <div className="relative h-64 rounded-xl overflow-hidden">
               <Image
-                src="/images/aboutUs/img1.png"
+                src={AboutUsImage.src}
                 alt="Урок в INTELLECT SCHOOL"
                 fill
                 className="object-cover"
