@@ -41,7 +41,6 @@ const HistoryAchievements = () => {
   return (
     <section className="py-16 mt-16 px-4 sm:px-6 lg:px-8 bg-white dark:bg-gray-900">
       <div className="max-w-7xl mx-auto">
-        {/* Заголовок и описание */}
         <motion.div
           initial="hidden"
           whileInView="visible"
@@ -66,9 +65,7 @@ const HistoryAchievements = () => {
           </motion.p>
         </motion.div>
 
-        {/* Основной контент */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          {/* Текстовая часть */}
           <motion.div
             initial="hidden"
             whileInView="visible"
@@ -121,7 +118,6 @@ const HistoryAchievements = () => {
             </motion.div>
           </motion.div>
 
-          {/* Блоки с цифрами */}
           <motion.div
             initial="hidden"
             whileInView="visible"
@@ -153,7 +149,6 @@ const HistoryAchievements = () => {
           </motion.div>
         </div>
 
-        {/* Блок с учениками-чемпионами */}
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -161,7 +156,6 @@ const HistoryAchievements = () => {
           viewport={{ once: true }}
           className="mt-20 bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl p-8 text-white relative overflow-hidden"
         >
-          {/* SVG звёзды на фоне */}
           <StarsBackground />
 
           <style jsx global>{`
@@ -220,7 +214,6 @@ const StarsBackground = () => {
   >([])
 
   useEffect(() => {
-    // Генерируем звёзды только на клиенте
     const generatedStars = Array.from({ length: 15 }, (_, i) => ({
       id: i,
       left: `${Math.random() * 100}%`,
