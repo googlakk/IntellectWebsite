@@ -39,7 +39,7 @@ const HistoryAchievements = () => {
   ]
 
   return (
-    <section className="py-16 mt-28 px-4 sm:px-6 lg:px-8 bg-white dark:bg-gray-900">
+    <section className="py-16 mt-16 px-4 sm:px-6 lg:px-8 bg-white dark:bg-gray-900">
       <div className="max-w-7xl mx-auto">
         {/* Заголовок и описание */}
         <motion.div
@@ -188,7 +188,7 @@ const HistoryAchievements = () => {
                 'Memoriad',
                 'Mental Calculation World Cup',
                 'World Memory Championship',
-                'Central Asia\'s Got Talent',
+                'Central Asias Got Talent',
               ].map((item, i) => (
                 <span
                   key={i}

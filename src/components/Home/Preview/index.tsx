@@ -44,24 +44,23 @@ const Preview: React.FC<Props> = ({ mainImage }) => {
                 </p>
                 <div className="flex flex-col items-center justify-center space-y-4 sm:flex-row sm:space-x-4 sm:space-y-0">
                   <Link
+                    href="/junior"
+                    className="rounded-sm bg-primary px-8 py-4 text-base font-semibold text-white duration-300 ease-in-out hover:bg-primary/80"
+                  >
+                    Intellect Junior
+                  </Link>
+                  <Link
                     href="/aboutUs"
                     className="rounded-sm bg-primary px-8 py-4 text-base font-semibold text-white duration-300 ease-in-out hover:bg-primary/80"
                   >
-                    Узнать больше
+                    Intellect Pro School
                   </Link>
-                  <div>
-                    <button
-                      onClick={() => setIsModalOpen(true)}
-                      className="rounded-sm bg-primary px-8 py-4 text-base font-semibold text-white duration-300 ease-in-out hover:bg-primary/80"
-                    >
-                      Записаться на консультацию
-                    </button>
-
-                    <ConsultationModal
-                      isOpen={isModalOpen}
-                      onClose={() => setIsModalOpen(false)}
-                    />
-                  </div>
+                  <Link
+                    href="https://intellect-business-college.edu.kg/"
+                    className="rounded-sm bg-primary px-8 py-4 text-base font-semibold text-white duration-300 ease-in-out hover:bg-primary/80"
+                  >
+                    Intellect College
+                  </Link>
                 </div>
               </div>
             </div>

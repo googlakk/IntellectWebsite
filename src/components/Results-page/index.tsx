@@ -6,17 +6,17 @@ import { motion } from 'framer-motion'
 import { FaGem } from 'react-icons/fa'
 
 interface Student {
-  id: number;
-  name: string;
-  class: string;
-  parallel: string;
-  average: number;
+  id: number
+  name: string
+  class: string
+  parallel: string
+  average: number
   quarters: {
-    q1: 'diamond' | 'gold' | null;
-    q2: 'diamond' | 'gold' | null;
-    q3: 'diamond' | 'gold' | null;
-    q4: 'diamond' | 'gold' | null;
-  };
+    q1: 'diamond' | 'gold' | null
+    q2: 'diamond' | 'gold' | null
+    q3: 'diamond' | 'gold' | null
+    q4: 'diamond' | 'gold' | null
+  }
 }
 
 const students: Student[] = Array.from({ length: 8 * 10 }, (_, i) => {
@@ -62,7 +62,7 @@ const GroupedTables = () => {
   }, {} as Record<string, Student[]>)
 
   return (
-    <section className="p-4 md:p-6 mt-20 overflow-hidden   ">
+    <section className="p-4 md:p-6 mt-20 bg-IcyBreeze dark:bg-darklight relative overflow-hidden before:absolute before:content-[''] before:bg-PaleSkyBlu before:dark:bg-secondary before:w-687 before:h-687 before:-bottom-1/2 before:rounded-full before:xl:inline-block before:hidden  ">
       <div
         className="transform scale-90 "
         style={{ transformOrigin: 'top center' }}

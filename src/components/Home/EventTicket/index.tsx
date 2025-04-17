@@ -5,7 +5,7 @@ import Image from 'next/image'
 const EventTicket = () => {
   return (
     <>
-      <section className="dark:bg-darkmode pt-0">
+      <section className="dark:bg-darkmode pt-0 mt-16">
         <div className="container">
           <h2 className="text-center pb-12">Наша лицензия</h2>
           <div className="flex flex-wrap items-stretch" data-aos="fade-up" data-aos-delay="400" data-aos-duration="1000">

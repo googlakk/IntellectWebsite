@@ -25,19 +25,28 @@ const WorkSpeakers: React.FC<Props> = ({ team }) => {
 
   return (
     <>
-      <section className={`dark:bg-darkmode ${pathname === '/' ? '' : ''}`}>
-        <div className="grid lg:grid-cols-5 sm:grid-cols-2 grid-cols-1 items-stretch gap-8 mx-8">
+      <section
+        className={`dark:bg-darkmode mt-16 ${pathname === '/' ? '' : ''}`}
+      >
+        <h2 className="text-center pb-12">Наша команда</h2>
+        <div className="grid lg:grid-cols-5 sm:grid-cols-2 grid-cols-2 items-stretch gap-8 mx-8">
           {displayedTeam.map((item, index) => (
             <div
               key={index}
               data-aos="fade-up"
               data-aos-delay={`${index * 300}`}
               data-aos-duration="1000"
-              className={`col-span-1 group overflow-hidden ${index % 2 === 1 ? 'lg:mt-28 mt-0' : ''}`}
+              className={`col-span-1 group overflow-hidden ${
+                index % 2 === 1 ? 'lg:mt-28 mt-0' : ''
+              }`}
             >
-              <div className="relative w-full h-72 overflow-hidden rounded-lg">
+              <div className="relative w-full lg:h-72 h-56 overflow-hidden rounded-lg">
                 <Image
-                  src={`${item.avatar ? `https://intellect.soulist.life${item.avatar.url}` : NoImage.src}`}
+                  src={`${
+                    item.avatar
+                      ? `https://intellect.soulist.life${item.avatar.url}`
+                      : NoImage.src
+                  }`}
                   alt={item.role}
                   fill
                   className="object-cover transition-all duration-300 group-hover:scale-110"

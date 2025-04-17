@@ -3,7 +3,9 @@ import { HeaderItem } from '@/types/menu'
 export const headerData: HeaderItem[] = [
   { label: 'Главная', href: '/' },
   { label: 'О нас', href: '/aboutUs' },
+  { label: 'Junior', href: '/junior' },
   { label: 'Наша команда', href: '/teams' },
+
   {
     label: 'Для родителей',
     href: '/forParents',
@@ -11,6 +13,10 @@ export const headerData: HeaderItem[] = [
       {
         label: 'Потеряшки',
         href: '/google-drive',
+      },
+      {
+        label: 'Edupage',
+        href: 'https://intellectschool.edupage.org/',
       },
     ],
   },

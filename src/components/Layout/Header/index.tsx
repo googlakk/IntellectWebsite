@@ -2,14 +2,12 @@
 
 import { useEffect, useRef, useState } from 'react'
 
+import HeaderLink from '../Header/Navigation/HeaderLink'
+import Logo from './Logo'
+import MobileHeaderLink from '../Header/Navigation/MobileHeaderLink'
+import { headerData } from '../Header/Navigation/menuData'
 import { usePathname } from 'next/navigation'
 import { useTheme } from 'next-themes'
-
-import HeaderLink from '../Header/Navigation/HeaderLink'
-import { headerData } from '../Header/Navigation/menuData'
-import MobileHeaderLink from '../Header/Navigation/MobileHeaderLink'
-
-import Logo from './Logo'
 
 const Header: React.FC = () => {
   const pathUrl = usePathname()
@@ -72,14 +70,15 @@ const Header: React.FC = () => {
     <>
       <div className="relative" />
       <header
-        className={`fixed h-24 top-0 py-1 z-50 w-full bg-transparent transition-all  ${
+        className={` fixed h-24 top-0 py-1 z-50 w-full transition-all ${
           sticky
             ? 'shadow-lg dark:shadow-darkmd bg-white dark:bg-secondary'
             : 'bg-white dark:bg-secondary'
         }`}
       >
-        <div className="container">
-          <div className="flex items-center justify-between py-1 ">
+  
+        <div className="container ">
+          <div className="flex items-center justify-between py-2 ">
             <Logo />
             <ul className="hidden lg:flex flex-grow items-center justify-center space-x-6">
               {headerData.map((item, index) => (
@@ -136,6 +135,7 @@ const Header: React.FC = () => {
             </div>
           </div>
         </div>
+
         {navbarOpen && (
           <div className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 z-40" />
         )}
