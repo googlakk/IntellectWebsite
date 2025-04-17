@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server'
 
 export async function GET() {
   try {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/invites?populate[organizators][populate]=image`, {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/invites?populate[organizator1][populate]=*&populate[organizator2][populate]=*`, {
       cache: 'no-store',
       method: 'GET',
     })

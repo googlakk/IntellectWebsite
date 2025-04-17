@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server'
 
 export async function GET() {
   try {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/students-raitings?populate=quarters`, {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/students-raitings?populate[students][populate]=quarters`, {
       cache: 'no-store',
       method: 'GET',
     })

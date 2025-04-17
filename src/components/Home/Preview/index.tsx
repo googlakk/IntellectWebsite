@@ -4,7 +4,6 @@ import React from 'react'
 
 import Link from 'next/link'
 
-import ConsultationModal from '@/components/ConsultationModal'
 import { HomeTypes } from '@/types/home.interface'
 
 interface Props {
@@ -12,7 +11,6 @@ interface Props {
 }
 
 const Preview: React.FC<Props> = ({ mainImage }) => {
-  const [isModalOpen, setIsModalOpen] = React.useState<boolean>(false)
 
   return (
     <>

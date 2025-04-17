@@ -1,4 +1,3 @@
-'use client'
 
 import { useState } from 'react'
 
@@ -57,7 +56,6 @@ const Hero: React.FC<Props> = ({ invite }) => {
             </div>
           </div>
 
-          {/* // TODO переделать под новый organizations */}
           <div
             data-aos="fade-left"
             data-aos-delay="200"
@@ -66,7 +64,7 @@ const Hero: React.FC<Props> = ({ invite }) => {
           >
             <div className="bg-ElectricAqua relative rounded-tl-166 rounded-br-166 w-full">
               <Image
-                src="/images/hero/lal.png"
+                src={`https://intellect.soulist.life${invite.organizator1.avatar.url}`}
                 alt="hero"
                 width={0}
                 height={0}
@@ -77,16 +75,16 @@ const Hero: React.FC<Props> = ({ invite }) => {
               />
               <div className="bg-yellow-300 text-center rounded-22 shadow-hero-box py-4 px-5 absolute top-5 -left-40">
                 <p className="text-lg font-bold text-yellow-900">
-                  Жакшылык Матанов
+                  {invite.organizator1.name}
                 </p>
                 <p className="text-base font-medium text-yellow-900 text-center">
-                  Директор
+                  {invite.organizator1.role}
                 </p>
               </div>
             </div>
             <div className="bg-primary relative rounded-tr-166 rounded-bl-166 w-full mt-32">
               <Image
-                src="/images/hero/maria.png"
+                src={`https://intellect.soulist.life${invite.organizator2.avatar.url}`}
                 alt="hero"
                 width={0}
                 height={0}
@@ -96,9 +94,9 @@ const Hero: React.FC<Props> = ({ invite }) => {
                 className="w-full h-full"
               />
               <div className="bg-Aquamarine rounded-22 shadow-hero-box py-4 px-5 absolute top-24 -right-20 xl:inline-block hidden">
-                <p className="text-lg font-bold text-green-800">Mariya John</p>
+                <p className="text-lg font-bold text-green-800">{invite.organizator2.name}</p>
                 <p className="text-base font-medium text-green-800 text-center">
-                  4.9 rating
+                  {invite.organizator2.role}
                 </p>
               </div>
             </div>

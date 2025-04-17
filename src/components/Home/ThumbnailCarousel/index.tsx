@@ -93,8 +93,6 @@ const ThumbnailCarousel: React.FC<Props> = ({ images }) => {
     }
   }, [activeIndex])
 
-  console.log(images)
-
   return (
     <>
       <div>
