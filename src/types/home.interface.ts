@@ -14,7 +14,8 @@ export namespace HomeTypes {
         id: number;
         time: string;
         title: string;
-        organizators: {name: string, role: string, image: {id: number,url: string,}}[]
+        organizator1: {name: string, role: string, avatar: {id: number,url: string,}},
+        organizator2: {name: string, role: string, avatar: {id: number,url: string,}}
     }
 
     export interface Gallery {

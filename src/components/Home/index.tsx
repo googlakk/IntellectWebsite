@@ -9,10 +9,6 @@ import Features from '@/components/Home/Features'
 import Hero from '@/components/Home/Hero'
 import Mission from '@/components/Home/Mission'
 import Preview from '@/components/Home/Preview'
-import { ReviewTypes } from '@/types/review.interface'
-
-import TestimonialsGrid from './Testimonials'
-
 import TicketSection from '@/components/Home/TicketSection'
 import WorkSpeakers from '@/components/Home/WorkSpeakers'
 import Highlight from '@/components/Home/YearHighlight/page'
@@ -26,6 +22,7 @@ import ContactInfo from '../Contact/ContactInfo'
 import AboutSectionOne from './About'
 import Conferences from './Conferences'
 import CalendarWithEvents from './EventsCalendar'
+import TestimonialsGrid from './Testimonials'
 
 export const metadata: Metadata = {
   title: 'Intellect pro school',
@@ -101,8 +98,6 @@ export default function Home() {
   const loadEvent = async () => {
     try {
       const response = await Api.home.EventGET()
-
-      console.log(response)
 
       setEvent(response.data.data)
     } catch (error) {

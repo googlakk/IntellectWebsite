@@ -2,12 +2,14 @@
 
 import { useEffect, useRef, useState } from 'react'
 
-import HeaderLink from '../Header/Navigation/HeaderLink'
-import Logo from './Logo'
-import MobileHeaderLink from '../Header/Navigation/MobileHeaderLink'
-import { headerData } from '../Header/Navigation/menuData'
 import { usePathname } from 'next/navigation'
 import { useTheme } from 'next-themes'
+
+import HeaderLink from '../Header/Navigation/HeaderLink'
+import { headerData } from '../Header/Navigation/menuData'
+import MobileHeaderLink from '../Header/Navigation/MobileHeaderLink'
+
+import Logo from './Logo'
 
 const Header: React.FC = () => {
   const pathUrl = usePathname()
@@ -76,7 +78,7 @@ const Header: React.FC = () => {
             : 'bg-white dark:bg-secondary'
         }`}
       >
-  
+
         <div className="container ">
           <div className="flex items-center justify-between py-2 ">
             <Logo />
