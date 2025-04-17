@@ -2,9 +2,9 @@ const Mission = () => {
   return (
     <section className="dark:bg-darkmode relative overflow-hidden">
       <div className="container px-4 sm:px-6">
-        <div className="text-center md:pb-20 pb-12 pt-8">
+        <div className="text-center md:pb-20 pb-12 ">
           <h2
-            className="pb-6 text-2xl md:text-3xl font-bold"
+            className="pb-6  text-2xl md:text-3xl font-bold"
             data-aos="fade-up"
             data-aos-delay="200"
             data-aos-duration="1000"
@@ -22,18 +22,19 @@ const Mission = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 mb-16">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 mb-16 relative">
+          {/* Блок с миссией */}
           <div
             data-aos="fade-up"
             data-aos-delay="400"
             data-aos-duration="1000"
-            className="bg-ElectricAqua rounded-2xl lg:rounded-tl-[182px] lg:rounded-br-[182px] p-6 md:p-10 lg:p-14"
+            className="bg-ElectricAqua rounded-2xl lg:rounded-tl-[182px] lg:rounded-br-[182px] p-10 lg:p-14 flex items-center min-h-[300px]"
           >
-            <div className="text-white dark:text-opacity-80 text-base md:text-lg">
-              <span className="block text-xl md:text-2xl font-bold mb-3">
+            <div className="text-white dark:text-opacity-80 text-base md:text-lg text-center mx-auto max-w-[500px] px-4">
+              <span className="block text-2xl md:text-3xl font-bold mb-6">
                 Миссия:
               </span>
-              <p>
+              <p className="leading-relaxed">
                 Мы готовим специалистов в сфере IT, обладающих не только
                 глубокими профессиональными знаниями, но и развитым критическим
                 мышлением, креативностью и свободным владением английским
@@ -43,18 +44,18 @@ const Mission = () => {
             </div>
           </div>
 
-          {/* Видение - карточка */}
+          {/* Блок с видением */}
           <div
             data-aos="fade-up"
             data-aos-delay="500"
             data-aos-duration="1000"
-            className="bg-primary rounded-2xl lg:rounded-tr-[182px] lg:rounded-bl-[182px] p-6 md:p-10 lg:p-14 lg:mt-16"
+            className="bg-primary rounded-2xl lg:rounded-tr-[182px] lg:rounded-bl-[182px] p-10 lg:p-14 flex items-center min-h-[300px] relative lg:top-24"
           >
-            <div className="text-white dark:text-opacity-80 text-base md:text-lg">
-              <span className="block text-xl md:text-2xl font-bold mb-3">
+            <div className="text-white dark:text-opacity-80 text-base md:text-lg text-center mx-auto max-w-[500px] px-4">
+              <span className="block text-2xl md:text-3xl font-bold mb-6">
                 Видение:
               </span>
-              <p>
+              <p className="leading-relaxed">
                 Наша школа — это центр формирования лидеров нового поколения,
                 готовых реализовывать свой потенциал в любой сфере, свободно
                 общаться и вести бизнес на международном уровне. Мы воспитываем

@@ -11,18 +11,20 @@ import Features from '@/components/Home/Features'
 import Hero from '@/components/Home/Hero'
 import Mission from '@/components/Home/Mission'
 import Preview from '@/components/Home/Preview'
+import { ReviewTypes } from '@/types/review.interface'
+
+import TestimonialsGrid from './Testimonials'
+
 import TicketSection from '@/components/Home/TicketSection'
 import WorkSpeakers from '@/components/Home/WorkSpeakers'
 import Highlight from '@/components/Home/YearHighlight/page'
 import { Api } from '@/services'
 import { EventTypes } from '@/types/event.interface'
-import { ReviewTypes } from '@/types/review.interface'
 import { TeamTypes } from '@/types/team.interface'
 
 import ContactInfo from '../Contact/ContactInfo'
 
 import CalendarWithEvents from './EventsCalendar'
-import TestimonialsGrid from './Testimonials'
 
 export const metadata: Metadata = {
   title: 'Intellect pro school',
@@ -31,7 +33,9 @@ export const metadata: Metadata = {
 export default function Home() {
   const [event, setEvent] = React.useState<EventTypes.Item[]>([])
   const [team, setTeam] = React.useState<TeamTypes.ItemResponse | null>(null)
-  const [reviews, setReviews] = React.useState<ReviewTypes.ItemResponse | null>(null)
+  const [reviews, setReviews] = React.useState<ReviewTypes.ItemResponse | null>(
+    null
+  )
   const [teamLoading, setTeamLoading] = React.useState(false)
 
   const loadTeam = async () => {
@@ -75,26 +79,22 @@ export default function Home() {
 
   return (
     <main>
-      <Preview/>
-
+      <Preview />
       <Hero />
-      <ThumbnailCarousel/>
-      <Mission/>
-      <Features/>
-      <Highlight/>
-      {teamLoading ? null : (
-        <WorkSpeakers team={team}/>
-      )}
-      <AboutSectionOne/>
+      <ThumbnailCarousel />
+      <Mission />
+      <Features />
+      <Highlight />
+      {teamLoading ? null : <WorkSpeakers team={team} />}
+      <AboutSectionOne />
 
-      <EventTicket/>
-      <CalendarWithEvents event={event}/>
-      <TestimonialsGrid reviews={reviews}/>
+      <EventTicket />
+      <CalendarWithEvents event={event} />
+      <TestimonialsGrid reviews={reviews} />
 
-      <ContactInfo/>
+      <ContactInfo />
 
-      <TicketSection/>
-
+      <TicketSection />
     </main>
   )
 }

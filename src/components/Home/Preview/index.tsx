@@ -1,14 +1,8 @@
 'use client'
 
-import { useState } from 'react'
-
 import Link from 'next/link'
 
-import ConsultationModal from '@/components/ConsultationModal'
-
 const Preview = () => {
-  const [isModalOpen, setIsModalOpen] = useState<boolean>(false)
-
   return (
     <>
       <section
@@ -32,32 +26,32 @@ const Preview = () => {
             <div className="w-full px-4">
               <div className="mx-auto max-w-[800px] text-center">
                 <h1 className="mb-5 text-3xl font-bold leading-tight text-white sm:text-4xl sm:leading-tight md:text-5xl md:leading-tight">
-                  Intellect Pro School — школа будущего уже сегодня!!
+                  Intellect — Образование, которое растёт вместе с ребёнком
                 </h1>
                 <p className="mb-12 text-base !leading-relaxed text-white/80 sm:text-lg md:text-xl">
-                  Мы развиваем интеллект, креативность и лидерские качества у
-                  детей и подростков. Присоединяйтесь к нам!
+                  От первых шагов в Intellect Junior до уверенного старта
+                  карьеры в Intellect College. Мы создаём среду, где каждый
+                  ребёнок развивается, думает, исследует и побеждает.
                 </p>
                 <div className="flex flex-col items-center justify-center space-y-4 sm:flex-row sm:space-x-4 sm:space-y-0">
+                  <Link
+                    href="/junior"
+                    className="rounded-sm bg-primary px-8 py-4 text-base font-semibold text-white duration-300 ease-in-out hover:bg-primary/80"
+                  >
+                    Intellect Junior
+                  </Link>
                   <Link
                     href="/aboutUs"
                     className="rounded-sm bg-primary px-8 py-4 text-base font-semibold text-white duration-300 ease-in-out hover:bg-primary/80"
                   >
-                    Узнать больше
+                    Intellect Pro School
                   </Link>
-                  <div>
-                    <button
-                      onClick={() => setIsModalOpen(true)}
-                      className="rounded-sm bg-primary px-8 py-4 text-base font-semibold text-white duration-300 ease-in-out hover:bg-primary/80"
-                    >
-                      Записаться на консультацию
-                    </button>
-
-                    <ConsultationModal
-                      isOpen={isModalOpen}
-                      onClose={() => setIsModalOpen(false)}
-                    />
-                  </div>
+                  <Link
+                    href="https://intellect-business-college.edu.kg/"
+                    className="rounded-sm bg-primary px-8 py-4 text-base font-semibold text-white duration-300 ease-in-out hover:bg-primary/80"
+                  >
+                    Intellect College
+                  </Link>
                 </div>
               </div>
             </div>
