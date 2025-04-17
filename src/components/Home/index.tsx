@@ -157,10 +157,6 @@ export default function Home() {
         <AboutSectionOne gallery={item} key={index}/>
       ))}
 
-      <EventTicket/>
-      <CalendarWithEvents event={event}/>
-      <TestimonialsGrid reviews={reviews}/>
-
       <EventTicket />
       <CalendarWithEvents event={event} />
       <TestimonialsGrid reviews={reviews} />
