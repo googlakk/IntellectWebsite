@@ -11,7 +11,7 @@ import {
   FaStar,
 } from 'react-icons/fa'
 
-import { ReviewTypes } from '@/types/review.interface'
+import { HomeTypes } from '@/types/home.interface'
 
 interface Testimonial {
   id: number;
@@ -23,7 +23,7 @@ interface Testimonial {
 }
 
 interface Props {
-  reviews: ReviewTypes.ItemResponse | null;
+  reviews: HomeTypes.ReviewItemResponse | null;
 }
 
 const TestimonialsGrid: React.FC<Props> = ({ reviews }) => {

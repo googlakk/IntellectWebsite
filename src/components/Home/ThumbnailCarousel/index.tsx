@@ -8,7 +8,11 @@ import Slider from 'react-slick'
 
 import Image from 'next/image'
 
-const ThumbnailCarousel: React.FC = () => {
+interface Props {
+  images: {id: number, url: string}[] | undefined
+}
+
+const ThumbnailCarousel: React.FC<Props> = ({ images }) => {
   const [activeIndex, setActiveIndex] = useState<number>(0)
   const mainSliderRef = useRef<Slider | null>(null)
   const navSliderRef = useRef<Slider | null>(null)
@@ -89,108 +93,42 @@ const ThumbnailCarousel: React.FC = () => {
     }
   }, [activeIndex])
 
+  console.log(images)
+
   return (
     <>
       <div>
         <Slider {...settingsFor} ref={mainSliderRef} className="pb-3">
-          <div>
-            <Image
-              src="/images/ThumbnailSlider/1.png"
-              alt="Conference"
-              width={0}
-              height={0}
-              quality={100}
-              layout="responsive"
-              sizes="100vh"
-              className="rounded-lg"
-            />
-          </div>
-          <div>
-            <Image
-              src="/images/ThumbnailSlider/2.png"
-              alt="Conference"
-              width={0}
-              height={0}
-              quality={100}
-              layout="responsive"
-              sizes="100vh"
-              className="rounded-lg"
-            />
-          </div>
-          <div>
-            <Image
-              src="/images/ThumbnailSlider/3.png"
-              alt="Conference"
-              width={0}
-              height={0}
-              quality={100}
-              layout="responsive"
-              sizes="100vh"
-              className="rounded-lg"
-            />
-          </div>
-          <div>
-            <Image
-              src="/images/ThumbnailSlider/4.png"
-              alt="Conference"
-              width={0}
-              height={0}
-              quality={100}
-              layout="responsive"
-              sizes="100vh"
-              className="rounded-lg"
-            />
-          </div>
+          {images?.map((item, index) => (
+            <div key={index}>
+              <Image
+                src={`https://intellect.soulist.life${item.url}`}
+                alt="Thumbnail"
+                width={0}
+                height={0}
+                quality={100}
+                layout="responsive"
+                sizes="100vh"
+                className="rounded-lg"
+              />
+            </div>
+          ))}
         </Slider>
         <Slider {...settingsNav} ref={navSliderRef} className="thumb">
-          <div>
-            <Image
-              src="/images/ThumbnailSlider/1.png"
-              alt="Thumbnail"
-              width={0}
-              height={0}
-              quality={100}
-              layout="responsive"
-              sizes="100vh"
-              className="rounded-lg"
-            />
-          </div>
-          <div>
-            <Image
-              src="/images/ThumbnailSlider/2.png"
-              alt="Thumbnail"
-              width={0}
-              height={0}
-              quality={100}
-              layout="responsive"
-              sizes="100vh"
-              className="rounded-lg"
-            />
-          </div>
-          <div>
-            <Image
-              src="/images/ThumbnailSlider/3.png"
-              alt="Thumbnail"
-              width={0}
-              height={0}
-              quality={100}
-              layout="responsive"
-              sizes="100vh"
-              className="rounded-lg"
-            />
-          </div>
-          <div>
-            <Image
-              src="/images/ThumbnailSlider/4.png"
-              alt="Thumbnail"
-              width={0}
-              height={0}
-              quality={100}
-              layout="responsive"
-              sizes="100vh"
-              className="rounded-lg"
-            />
-          </div>
+          {images?.map((item, index) => (
+            <div key={index}>
+              <Image
+                src={`https://intellect.soulist.life${item.url}`}
+                alt="Thumbnail"
+                width={0}
+                height={0}
+                quality={100}
+                layout="responsive"
+                sizes="100vh"
+                className="rounded-lg"
+              />
+            </div>
+          ))}
         </Slider>
       </div>
     </>

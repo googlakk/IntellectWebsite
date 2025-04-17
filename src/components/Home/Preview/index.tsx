@@ -1,8 +1,19 @@
 'use client'
 
+import React from 'react'
+
 import Link from 'next/link'
 
-const Preview = () => {
+import ConsultationModal from '@/components/ConsultationModal'
+import { HomeTypes } from '@/types/home.interface'
+
+interface Props {
+  mainImage: HomeTypes.MainImage | null
+}
+
+const Preview: React.FC<Props> = ({ mainImage }) => {
+  const [isModalOpen, setIsModalOpen] = React.useState<boolean>(false)
+
   return (
     <>
       <section
@@ -15,7 +26,7 @@ const Preview = () => {
           muted
           className="absolute top-0 left-0 w-full h-full object-cover z-0"
         >
-          <source src="/video/openDay.mp4" type="video/mp4" />
+          <source src={`https://intellect.soulist.life${mainImage?.video.url}`} type="video/mp4" />
           Ваш браузер не поддерживает видео.
         </video>
 
@@ -26,12 +37,10 @@ const Preview = () => {
             <div className="w-full px-4">
               <div className="mx-auto max-w-[800px] text-center">
                 <h1 className="mb-5 text-3xl font-bold leading-tight text-white sm:text-4xl sm:leading-tight md:text-5xl md:leading-tight">
-                  Intellect — Образование, которое растёт вместе с ребёнком
+                  {mainImage?.title}
                 </h1>
                 <p className="mb-12 text-base !leading-relaxed text-white/80 sm:text-lg md:text-xl">
-                  От первых шагов в Intellect Junior до уверенного старта
-                  карьеры в Intellect College. Мы создаём среду, где каждый
-                  ребёнок развивается, думает, исследует и побеждает.
+                  {mainImage?.description}
                 </p>
                 <div className="flex flex-col items-center justify-center space-y-4 sm:flex-row sm:space-x-4 sm:space-y-0">
                   <Link
