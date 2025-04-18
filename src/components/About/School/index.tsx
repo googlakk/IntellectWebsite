@@ -1,9 +1,11 @@
 'use client'
 
-import { motion } from 'framer-motion'
+import AboutUsImage1 from '../../../../public/images/aboutUS/img1.png'
+import AboutUsImage2 from '../../../../public/images/aboutUS/img2.png'
+import AboutUsImage3 from '../../../../public/images/aboutUS/img3.png'
+import AboutUsImage4 from '../../../../public/images/aboutUS/img4.jpeg'
 import Image from 'next/image'
-
-import AboutUsImage from '../../../../public/images/aboutUS/img1.png'
+import { motion } from 'framer-motion'
 
 const AboutSchool = () => {
   return (
@@ -33,38 +35,55 @@ const AboutSchool = () => {
             className="space-y-8"
           >
             <div>
-              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">О нашей школе</h3>
+              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+                О нашей школе
+              </h3>
               <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
-                «INTELLECT SCHOOL» — это общеобразовательная частная школа, основанная на базе одноименного
-                образовательного центра. Наша программа сочетает классическое образование с инновационными
+                «INTELLECT SCHOOL» — это общеобразовательная частная школа,
+                основанная на базе одноименного образовательного центра. Наша
+                программа сочетает классическое образование с инновационными
                 методиками развития интеллекта.
               </p>
             </div>
 
             <div>
-              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">Уникальные особенности</h3>
+              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+                Уникальные особенности
+              </h3>
               <ul className="space-y-4 text-gray-600 dark:text-gray-300">
                 <li className="flex items-start">
                   <span className="text-blue-500 mr-2 mt-1">•</span>
-                  <span>Углубленное изучение программирования (IT) и английского языка</span>
+                  <span>
+                    Углубленное изучение программирования (IT) и английского
+                    языка
+                  </span>
                 </li>
                 <li className="flex items-start">
                   <span className="text-blue-500 mr-2 mt-1">•</span>
-                  <span>Авторские курсы: ментальная арифметика, скорочтение, развитие «суперпамяти»</span>
+                  <span>
+                    Авторские курсы: ментальная арифметика, скорочтение,
+                    развитие «суперпамяти»
+                  </span>
                 </li>
                 <li className="flex items-start">
                   <span className="text-blue-500 mr-2 mt-1">•</span>
-                  <span>Спорт-стекинг для развития координации и когнитивных способностей</span>
+                  <span>
+                    Спорт-стекинг для развития координации и когнитивных
+                    способностей
+                  </span>
                 </li>
               </ul>
             </div>
 
             <div className="bg-blue-50 dark:bg-blue-900/20 p-6 rounded-xl">
-              <h4 className="text-xl font-semibold text-blue-600 dark:text-blue-400 mb-3">Результаты обучения</h4>
+              <h4 className="text-xl font-semibold text-blue-600 dark:text-blue-400 mb-3">
+                Результаты обучения
+              </h4>
               <p className="text-gray-600 dark:text-gray-300">
-                Наши ученики получают не только общеобразовательную базу, но и актуальные IT-навыки,
-                свободный английский язык, а также уникальные интеллектуальные способности,
-                развитые через авторские методики.
+                Наши ученики получают не только общеобразовательную базу, но и
+                актуальные IT-навыки, свободный английский язык, а также
+                уникальные интеллектуальные способности, развитые через
+                авторские методики.
               </p>
             </div>
           </motion.div>
@@ -78,7 +97,7 @@ const AboutSchool = () => {
           >
             <div className="relative h-64 rounded-xl overflow-hidden">
               <Image
-                src={AboutUsImage.src}
+                src={AboutUsImage1.src}
                 alt="Урок в INTELLECT SCHOOL"
                 fill
                 className="object-cover"
@@ -87,7 +106,7 @@ const AboutSchool = () => {
             </div>
             <div className="relative h-64 rounded-xl overflow-hidden">
               <Image
-                src="/images/aboutUs/img2.png"
+                src={AboutUsImage2.src}
                 alt="Урок программирования"
                 fill
                 className="object-cover"
@@ -96,7 +115,7 @@ const AboutSchool = () => {
             </div>
             <div className="relative h-64 rounded-xl overflow-hidden">
               <Image
-                src="/images/aboutUs/img3.png"
+                src={AboutUsImage3.src}
                 alt="Тренировка памяти"
                 fill
                 className="object-cover"
@@ -105,7 +124,7 @@ const AboutSchool = () => {
             </div>
             <div className="relative h-64 rounded-xl overflow-hidden">
               <Image
-                src="/images/aboutUs/img4.jpeg"
+                src={AboutUsImage4.src}
                 alt="Спорт-стекинг"
                 fill
                 className="object-cover"

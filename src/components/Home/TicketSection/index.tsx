@@ -2,9 +2,9 @@
 
 import React, { useState } from 'react'
 
-import Image from 'next/image'
-
 import ConsultationModal from '@/components/ConsultationModal'
+import Image from 'next/image'
+import kidsCta from '../../../../public/images/aboutUS/child-bg.webp'
 
 const TicketSection = () => {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false)
@@ -17,7 +17,7 @@ const TicketSection = () => {
             <div className="flex flex-wrap items-center justify-between md:p-20 p-5">
               <div className="md:w-2/2 w-full absolute  bottom-0 -left-1 md:block hidden">
                 <Image
-                  src="/images/blog/child-bg.png"
+                  src={kidsCta.src}
                   alt="hero"
                   width={0}
                   height={0}

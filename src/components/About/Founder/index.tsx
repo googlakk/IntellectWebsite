@@ -1,7 +1,8 @@
 'use client'
 
-import { motion } from 'framer-motion'
 import Image from 'next/image'
+import founderImg from '../../../../public/images/aboutUS/founder.jpg'
+import { motion } from 'framer-motion'
 
 const FounderBlock = () => {
   return (
@@ -72,7 +73,7 @@ const FounderBlock = () => {
           >
             <div className="absolute inset-0 bg-gradient-to-t from-gray-900/60 to-transparent z-10" />
             <Image
-              src="/images/aboutUs/founder.jpg" // Заменить на фото Жакшылыка
+              src={founderImg.src} // Заменить на фото Жакшылыка
               alt="Жакшылык Матанов - основатель Intellect School"
               fill
               className="object-cover object-center"

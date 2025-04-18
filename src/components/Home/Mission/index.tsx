@@ -32,9 +32,9 @@ const Mission = () => {
           >
             <div className="text-white dark:text-opacity-80 text-base md:text-lg text-center mx-auto max-w-[500px] px-4">
               <span className="block text-2xl md:text-3xl font-bold mb-6">
-                Миссия:
+                Миссия
               </span>
-              <p className="leading-relaxed">
+              <p className="leading-relaxed text-justify">
                 Мы готовим специалистов в сфере IT, обладающих не только
                 глубокими профессиональными знаниями, но и развитым критическим
                 мышлением, креативностью и свободным владением английским
@@ -53,9 +53,9 @@ const Mission = () => {
           >
             <div className="text-white dark:text-opacity-80 text-base md:text-lg text-center mx-auto max-w-[500px] px-4">
               <span className="block text-2xl md:text-3xl font-bold mb-6">
-                Видение:
+                Видение
               </span>
-              <p className="leading-relaxed">
+              <p className="leading-relaxed text-justify">
                 Наша школа — это центр формирования лидеров нового поколения,
                 готовых реализовывать свой потенциал в любой сфере, свободно
                 общаться и вести бизнес на международном уровне. Мы воспитываем
