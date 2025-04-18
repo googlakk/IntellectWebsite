@@ -3,6 +3,7 @@
 import React from 'react'
 
 import { motion } from 'framer-motion'
+import { useLocale } from 'next-intl'
 import { FaGem } from 'react-icons/fa'
 
 import { Api } from '@/services'
@@ -21,15 +22,16 @@ const getBadge = (type: 'diamond' | 'gold' | null | string) => {
 }
 
 const GroupedTables = () => {
+  const locale = useLocale()
   const [ratings, setRatings] = React.useState<RatingTypes.Item[] | null>(null)
   const [ratingsLoading, setRatingsLoading] = React.useState(false)
 
   const loadRaits = async () => {
     setRatingsLoading(true)
     try {
-      const response = await Api.rating.RatingGET()
+      const response = await Api.rating.RatingGET(locale)
 
-      setRatings(response.data.data)
+      setRatings(response.data)
     } catch (error) {
       console.log('Failed to fethc rates', error)
     } finally {
@@ -48,6 +50,8 @@ const GroupedTables = () => {
       </main>
     )
   }
+
+  console.log('ratings', ratings)
 
   return (
     <section className="p-4 md:p-6 mt-20 overflow-hidden   ">

@@ -3,16 +3,18 @@
 import React from 'react'
 
 import Link from 'next/link'
+import { useLocale } from 'next-intl'
 
 import { Api } from '@/services'
 import { ContactsTypes } from '@/types/contacts.interface'
 
 const ContactsSection = () => {
+  const locale = useLocale()
   const [contact, setContact] = React.useState<ContactsTypes.Item[] | null>(null)
 
   const loadContact = async () => {
     try {
-      const response = await Api.contacts.ContactsGET()
+      const response = await Api.contacts.ContactsGET(locale)
 
       setContact(response.data.data)
     } catch (error) {

@@ -1,6 +1,8 @@
-export const RatingGET = async () => {
+import { buildQuery } from '@/helpers/buildQueryLanguage'
+
+export const RatingGET = async (locale: string) => {
   try {
-    const response = await fetch('/api/rating', {
+    const response = await fetch(`/api/rating${buildQuery(locale)}`, {
       method: 'GET',
     })
 
@@ -8,6 +10,6 @@ export const RatingGET = async () => {
 
     return data
   } catch (error) {
-    console.log('failed to fetch student raiting', error)
+    console.log('Failed to fetch student rating', error)
   }
 }

@@ -3,7 +3,7 @@
 import React from 'react'
 
 import { Metadata } from 'next'
-import { useTranslations } from 'next-intl'
+import { useLocale, useTranslations } from 'next-intl'
 
 import EventTicket from '@/components/Home/EventTicket'
 import Features from '@/components/Home/Features'
@@ -31,6 +31,7 @@ export const metadata: Metadata = {
 
 export default function Home() {
   const t = useTranslations()
+  const locale = useLocale()
   const [mainImage, setMainImage] = React.useState<HomeTypes.MainImage[] | null>(null)
   const [mainImageLoading, setMainImageLoading] = React.useState(false)
   const [invite, setInvite] = React.useState<HomeTypes.Invite[] | null>(null)
@@ -44,7 +45,7 @@ export default function Home() {
   const loadMainImages = async () => {
     setMainImageLoading(true)
     try {
-      const response = await Api.home.MainImageGET()
+      const response = await Api.home.MainImageGET(locale)
 
       setMainImage(response.data.data)
     } catch (error) {
@@ -56,7 +57,7 @@ export default function Home() {
 
   const loadInvites = async () => {
     try {
-      const response = await Api.home.InviteHomeGET()
+      const response = await Api.home.InviteHomeGET(locale)
 
       setInvite(response.data.data)
     } catch (error) {
@@ -66,7 +67,7 @@ export default function Home() {
 
   const loadGallery = async () => {
     try {
-      const response = await Api.home.GalleryHomeGET()
+      const response = await Api.home.GalleryHomeGET(locale)
 
       setGallery(response.data.data)
     } catch (error) {
@@ -76,7 +77,7 @@ export default function Home() {
 
   const loadHighLights = async () => {
     try {
-      const response = await Api.home.HighlightsHomeGET()
+      const response = await Api.home.HighlightsHomeGET(locale)
 
       setHighLights(response.data.data)
     } catch (error) {
@@ -87,7 +88,7 @@ export default function Home() {
   const loadTeam = async () => {
     setTeamLoading(true)
     try {
-      const response = await Api.team.TeamGET()
+      const response = await Api.team.TeamGET(locale)
 
       setTeam(response.data)
     } catch (error) {
@@ -99,7 +100,7 @@ export default function Home() {
 
   const loadEvent = async () => {
     try {
-      const response = await Api.home.EventGET()
+      const response = await Api.home.EventGET(locale)
 
       setEvent(response.data.data)
     } catch (error) {
@@ -109,7 +110,7 @@ export default function Home() {
 
   const loadReviews = async () => {
     try {
-      const response = await Api.home.ReviewsGET()
+      const response = await Api.home.ReviewsGET(locale)
 
       setReviews(response.data)
     } catch (error) {

@@ -4,6 +4,7 @@ import React from 'react'
 
 import Image from 'next/image'
 import Link from 'next/link'
+import { useLocale } from 'next-intl'
 
 import Loader from '@/components/Common/Loader'
 import { Api } from '@/services'
@@ -19,12 +20,13 @@ interface Props {
 }
 
 export default function Blog({ params }: Props) {
+  const locale = useLocale()
   const [blogData, setBlogData] = React.useState<BlogsTypes.Item | null>(null)
   const [htmlContent, setHtmlContent] = React.useState<string>('')
 
   const loadData = async () => {
     try {
-      const response = await Api.blog.BlogDetailGET(params)
+      const response = await Api.blog.BlogDetailGET(params, locale)
 
       setBlogData(response.data.data)
     } catch (error) {

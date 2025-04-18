@@ -1,6 +1,8 @@
-export const BlogGET = async () => {
+import { buildQuery } from '@/helpers/buildQueryLanguage'
+
+export const BlogGET = async (locale: string) => {
   try {
-    const response = await fetch('/api/blog', {
+    const response = await fetch(`/api/blog${buildQuery(locale)}`, {
       method: 'GET',
     })
 
@@ -8,13 +10,13 @@ export const BlogGET = async () => {
 
     return data
   } catch (error) {
-    console.log('Failed to fetch events', error)
+    console.log('Failed to fetch blog', error)
   }
 }
 
-export const BlogDetailGET = async (blog_id: string) => {
+export const BlogDetailGET = async (blog_id: string, locale: string) => {
   try {
-    const response = await fetch(`http://localhost:3000/api/blog/${blog_id}`, {
+    const response = await fetch(`/api/blog/${blog_id}${buildQuery(locale)}`, {
       method: 'GET',
     })
 
@@ -22,6 +24,6 @@ export const BlogDetailGET = async (blog_id: string) => {
 
     return data
   } catch (error) {
-    console.log('Failed to fetch events', error)
+    console.log('Failed to fetch blog detail', error)
   }
 }

@@ -3,15 +3,18 @@
 import { useEffect, useRef, useState } from 'react'
 
 import { usePathname } from 'next/navigation'
+import { useLocale } from 'next-intl'
 import { useTheme } from 'next-themes'
 
+import { HeaderItem } from '@/types/menu'
+
 import HeaderLink from '../Header/Navigation/HeaderLink'
-import { headerData } from '../Header/Navigation/menuData'
 import MobileHeaderLink from '../Header/Navigation/MobileHeaderLink'
 
 import Logo from './Logo'
 
 const Header: React.FC = () => {
+  const locale = useLocale()
   const pathUrl = usePathname()
   const { theme, setTheme } = useTheme()
 
@@ -67,6 +70,32 @@ const Header: React.FC = () => {
       document.body.style.overflow = ''
     }
   }, [isSignInOpen, isSignUpOpen, navbarOpen])
+
+  const headerData: HeaderItem[] = [
+    { label: 'Главная', href: '/' },
+    { label: 'О нас', href: `/${locale}/aboutUs` },
+    { label: 'Junior', href: `/${locale}/junior` },
+    { label: 'Наша команда', href: `/${locale}/teams` },
+
+    {
+      label: 'Для родителей',
+      href: `/${locale}/forParents`,
+      submenu: [
+        {
+          label: 'Потеряшки',
+          href: '/google-drive',
+        },
+        {
+          label: 'Edupage',
+          href: 'https://intellectschool.edupage.org/',
+        },
+      ],
+    },
+    { label: 'ЕЧТ', href: `/${locale}/results` },
+    { label: 'Наш блог', href: `/${locale}/blog` },
+    { label: 'Документации', href: `/${locale}/documentation` },
+    { label: 'Контакты', href: `/${locale}/contact` },
+  ]
 
   return (
     <>

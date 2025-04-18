@@ -1,6 +1,8 @@
-export const ContactsGET = async () => {
+import { buildQuery } from '@/helpers/buildQueryLanguage'
+
+export const ContactsGET = async (locale: string) => {
   try {
-    const response = await fetch('/api/contacts', {
+    const response = await fetch(`/api/contacts${buildQuery(locale)}`, {
       method: 'GET',
     })
 
@@ -8,6 +10,6 @@ export const ContactsGET = async () => {
 
     return data
   } catch (error) {
-    console.log('Failed to fetch events', error)
+    console.log('Failed to fetch contacts', error)
   }
 }

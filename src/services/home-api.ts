@@ -1,6 +1,8 @@
-export const EventGET = async () => {
+import { buildQuery } from '@/helpers/buildQueryLanguage'
+
+export const EventGET = async (locale: string) => {
   try {
-    const response = await fetch('/api/home/event', {
+    const response = await fetch(`/api/home/event${buildQuery(locale)}`, {
       method: 'GET',
     })
 
@@ -12,9 +14,9 @@ export const EventGET = async () => {
   }
 }
 
-export const MainImageGET = async () => {
+export const MainImageGET = async (locale: string) => {
   try {
-    const response = await fetch('/api/home/main-image', {
+    const response = await fetch(`/api/home/main-image${buildQuery(locale)}`, {
       method: 'GET',
     })
 
@@ -26,9 +28,9 @@ export const MainImageGET = async () => {
   }
 }
 
-export const InviteHomeGET = async () => {
+export const InviteHomeGET = async (locale: string) => {
   try {
-    const response = await fetch('/api/home/invite', {
+    const response = await fetch(`/api/home/invite${buildQuery(locale)}`, {
       method: 'GET',
     })
 
@@ -36,13 +38,13 @@ export const InviteHomeGET = async () => {
 
     return data
   } catch (error) {
-    console.log('Failed to fetch main image', error)
+    console.log('Failed to fetch invite data', error)
   }
 }
 
-export const GalleryHomeGET = async () => {
+export const GalleryHomeGET = async (locale: string) => {
   try {
-    const response = await fetch('/api/home/gallery', {
+    const response = await fetch(`/api/home/gallery${buildQuery(locale)}`, {
       method: 'GET',
     })
 
@@ -50,13 +52,13 @@ export const GalleryHomeGET = async () => {
 
     return data
   } catch (error) {
-    console.log('Failed to fetch main image', error)
+    console.log('Failed to fetch gallery data', error)
   }
 }
 
-export const HighlightsHomeGET = async () => {
+export const HighlightsHomeGET = async (locale: string) => {
   try {
-    const response = await fetch('/api/home/highlights', {
+    const response = await fetch(`/api/home/highlights${buildQuery(locale)}`, {
       method: 'GET',
     })
 
@@ -64,13 +66,13 @@ export const HighlightsHomeGET = async () => {
 
     return data
   } catch (error) {
-    console.log('Failed to fetch main image', error)
+    console.log('Failed to fetch highlights data', error)
   }
 }
 
-export const ReviewsGET = async () => {
+export const ReviewsGET = async (locale: string) => {
   try {
-    const response = await fetch('/api/home/reviews', {
+    const response = await fetch(`/api/home/reviews${buildQuery(locale)}`, {
       method: 'GET',
     })
 
@@ -78,6 +80,6 @@ export const ReviewsGET = async () => {
 
     return data
   } catch (error) {
-    console.log('Failed to fetch events', error)
+    console.log('Failed to fetch reviews data', error)
   }
 }

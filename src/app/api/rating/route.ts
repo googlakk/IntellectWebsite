@@ -1,8 +1,11 @@
-import { NextResponse } from 'next/server'
+import { NextRequest, NextResponse } from 'next/server'
 
-export async function GET() {
+export async function GET(request: NextRequest) {
   try {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/students-raitings?populate[students][populate]=quarters`, {
+    const { searchParams } = new URL(request.url)
+    const locale = searchParams.get('locale')
+    const query = `${locale ? `locale=${locale}&` : ''}`
+    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/students-raitings?${query}populate[students][populate]=quarters`, {
       cache: 'no-store',
       method: 'GET',
     })

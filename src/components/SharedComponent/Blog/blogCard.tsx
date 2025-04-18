@@ -5,13 +5,13 @@ import Link from 'next/link'
 
 import { BlogsTypes } from '@/types/blogs.interface'
 
-const BlogCard = ({ blog }: { blog: BlogsTypes.Item }) => {
+const BlogCard = ({ blog }: { blog: BlogsTypes.Item}) => {
 
   return (
     <>
       <div className="group relative">
         <div className="mb-8 overflow-hidden rounded">
-          <Link href={`/blog/${blog.documentId}`} aria-label="blog cover" className="block">
+          <Link href={`blog/${blog.documentId}`} aria-label="blog cover" className="block">
             <Image
               src={`https://intellect.soulist.life${blog.image.url}` || 'no image'}
               alt="image"
@@ -31,7 +31,7 @@ const BlogCard = ({ blog }: { blog: BlogsTypes.Item }) => {
         <div>
           <h3>
             <Link
-              href={`/blog/${blog.documentId}`}
+              href={`blog/${blog.documentId}`}
               className="mb-4 inline-block font-semibold text-dark text-black hover:text-primary dark:text-white dark:hover:text-primary text-[22px] leading-[2rem]"
             >
               {blog.title}
