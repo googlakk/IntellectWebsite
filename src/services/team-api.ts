@@ -1,6 +1,8 @@
-export const TeamGET = async () => {
+import { buildQuery } from '@/helpers/buildQueryLanguage'
+
+export const TeamGET = async (locale: string) => {
   try {
-    const response = await fetch('/api/team', {
+    const response = await fetch(`/api/team${buildQuery(locale)}`, {
       method: 'GET',
     })
 

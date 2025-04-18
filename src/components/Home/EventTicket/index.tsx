@@ -1,5 +1,7 @@
-import Image from 'next/image'
 import React from 'react'
+
+import Image from 'next/image'
+
 import lic from '../../../../public/images/aboutUS/lic3.png'
 
 const EventTicket = () => {

@@ -25,7 +25,7 @@ const HeaderLink: React.FC<{ item: HeaderItem }> = ({ item }) => {
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
-      <Link href={item.href} className={`text-base text-MidnightNavyText py-3 dark:text-white flex font-normal hover:text-primary dark:hover:text-primary ${path === item.href ? 'text-primary dark:!text-primary' : ' text-black dark:text-white '} ${path.startsWith(`/${item.label.toLowerCase()}`) ? 'text-primary dark:!text-primary' : null}`}>
+      <Link href={`${item.href}`} className={`text-base text-MidnightNavyText py-3 dark:text-white flex font-normal hover:text-primary dark:hover:text-primary ${path === item.href ? 'text-primary dark:!text-primary' : ' text-black dark:text-white '} ${path.startsWith(`/${item.label.toLowerCase()}`) ? 'text-primary dark:!text-primary' : null}`}>
         {item.label}
         {item.submenu && (
           <svg xmlns="http://www.w3.org/2000/svg" width="1.5em" height="1.5em" viewBox="0 0 24 24">
@@ -42,7 +42,7 @@ const HeaderLink: React.FC<{ item: HeaderItem }> = ({ item }) => {
           {item.submenu?.map((subItem, index) => (
             <Link
               key={index}
-              href={subItem.href}
+              href={`${subItem.href}`}
               className={`block px-4 py-2 text-[15px]  ${
                 path === subItem.href
                   ? 'bg-primary text-white'

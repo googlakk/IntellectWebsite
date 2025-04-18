@@ -1,11 +1,11 @@
 
+import { motion } from 'framer-motion'
+import Image from 'next/image'
 
 import AboutUsImage1 from '../../../../public/images/aboutUS/img1.png'
 import AboutUsImage2 from '../../../../public/images/aboutUS/img2.png'
 import AboutUsImage3 from '../../../../public/images/aboutUS/img3.png'
 import AboutUsImage4 from '../../../../public/images/aboutUS/img4.jpeg'
-import Image from 'next/image'
-import { motion } from 'framer-motion'
 
 const AboutSchool = () => {
   return (

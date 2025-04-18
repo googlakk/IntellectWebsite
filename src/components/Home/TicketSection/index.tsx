@@ -2,8 +2,10 @@
 
 import React, { useState } from 'react'
 
-import ConsultationModal from '@/components/ConsultationModal'
 import Image from 'next/image'
+
+import ConsultationModal from '@/components/ConsultationModal'
+
 import kidsCta from '../../../../public/images/aboutUS/child-bg.webp'
 
 const TicketSection = () => {
