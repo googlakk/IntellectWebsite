@@ -1,4 +1,4 @@
-'use client'
+
 
 import AboutUsImage1 from '../../../../public/images/aboutUS/img1.png'
 import AboutUsImage2 from '../../../../public/images/aboutUS/img2.png'

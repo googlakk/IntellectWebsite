@@ -1,3 +1,7 @@
+'use client'
+
+import { useTranslations } from 'next-intl'
+
 import AchievementCounter from '../Counter'
 import EventTicket from '../Home/EventTicket'
 import Mission from '../Home/Mission'
@@ -8,6 +12,8 @@ import HistoryAchievements from './HistoryAchivments'
 import AboutSchool from './School'
 
 const AboutUs = () => {
+  const t = useTranslations()
+
   return (
     <div>
 
@@ -18,7 +24,7 @@ const AboutUs = () => {
 
         <AchievementCounter />
 
-        <Mission />
+        <Mission t={t}/>
         <EventTicket />
       </section>
 
