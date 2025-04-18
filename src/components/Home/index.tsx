@@ -3,6 +3,7 @@
 import React from 'react'
 
 import { Metadata } from 'next'
+import { useTranslations } from 'next-intl'
 
 import EventTicket from '@/components/Home/EventTicket'
 import Features from '@/components/Home/Features'
@@ -29,6 +30,7 @@ export const metadata: Metadata = {
 }
 
 export default function Home() {
+  const t = useTranslations()
   const [mainImage, setMainImage] = React.useState<HomeTypes.MainImage[] | null>(null)
   const [mainImageLoading, setMainImageLoading] = React.useState(false)
   const [invite, setInvite] = React.useState<HomeTypes.Invite[] | null>(null)
@@ -138,14 +140,13 @@ export default function Home() {
       {mainImage?.map((item, index) => (
         <Preview mainImage={item} key={index}/>
       ))}
-
       {invite?.map((item, index) => (
         <Hero invite={item} key={index}/>
       ))}
       {gallery?.map((item, index) => (
         <Conferences gallery={item} key={index}/>
       ))}
-      <Mission/>
+      <Mission t={t}/>
       <Features/>
       {highLights?.map((item, index) => (
         <Highlight highLights={item} key={index}/>
