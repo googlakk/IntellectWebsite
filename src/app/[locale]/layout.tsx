@@ -1,5 +1,5 @@
+// src/app/[locale]/layout.tsx
 import '../globals.css'
-
 import { DM_Sans } from 'next/font/google'
 import { notFound } from 'next/navigation'
 import { NextIntlClientProvider } from 'next-intl'
@@ -16,27 +16,28 @@ import Aoscompo from '@/utils/aos'
 import { AuthDialogProvider } from '../context/AuthDialogContext'
 
 interface RootLayoutProps {
-    children: React.ReactNode;
-    params: {
-      locale: string;
-    };
+  children: React.ReactNode
+  params: Promise<{ locale: string | any }>
 }
 
 const dmsans = DM_Sans({ subsets: ['latin'] })
 
-export default async function LocaleLayout({ children, params } : RootLayoutProps) {
+export default async function LocaleLayout({
+  children,
+  params,
+}: RootLayoutProps) {
   const { locale } = await params
 
   if (!routing.locales.includes(locale as Locale)) {
     notFound()
   }
 
-  const messages = await getMessages()
+  const messages = await getMessages(locale)
 
   return (
-    <html lang={params.locale} suppressHydrationWarning>
+    <html lang={locale} suppressHydrationWarning>
       <body className={dmsans.className}>
-        <NextIntlClientProvider locale={params.locale} messages={messages}>
+        <NextIntlClientProvider locale={locale} messages={messages}>
           <AuthDialogProvider>
             <ThemeProvider
               attribute="class"
