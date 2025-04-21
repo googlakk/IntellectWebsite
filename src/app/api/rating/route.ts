@@ -4,8 +4,8 @@ export async function GET(request: NextRequest) {
   try {
     const { searchParams } = new URL(request.url)
     const locale = searchParams.get('locale')
-    const query = `${locale ? `locale=${locale}&` : ''}`
-    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/students-raitings?${query}populate[students][populate]=quarters`, {
+    const query = `${locale ? `locale=${locale}` : ''}`
+    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/students-raitings?${query}`, {
       cache: 'no-store',
       method: 'GET',
     })
