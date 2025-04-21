@@ -85,28 +85,50 @@ const GroupedTables = () => {
                     </tr>
                   </thead>
                   <tbody>
-                    {item.students.map((student) => (
+                    {item.students.length === 0 ? (
                       <tr
-                        key={student.id}
                         className="border-b dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800"
                       >
-                        <td className="p-1">{student.name}</td>
-                        <td className="p-1">{student.parallel}</td>
-                        <td className="p-1 text-center">{student.average_mark}</td>
+                        <td className="p-1">Пусто</td>
+                        <td className="p-1">Пусто</td>
+                        <td className="p-1 text-center">Пусто</td>
                         <td className="p-1 text-center">
-                          {getBadge(student.quarters.q1)}
+                          {getBadge(null)}
                         </td>
                         <td className="p-1 text-center">
-                          {getBadge(student.quarters.q2)}
+                          {getBadge(null)}
                         </td>
                         <td className="p-1 text-center">
-                          {getBadge(student.quarters.q3)}
+                          {getBadge(null)}
                         </td>
                         <td className="p-1 text-center">
-                          {getBadge(student.quarters.q4)}
+                          {getBadge(null)}
                         </td>
                       </tr>
-                    ))}
+                    ) : (
+                      item.students.map((student) => (
+                        <tr
+                          key={student.id}
+                          className="border-b dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800"
+                        >
+                          <td className="p-1">{student.name}</td>
+                          <td className="p-1">{student.parallel}</td>
+                          <td className="p-1 text-center">{student.average_mark}</td>
+                          <td className="p-1 text-center">
+                            {getBadge(student.quarters.q1)}
+                          </td>
+                          <td className="p-1 text-center">
+                            {getBadge(student.quarters.q2)}
+                          </td>
+                          <td className="p-1 text-center">
+                            {getBadge(student.quarters.q3)}
+                          </td>
+                          <td className="p-1 text-center">
+                            {getBadge(student.quarters.q4)}
+                          </td>
+                        </tr>
+                      ))
+                    )}
                   </tbody>
                 </table>
               </div>
