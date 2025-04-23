@@ -22,9 +22,13 @@ const Preview: React.FC<Props> = ({ mainImage }) => {
           autoPlay
           loop
           muted
+          playsInline
           className="absolute top-0 left-0 w-full h-full object-cover z-0"
         >
-          <source src={`https://intellect.soulist.life${mainImage?.video.url}`} type="video/mp4" />
+          <source
+            src={`https://intellect.soulist.life${mainImage?.video.url}`}
+            type="video/mp4"
+          />
           Ваш браузер не поддерживает видео.
         </video>
 
