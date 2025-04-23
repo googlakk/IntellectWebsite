@@ -10,7 +10,7 @@ const Logo: React.FC = () => {
         alt="logo"
         width={100}
         height={124}
-        style={{ width: '80px', height: 'auto' }}
+        style={{ width: '70px', height: 'auto' }}
         quality={100}
         className="dark:hidden"
       />
@@ -19,7 +19,7 @@ const Logo: React.FC = () => {
         alt="logo"
         width={70}
         height={64}
-        style={{ width: '80px', height: 'auto' }}
+        style={{ width: '70px', height: 'auto' }}
         quality={100}
         className="dark:block hidden"
       />
