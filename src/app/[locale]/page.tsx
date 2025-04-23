@@ -6,6 +6,9 @@ import Home from '@/components/Home'
 
 export const metadata: Metadata = {
   title: 'Intellect pro school',
+  icons: {
+    icon: '/images/logoInt.jpeg',
+  },
 }
 
 export default function App() {
