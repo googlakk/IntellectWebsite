@@ -84,6 +84,7 @@ const GroupedTables = () => {
               <h2 className="text-base font-semibold text-center text-gray-700 dark:text-gray-200 mb-2">
                 {item.title}
               </h2>
+
               <div className="overflow-y-auto max-h-[400px] relative">
                 {/* Шапка таблицы */}
                 <div className="sticky top-0 z-10 bg-white dark:bg-gray-900">
@@ -107,10 +108,12 @@ const GroupedTables = () => {
                   <table className="w-full text-sm text-left table-fixed">
                     <tbody>
                       {item.students.map((student) => (
+
                         <tr
                           key={student.id}
                           className="border-b dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800"
                         >
+
                           <td className="p-1 w-[35%]">{student.name}</td>
                           <td className="p-1 w-[15%]">{student.parallel}</td>
                           <td className="p-1 w-[20%] text-center">
@@ -133,6 +136,7 @@ const GroupedTables = () => {
                     </tbody>
                   </table>
                 </div>
+
               </div>
             </motion.div>
           ))}
