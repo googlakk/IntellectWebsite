@@ -21,7 +21,25 @@ const WorkSpeakers: React.FC<Props> = ({ team }) => {
     setVisibleItems((prev) => prev + 5)
   }
 
-  const displayedTeam = team?.data ? team.data.slice(0, visibleItems) : []
+  // Сортируем работников: сначала те, у кого есть order, затем остальные
+  const sortedTeam = team?.data ? [...team.data].sort((a, b) => {
+    
+    if (a.order !== null && b.order !== null) {
+      return a.order - b.order
+    }
+    
+    if (a.order !== null) {
+      return -1
+    }
+    
+    if (b.order !== null) {
+      return 1
+    }
+    
+    return 0
+  }) : []
+
+  const displayedTeam = sortedTeam.slice(0, visibleItems)
 
   return (
     <>

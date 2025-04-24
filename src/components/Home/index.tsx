@@ -89,7 +89,7 @@ export default function Home() {
     setTeamLoading(true)
     try {
       const response = await Api.team.TeamGET(locale)
-
+      
       setTeam(response.data)
     } catch (error) {
       console.log(error)
