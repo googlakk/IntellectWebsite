@@ -1,13 +1,17 @@
 'use client'
 
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState, useTransition } from 'react'
 
-import { usePathname } from 'next/navigation'
+import Image from 'next/image'
+import { usePathname, useRouter } from 'next/navigation'
 import { useLocale } from 'next-intl'
 import { useTheme } from 'next-themes'
 
 import { HeaderItem } from '@/types/menu'
 
+import EnImage from '../../../../public/svgs/header/en.svg'
+import KgImage from '../../../../public/svgs/header/kg.svg'
+import RuImage from '../../../../public/svgs/header/ru.svg'
 import HeaderLink from '../Header/Navigation/HeaderLink'
 import MobileHeaderLink from '../Header/Navigation/MobileHeaderLink'
 
@@ -15,6 +19,7 @@ import Logo from './Logo'
 
 const Header: React.FC = () => {
   const locale = useLocale()
+  const router = useRouter()
   const pathUrl = usePathname()
   const { theme, setTheme } = useTheme()
 
@@ -22,10 +27,13 @@ const Header: React.FC = () => {
   const [sticky, setSticky] = useState(false)
   const [isSignInOpen, setIsSignInOpen] = useState(false)
   const [isSignUpOpen, setIsSignUpOpen] = useState(false)
+  const [langOpen, setLangOpen] = useState(false)
+  const [, startTransition] = useTransition()
 
   const signInRef = useRef<HTMLDivElement>(null)
   const signUpRef = useRef<HTMLDivElement>(null)
   const mobileMenuRef = useRef<HTMLDivElement>(null)
+  const langRef = useRef<HTMLDivElement>(null)
 
   const handleScroll = () => {
     setSticky(window.scrollY >= 80)
@@ -97,6 +105,21 @@ const Header: React.FC = () => {
     { label: 'Контакты', href: `/${locale}/contact` },
   ]
 
+  const languages = [
+    { code: 'ru', icon: RuImage },
+    { code: 'kg', icon: KgImage },
+    { code: 'en', icon: EnImage },
+  ]
+
+  const changeLanguage = (language: string) => {
+    startTransition(() => {
+      router.replace(`/${language}`)
+    })
+    setLangOpen(false)
+  }
+
+  const currentLang = languages.find((l) => l.code === locale) ?? languages[0]
+
   return (
     <>
       <div className="relative" />
@@ -110,13 +133,38 @@ const Header: React.FC = () => {
 
         <div className="container ">
           <div className="flex items-center justify-between py-2 ">
-            <Logo />
+            <Logo locale={locale}/>
             <ul className="hidden lg:flex flex-grow items-center justify-center space-x-6">
               {headerData.map((item, index) => (
                 <HeaderLink key={index} item={item} />
               ))}
             </ul>
             <div className="flex items-center space-x-4">
+              <div ref={langRef} className="relative">
+                <button
+                  onClick={() => setLangOpen(!langOpen)}
+                  className="flex h-8 w-12 items-center justify-center rounded-md ring-1 ring-transparent transition hover:ring-primary"
+                  aria-label="Select language"
+                >
+                  <Image src={currentLang.icon} alt={currentLang.code} width={24} height={16} />
+                </button>
+                {langOpen && (
+                  <ul className="animate-fade-in absolute right-0 mt-2 overflow-hidden rounded-md bg-white shadow-lg ring-1 ring-black/5 dark:bg-darkmode">
+                    {languages.map((lng, index) => (
+                      <li key={index}>
+                        <button
+                          onClick={() => changeLanguage(lng.code)}
+                          className={`w-full px-3 py-2 text-left text-sm uppercase hover:bg-primary/10 dark:hover:bg-primary/20 ${
+                            locale === lng.code ? 'font-bold text-primary' : 'text-dark dark:text-white'
+                          }`}
+                        >
+                          <Image src={lng.icon} alt={lng.code} width={24} height={16} />
+                        </button>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </div>
               <button
                 aria-label="Toggle theme"
                 onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}

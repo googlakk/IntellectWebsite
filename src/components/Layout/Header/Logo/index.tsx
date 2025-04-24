@@ -1,10 +1,14 @@
 import Image from 'next/image'
 import Link from 'next/link'
 
-const Logo: React.FC = () => {
+interface Props {
+  locale?: any
+}
+
+const Logo: React.FC<Props> = ({ locale }) => {
 
   return (
-    <Link href="/">
+    <Link href={`/${locale}`}>
       <Image
         src="/images/logo/logoInt.jpeg"
         alt="logo"
