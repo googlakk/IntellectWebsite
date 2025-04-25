@@ -1,49 +1,42 @@
 import { Feature } from '@/types/feture'
 
-const featuresData: Feature[] = [
+const getFeaturesData = (t: any): Feature[] => [
   {
     id: 1,
     icon: '/images/icons/teach.gif',
-    title: 'Все в одном месте!',
-    paragraph:
-      'Мы объединяем основное обучение, авторские курсы (ментальная арифметика, скорочтение, суперпамять, спорт-стекинг) и спортивные секции. Всё для развития вашего ребёнка — без лишних поездок!',
+    title: t('featuresData.allInOne.title'),
+    paragraph: t('featuresData.allInOne.paragraph'),
   },
   {
-    id: 1,
+    id: 2,
     icon: '/images/icons/journal.gif',
-    title: 'Все домашние задания выполняются в школе',
-    paragraph:
-      'После занятий дети выполняют уроки с учителем, освобождая вечера для отдыха. Все учебники хранятся в личных шкафчиках — никаких тяжелых рюкзаков!',
+    title: t('featuresData.homework.title'),
+    paragraph: t('featuresData.homework.paragraph'),
   },
   {
-    id: 1,
+    id: 3,
     icon: '/images/icons/sal.gif',
-    title: 'Здоровое питание',
-    paragraph:
-      'Завтрак, обед и полдник по продуманному меню. Наши повара готовят сбалансированные блюда, чтобы дети оставались энергичными весь день.',
+    title: t('featuresData.nutrition.title'),
+    paragraph: t('featuresData.nutrition.paragraph'),
   },
-
   {
-    id: 1,
+    id: 4,
     icon: '/images/icons/web.gif',
-    title: 'Углубленный английский и IT',
-    paragraph:
-      'Программа фокусируется на IT-технологиях и английском языке — ключевых навыках для успешной карьеры в современном мире.',
+    title: t('featuresData.englishIt.title'),
+    paragraph: t('featuresData.englishIt.paragraph'),
   },
   {
-    id: 1,
+    id: 5,
     icon: '/images/icons/wi.gif',
-    title: 'Участие в международных соревнованиях',
-    paragraph:
-      'Ученики соревнуются на олимпиадах (Memoriad, World Memory Championship и др.), проверяя навыки и перенимая международный опыт.',
+    title: t('featuresData.competitions.title'),
+    paragraph: t('featuresData.competitions.paragraph'),
   },
   {
-    id: 1,
+    id: 6,
     icon: '/images/icons/mat.gif',
-    title: ' Кружки и секции ',
-    paragraph:
-      'Футбол, баскетбол, ЛФК, ораторское искусство, логика — развиваем таланты, экономя ваше время.',
+    title: t('featuresData.clubs.title'),
+    paragraph: t('featuresData.clubs.paragraph'),
   },
 ]
 
-export default featuresData
+export default getFeaturesData

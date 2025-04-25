@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { useTranslations } from 'next-intl'
 
 import { HomeTypes } from '@/types/home.interface'
 
@@ -9,6 +10,7 @@ interface Props {
 }
 
 const AboutSectionOne: React.FC<Props> = ({ gallery }) => {
+  const t = useTranslations()
 
   return (
     <section className="bg-IcyBreeze dark:bg-darklight relative overflow-hidden before:absolute before:content-[''] before:bg-PaleSkyBlu before:dark:bg-secondary before:w-687 before:h-687 before:-bottom-1/2 before:rounded-full before:xl:inline-block before:hidden">
@@ -20,19 +22,15 @@ const AboutSectionOne: React.FC<Props> = ({ gallery }) => {
             data-aos-delay="200"
             data-aos-duration="1000"
           >
-            <h2 className=" font-bold"> Intellect pro school </h2>
+            <h2 className=" font-bold"> {t('AboutSection.title')}</h2>
             <p className="text-lg font-normal text-SlateBlueText dark:text-white/60 max-w-506 md:pt-9 pt-5 md:pb-14 pb-6">
-              Мы объединяем основное обучение, авторские курсы (ментальная
-              арифметика, скорочтение, суперпамять) и спортивные секции. Удобное
-              расписание, здоровое питание и помощь с уроками — всё в одном
-              месте. Ваш ребенок развивается, участвует в мировых чемпионатах и
-              готовится к будущему с углубленным изучением IT и английского.
+              {t('AboutSection.paragraph')}
             </p>
             <Link
               href="/aboutUs"
               className="btn_outline btn-2 hover-outline-slide-down"
             >
-              <span>Подробнее</span>
+              <span>{t('btnMore')}</span>
             </Link>
           </div>
           <div

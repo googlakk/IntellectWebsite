@@ -1,15 +1,18 @@
 import React from 'react'
 
 import Image from 'next/image'
+import { useTranslations } from 'next-intl'
 
 import lic from '../../../../public/images/aboutUS/lic3.png'
 
 const EventTicket = () => {
+  const t = useTranslations()
+
   return (
     <>
       <section className="dark:bg-darkmode pt-0 mt-16">
         <div className="container">
-          <h2 className="text-center pb-12">Наша лицензия</h2>
+          <h2 className="text-center pb-12">{t('OurLicense')}</h2>
           <div
             className="flex flex-wrap items-stretch"
             data-aos="fade-up"
