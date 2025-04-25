@@ -32,14 +32,19 @@ export const metadata: Metadata = {
 export default function Home() {
   const t = useTranslations()
   const locale = useLocale()
-  const [mainImage, setMainImage] = React.useState<HomeTypes.MainImage[] | null>(null)
+  const [mainImage, setMainImage] = React.useState<
+    HomeTypes.MainImage[] | null
+  >(null)
   const [mainImageLoading, setMainImageLoading] = React.useState(false)
   const [invite, setInvite] = React.useState<HomeTypes.Invite[] | null>(null)
-  const [gallery , setGallery] = React.useState<HomeTypes.Gallery[] | null>(null)
-  const [highLights , setHighLights] = React.useState<HomeTypes.HighLights[] | null>(null)
+  const [gallery, setGallery] = React.useState<HomeTypes.Gallery[] | null>(null)
+  const [highLights, setHighLights] = React.useState<
+    HomeTypes.HighLights[] | null
+  >(null)
   const [event, setEvent] = React.useState<HomeTypes.EventItem[]>([])
   const [team, setTeam] = React.useState<TeamTypes.ItemResponse | null>(null)
-  const [reviews, setReviews] = React.useState<HomeTypes.ReviewItemResponse | null>(null)
+  const [reviews, setReviews] =
+    React.useState<HomeTypes.ReviewItemResponse | null>(null)
   const [teamLoading, setTeamLoading] = React.useState(false)
 
   const loadMainImages = async () => {
@@ -131,7 +136,7 @@ export default function Home() {
   if (mainImageLoading) {
     return (
       <main style={{ marginBottom: `${mainImageLoading ? '100vh' : ''}` }}>
-        <PreLoader/>
+        <PreLoader />
       </main>
     )
   }
@@ -139,24 +144,22 @@ export default function Home() {
   return (
     <main>
       {mainImage?.map((item, index) => (
-        <Preview mainImage={item} key={index}/>
+        <Preview mainImage={item} key={index} />
       ))}
       {invite?.map((item, index) => (
-        <Hero invite={item} key={index}/>
+        <Hero invite={item} key={index} />
       ))}
       {gallery?.map((item, index) => (
-        <Conferences gallery={item} key={index}/>
+        <Conferences gallery={item} key={index} />
       ))}
-      <Mission t={t}/>
-      <Features/>
+      <Mission t={t} />
+      <Features />
       {highLights?.map((item, index) => (
-        <Highlight highLights={item} key={index}/>
+        <Highlight highLights={item} key={index} />
       ))}
-      {teamLoading ? null : (
-        <WorkSpeakers team={team}/>
-      )}
+      {teamLoading ? null : <WorkSpeakers team={team} />}
       {gallery?.map((item, index) => (
-        <AboutSectionOne gallery={item} key={index}/>
+        <AboutSectionOne gallery={item} key={index} />
       ))}
 
       <EventTicket />

@@ -26,6 +26,7 @@ export namespace TeamTypes {
         last_name: string;
         role: string;
         avatar: Avatar;
+        order: number | null;
     }
 
 }

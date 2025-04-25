@@ -3,6 +3,7 @@
 import React from 'react'
 
 import Link from 'next/link'
+import { useLocale } from 'next-intl'
 
 import { HomeTypes } from '@/types/home.interface'
 
@@ -11,6 +12,7 @@ interface Props {
 }
 
 const Preview: React.FC<Props> = ({ mainImage }) => {
+  const locale = useLocale()
 
   return (
     <>
@@ -46,13 +48,13 @@ const Preview: React.FC<Props> = ({ mainImage }) => {
                 </p>
                 <div className="flex flex-col items-center justify-center space-y-4 sm:flex-row sm:space-x-4 sm:space-y-0">
                   <Link
-                    href="/junior"
+                    href={`${locale}/junior`}
                     className="rounded-sm bg-primary px-8 py-4 text-base font-semibold text-white duration-300 ease-in-out hover:bg-primary/80"
                   >
                     Intellect Junior
                   </Link>
                   <Link
-                    href="/aboutUs"
+                    href={`${locale}/aboutUs`}
                     className="rounded-sm bg-primary px-8 py-4 text-base font-semibold text-white duration-300 ease-in-out hover:bg-primary/80"
                   >
                     Intellect Pro School
