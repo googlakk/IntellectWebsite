@@ -3,6 +3,7 @@
 import React, { useState } from 'react'
 
 import Image from 'next/image'
+import { useTranslations } from 'next-intl'
 
 import ConsultationModal from '@/components/ConsultationModal'
 
@@ -10,6 +11,7 @@ import kidsCta from '../../../../public/images/aboutUS/child-bg.webp'
 
 const TicketSection = () => {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false)
+  const t = useTranslations()
 
   return (
     <>
@@ -31,14 +33,14 @@ const TicketSection = () => {
               </div>
               <div className="md:w-2/5 w-full ml-auto lg:text-start text-center">
                 <p className="sm:text-4xl text-[28px] leading-[2.25rem] font-bold text-white lg:max-w-364 max-w-full pb-9">
-                  Откройте своему ребонку дорогу в счастливую жизнь!
+                  {t('CtaTitle')}
                 </p>
                 <button
                   onClick={() => setIsModalOpen(true)}
                   className="btn btn-1 hover-filled-slide-down rounded-lg overflow-hidden before:bg-ElectricAqua"
                 >
                   <span className="sm:!px-20 px-10 !border-ElectricAqua !text-white">
-                    Записать
+                    {t('buttonInvite')}
                   </span>
                 </button>
 

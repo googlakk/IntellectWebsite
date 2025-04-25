@@ -1,6 +1,7 @@
 import React from 'react'
 
 import Link from 'next/link'
+import { useLocale, useTranslations } from 'next-intl'
 
 import { HomeTypes } from '@/types/home.interface'
 
@@ -11,6 +12,9 @@ interface Props {
 }
 
 const Conferences: React.FC<Props> = ({ gallery }) => {
+  const t = useTranslations()
+  const locale = useLocale()
+
   return (
     <>
       <section className="bg-IcyBreeze dark:bg-darklight relative overflow-hidden before:absolute before:content-[''] before:bg-PaleSkyBlu before:dark:bg-secondary before:w-687 before:h-687 before:-bottom-1/2 before:rounded-full before:xl:inline-block before:hidden">
@@ -21,7 +25,7 @@ const Conferences: React.FC<Props> = ({ gallery }) => {
               data-aos-delay="200"
               data-aos-duration="1000"
             >
-              <ThumbnailCarousel images={gallery?.images}/>
+              <ThumbnailCarousel images={gallery?.images} />
             </div>
             <div
               className="md:pt-0 pt-6"
@@ -34,10 +38,10 @@ const Conferences: React.FC<Props> = ({ gallery }) => {
                 {gallery?.description}
               </p>
               <Link
-                href="/aboutUs"
+                href={`${locale}/aboutUs`}
                 className="btn_outline btn-2 hover-outline-slide-down"
               >
-                <span>Подробнее</span>
+                <span>{t('btnMore')}</span>
               </Link>
             </div>
           </div>

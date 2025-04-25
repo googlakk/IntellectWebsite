@@ -4,6 +4,7 @@ import React, { useState } from 'react'
 
 import Image from 'next/image'
 import { usePathname } from 'next/navigation'
+import { useTranslations } from 'next-intl'
 
 import { TeamTypes } from '@/types/team.interface'
 
@@ -15,6 +16,7 @@ interface Props {
 
 const WorkSpeakers: React.FC<Props> = ({ team }) => {
   const pathname = usePathname()
+  const t = useTranslations()
   const [visibleItems, setVisibleItems] = useState(5)
 
   const handleLoadMore = () => {
@@ -22,22 +24,23 @@ const WorkSpeakers: React.FC<Props> = ({ team }) => {
   }
 
   // Сортируем работников: сначала те, у кого есть order, затем остальные
-  const sortedTeam = team?.data ? [...team.data].sort((a, b) => {
+  const sortedTeam = team?.data
+    ? [...team.data].sort((a, b) => {
+      if (a.order !== null && b.order !== null) {
+        return a.order - b.order
+      }
 
-    if (a.order !== null && b.order !== null) {
-      return a.order - b.order
-    }
+      if (a.order !== null) {
+        return -1
+      }
 
-    if (a.order !== null) {
-      return -1
-    }
+      if (b.order !== null) {
+        return 1
+      }
 
-    if (b.order !== null) {
-      return 1
-    }
-
-    return 0
-  }) : []
+      return 0
+    })
+    : []
 
   const displayedTeam = sortedTeam.slice(0, visibleItems)
 
@@ -46,7 +49,7 @@ const WorkSpeakers: React.FC<Props> = ({ team }) => {
       <section
         className={`dark:bg-darkmode mt-16 ${pathname === '/' ? '' : ''}`}
       >
-        <h2 className="text-center pb-12">Наша команда</h2>
+        <h2 className="text-center pb-12">{t('Team')}</h2>
         <div className="grid lg:grid-cols-5 sm:grid-cols-2 grid-cols-2 items-stretch gap-8 mx-8">
           {displayedTeam.map((item, index) => (
             <div
@@ -87,7 +90,7 @@ const WorkSpeakers: React.FC<Props> = ({ team }) => {
               onClick={handleLoadMore}
               className="px-4 py-2 bg-primary text-white rounded hover:bg-opacity-80 transition-all duration-300"
             >
-              Загрузить ещё
+              {t('TeamMore')}
             </button>
           </div>
         )}

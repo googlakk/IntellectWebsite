@@ -1,7 +1,7 @@
-
 import { useState } from 'react'
 
 import Image from 'next/image'
+import { useTranslations } from 'next-intl'
 
 import ConsultationModal from '@/components/ConsultationModal'
 import { HomeTypes } from '@/types/home.interface'
@@ -12,6 +12,7 @@ interface Props {
 
 const Hero: React.FC<Props> = ({ invite }) => {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false)
+  const t = useTranslations()
 
   return (
     <section className="dark:bg-darkmode">
@@ -45,7 +46,7 @@ const Hero: React.FC<Props> = ({ invite }) => {
               >
                 <span className="!flex !items-center gap-14">
                   <i className="bg-[url('/images/hero/tickets.svg')] bg-no-repeat bg-contain w-6 h-6 inline-block" />
-                  Записаться
+                  {t('buttonInvite')}
                 </span>
               </button>
 
@@ -94,7 +95,9 @@ const Hero: React.FC<Props> = ({ invite }) => {
                 className="w-full h-full"
               />
               <div className="bg-Aquamarine rounded-22 shadow-hero-box py-4 px-5 absolute top-24 -right-20 xl:inline-block hidden">
-                <p className="text-lg font-bold text-green-800">{invite.organizator2.name}</p>
+                <p className="text-lg font-bold text-green-800">
+                  {invite.organizator2.name}
+                </p>
                 <p className="text-base font-medium text-green-800 text-center">
                   {invite.organizator2.role}
                 </p>

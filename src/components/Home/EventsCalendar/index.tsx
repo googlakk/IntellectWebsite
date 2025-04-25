@@ -1,11 +1,13 @@
 'use client'
 
+import 'aos/dist/aos.css'
+
 import React from 'react'
 
 import AOS from 'aos'
-import 'aos/dist/aos.css'
 import { format, isSameDay, parseISO } from 'date-fns'
 import { ru } from 'date-fns/locale'
+import { useTranslations } from 'next-intl'
 
 import { HomeTypes } from '@/types/home.interface'
 
@@ -14,6 +16,8 @@ interface Props {
 }
 
 const CalendarWithEvents: React.FC<Props> = (props) => {
+  const t = useTranslations()
+
   React.useEffect(() => {
     AOS.init({
       duration: 600,
@@ -63,7 +67,7 @@ const CalendarWithEvents: React.FC<Props> = (props) => {
             data-aos-duration="1000"
             className="text-center pb-10"
           >
-            Календарь мероприятий
+            {t('EvantsTitle')}
           </h2>
 
           {eventDates.length > 0 && (
@@ -108,7 +112,11 @@ const CalendarWithEvents: React.FC<Props> = (props) => {
               className="flex items-center flex-wrap w-full border border-solid dark:border-dark_border md:px-14 px-6 md:mt-14 mt-6 rounded-22"
             >
               {filteredEvents.map((eventItem, index) => {
-                const formattedTime = `${eventItem.time_start ? eventItem.time_start.substring(0, 5) : ''} - ${
+                const formattedTime = `${
+                  eventItem.time_start
+                    ? eventItem.time_start.substring(0, 5)
+                    : ''
+                } - ${
                   eventItem.time_end ? eventItem.time_end.substring(0, 5) : ''
                 }`
 
@@ -132,13 +140,10 @@ const CalendarWithEvents: React.FC<Props> = (props) => {
               })}
             </div>
           ) : (
-            <div
-              data-aos="fade-up"
-              className="text-center py-10 text-gray-500"
-            >
+            <div data-aos="fade-up" className="text-center py-10 text-gray-500">
               {eventDates.length > 0
                 ? 'На эту дату мероприятий не найдено'
-                : 'Нет запланированных мероприятий'}
+                : `${t('EvantsNone')}`}
             </div>
           )}
         </div>

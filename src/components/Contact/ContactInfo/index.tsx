@@ -3,14 +3,17 @@
 import React from 'react'
 
 import Link from 'next/link'
-import { useLocale } from 'next-intl'
+import { useLocale, useTranslations } from 'next-intl'
 
 import { Api } from '@/services'
 import { ContactsTypes } from '@/types/contacts.interface'
 
 const ContactsSection = () => {
   const locale = useLocale()
-  const [contact, setContact] = React.useState<ContactsTypes.Item[] | null>(null)
+  const t = useTranslations('ContactsSection')
+  const [contact, setContact] = React.useState<ContactsTypes.Item[] | null>(
+    null,
+  )
 
   const loadContact = async () => {
     try {
@@ -73,10 +76,10 @@ const ContactsSection = () => {
       <div className="container mx-auto px-4 max-w-7xl">
         <div className="text-center mb-12 md:mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-blue-600 dark:text-white mb-4">
-            Контакты
+            {t('title')}
           </h2>
           <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-            Свяжитесь с нами удобным для вас способом
+            {t('subtitle')}
           </p>
         </div>
 
@@ -91,7 +94,7 @@ const ContactsSection = () => {
 
           <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6 md:p-8">
             <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
-              Наши контакты
+              {t('name')}
             </h3>
 
             <div className="space-y-6">
@@ -157,7 +160,7 @@ const ContactsSection = () => {
             {/* Социальные сети */}
             <div className="mt-8">
               <h4 className="text-xl font-semibold text-gray-800 dark:text-gray-100 mb-4">
-                Мы в соцсетях
+                {t('socialTitle')}
               </h4>
               <div className="flex space-x-4">
                 {socialLinks.map((social) => (

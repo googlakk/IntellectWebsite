@@ -1,9 +1,96 @@
 {
-    "missionAndVisionTitle": "Mission and Vision",
-    "missionAndVisionIntro": "At the Intellect Pro School Foundation, the pedagogical council approved our mission and vision:",
-    "missionTitle": "Mission:",
-    "missionText": "We train IT specialists who not only possess deep professional knowledge but also have well-developed critical thinking, creativity, and fluency in English. Our graduates confidently build careers in international environments and become in‑demand professionals.",
-    "visionTitle": "Vision:",
-    "visionText": "Our school is a center for nurturing new‑generation leaders ready to realize their potential in any field, communicate freely, and conduct business at the international level. We cultivate individuals capable of shaping the future by implementing innovations and bringing positive change to society."
+  "header": {
+    "home": "Home",
+    "about": "About us",
+    "junior": "Junior",
+    "team": "Our team",
+    "forParents": "For parents",
+    "lostThings": "Lost & Found",
+    "edupage": "Edupage",
+    "results": "Exam",
+    "blog": "Our blog",
+    "docs": "Documentation",
+    "contact": "Contacts"
+  },
+  "missionAndVisionTitle": "Mission and Vision",
+  "missionAndVisionIntro": "At the Intellect Pro School Foundation, the pedagogical council approved our mission and vision:",
+  "missionTitle": "Mission:",
+  "missionText": "We train IT specialists who not only possess deep professional knowledge but also have well-developed critical thinking, creativity, and fluency in English. Our graduates confidently build careers in international environments and become in‑demand professionals.",
+  "visionTitle": "Vision:",
+  "visionText": "Our school is a center for nurturing new‑generation leaders ready to realize their potential in any field, communicate freely, and conduct business at the international level. We cultivate individuals capable of shaping the future by implementing innovations and bringing positive change to society.",
+  "buttonInvite": "Contact us",
+  "btnMore": "Learn more",
+  "features": {
+    "title": "Intellect Pro School — The Leader in Future Education!",
+    "description": "We offer modern teaching methodologies that help children unlock their potential and prepare for the challenges of tomorrow.",
+    "featuresData": {
+      "allInOne": {
+        "title": "Everything in One Place!",
+        "paragraph": "We combine core education, proprietary courses (mental arithmetic, speed reading, super memory, sport stacking) and sports sections. Everything for your child's development — without unnecessary trips!"
+      },
+      "homework": {
+        "title": "All Homework Done at School",
+        "paragraph": "After classes, children complete assignments with teachers, freeing up evenings for rest. All textbooks are stored in personal lockers — no heavy backpacks!"
+      },
+      "nutrition": {
+        "title": "Healthy Nutrition",
+        "paragraph": "Breakfast, lunch and afternoon snack according to a well-thought-out menu. Our chefs prepare balanced meals to keep children energized all day."
+      },
+      "englishIt": {
+        "title": "Advanced English and IT",
+        "paragraph": "The program focuses on IT technologies and English — key skills for a successful career in the modern world."
+      },
+      "competitions": {
+        "title": "Participation in International Competitions",
+        "paragraph": "Students compete in olympiads (Memoriad, World Memory Championship, etc.), testing their skills and gaining international experience."
+      },
+      "clubs": {
+        "title": "Clubs and Sections",
+        "paragraph": "Football, basketball, physical therapy, public speaking, logic — we develop talents while saving your time."
+      }
+    }
+  },
+  "Team": "Our Team",
+  "TeamMore": "More",
+  "AboutSection": {
+    "title": "Intellect pro school",
+    "paragraph": "We integrate core academics with specialized courses (mental math, speed reading, memory training) and athletics. One location handles everything: scheduling, meals, and homework help. Students grow skills, compete globally, and future-proof themselves with intensive IT and English programs."
+  },
+  "OurLicense": "Our License",
+  "EvantsTitle": "Our events",
+  "EvantsNone": "No scheduled events",
+  "ContactsSection": {
+    "title": "Contacts",
+    "subtitle": "Reach out to us in any convenient way",
+    "name": "Our contacns",
+    "socialTitle": "Find Us on Social Media"
+  },
+  "CtaTitle": "Give your child the gift of a joyful, fulfilling future!",
+  "AboutPage": {
+    "historyAchivments": {
+      "title": "Наша история",
+      "subTitle": "Основанный в 2016 году Жакшылыком Матановым, центр INTELLECT стал флагманом современного образования в регионе"
+    },
+    "missionBlock": {
+      "title": "Наша миссия",
+      "subTitle": "    Подготовка лидеров нового поколения, владеющих IT-технологиями и английским языком на уровне, достаточном для международной карьеры."
+    },
+    "achivments": {
+      "title": " Ключевые достижения",
+      "items": [
+        {
+          "id": 1,
+          "text": "Разработали уникальные методики обучения с лучшими педагогами страны"
+        },
+        {
+          "id": 2,
+          "text": "Стали официальными представителями мировых чемпионатов по ментальной арифметике и памяти"
+        },
+        {
+          "id": 3,
+          "text": "Наши ученики покорили миллионы зрителей на Central Asia's Got Talent"
+        }
+      ]
+    }
   }
-  
+}

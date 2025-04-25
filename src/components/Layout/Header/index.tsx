@@ -4,7 +4,7 @@ import { useEffect, useRef, useState, useTransition } from 'react'
 
 import Image from 'next/image'
 import { usePathname, useRouter } from 'next/navigation'
-import { useLocale } from 'next-intl'
+import { useLocale, useTranslations } from 'next-intl'
 import { useTheme } from 'next-themes'
 
 import { HeaderItem } from '@/types/menu'
@@ -21,6 +21,7 @@ const Header: React.FC = () => {
   const locale = useLocale()
   const router = useRouter()
   const pathUrl = usePathname()
+  const t = useTranslations('header')
   const { theme, setTheme } = useTheme()
 
   const [navbarOpen, setNavbarOpen] = useState(false)
@@ -80,29 +81,28 @@ const Header: React.FC = () => {
   }, [isSignInOpen, isSignUpOpen, navbarOpen])
 
   const headerData: HeaderItem[] = [
-    { label: 'Главная', href: '/' },
-    { label: 'О нас', href: `/${locale}/aboutUs` },
-    { label: 'Junior', href: `/${locale}/junior` },
-    { label: 'Наша команда', href: `/${locale}/teams` },
-
+    { label: t('home'), href: '/' },
+    { label: t('about'), href: `/${locale}/aboutUs` },
+    { label: t('junior'), href: `/${locale}/junior` },
+    { label: t('team'), href: `/${locale}/teams` },
     {
-      label: 'Для родителей',
+      label: t('forParents'),
       href: `/${locale}/forParents`,
       submenu: [
         {
-          label: 'Потеряшки',
+          label: t('lostThings'),
           href: 'https://drive.google.com/drive/folders/1S9O9NrE93LnYXzIJRCipvU5O8nK5X9Ir?usp=sharing',
         },
         {
-          label: 'Edupage',
+          label: t('edupage'),
           href: 'https://intellectschool.edupage.org/',
         },
       ],
     },
-    { label: 'ЕЧТ', href: `/${locale}/results` },
-    { label: 'Наш блог', href: `/${locale}/blog` },
-    { label: 'Документации', href: `/${locale}/documentation` },
-    { label: 'Контакты', href: `/${locale}/contact` },
+    { label: t('results'), href: `/${locale}/results` },
+    { label: t('blog'), href: `/${locale}/blog` },
+    { label: t('docs'), href: `/${locale}/documentation` },
+    { label: t('contact'), href: `/${locale}/contact` },
   ]
 
   const languages = [
@@ -130,10 +130,9 @@ const Header: React.FC = () => {
             : 'bg-white dark:bg-secondary'
         }`}
       >
-
         <div className="container ">
           <div className="flex items-center justify-between py-2 ">
-            <Logo locale={locale}/>
+            <Logo locale={locale} />
             <ul className="hidden lg:flex flex-grow items-center justify-center space-x-6">
               {headerData.map((item, index) => (
                 <HeaderLink key={index} item={item} />
@@ -146,7 +145,12 @@ const Header: React.FC = () => {
                   className="flex h-8 w-12 items-center justify-center rounded-md ring-1 ring-transparent transition hover:ring-primary"
                   aria-label="Select language"
                 >
-                  <Image src={currentLang.icon} alt={currentLang.code} width={24} height={16} />
+                  <Image
+                    src={currentLang.icon}
+                    alt={currentLang.code}
+                    width={24}
+                    height={16}
+                  />
                 </button>
                 {langOpen && (
                   <ul className="animate-fade-in absolute right-0 mt-2 overflow-hidden rounded-md bg-white shadow-lg ring-1 ring-black/5 dark:bg-darkmode">
@@ -155,10 +159,17 @@ const Header: React.FC = () => {
                         <button
                           onClick={() => changeLanguage(lng.code)}
                           className={`w-full px-3 py-2 text-left text-sm uppercase hover:bg-primary/10 dark:hover:bg-primary/20 ${
-                            locale === lng.code ? 'font-bold text-primary' : 'text-dark dark:text-white'
+                            locale === lng.code
+                              ? 'font-bold text-primary'
+                              : 'text-dark dark:text-white'
                           }`}
                         >
-                          <Image src={lng.icon} alt={lng.code} width={24} height={16} />
+                          <Image
+                            src={lng.icon}
+                            alt={lng.code}
+                            width={24}
+                            height={16}
+                          />
                         </button>
                       </li>
                     ))}
