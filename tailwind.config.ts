@@ -1,11 +1,11 @@
-import type { Config } from "tailwindcss";
+import type { Config } from 'tailwindcss'
 
 const config: Config = {
-  darkMode: "class",
+  darkMode: 'class',
   content: [
-    "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
+    './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
+    './src/components/**/*.{js,ts,jsx,tsx,mdx}',
+    './src/app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
     extend: {
@@ -47,7 +47,7 @@ const config: Config = {
       boxShadow: {
         'hero-box': '0px 10px 20px 0px #00000026',
         'round-box': '0px 6px 10px 0px #00000026',
-        "darkmd": "rgba(145, 158, 171, 0.2) 0px 0px 2px 0px, rgba(145, 158, 171, 0.12) 0px 12px 24px -4px",
+        'darkmd': 'rgba(145, 158, 171, 0.2) 0px 0px 2px 0px, rgba(145, 158, 171, 0.12) 0px 12px 24px -4px',
       },
       borderRadius: {
         '14': '0.875rem',
@@ -69,7 +69,7 @@ const config: Config = {
         '2000': '2000ms',    // 2 seconds
       },
       transitionTimingFunction: {
-        'ease-in-out': 'cubic-bezier(0.4, 0, 0.2, 1);', 
+        'ease-in-out': 'cubic-bezier(0.4, 0, 0.2, 1);',
         'out-expo': 'cubic-bezier(0.19, 1, 0.22, 1)',
       },
       transform: {
@@ -78,151 +78,152 @@ const config: Config = {
       zIndex: {
         '1': '1',
         '3': '3',
-      },      
+      },
       colors: {
-        primary: "#2F73F2",
-        secondary: "#102C46",
-        SereneSky: "#8FACC6",
-        ElectricAqua: "#46C4FF",
-        RegalBlue: "#13439B",
-        LightYellow: "#FFE15A",
-        IcyBreeze: "#EFFBFF",
-        PaleCyan: "#CFF4FF",
-        Aquamarine: "#7DF9C2",
-        MidnightNavyText: "#102D47",
-        SlateBlueText : "#547593",
-        PaleSkyBlu: "#E0F7FF",
-        MistyTealText: "#6F9DAC",
-        OliveDrab: "#73713C",
-        CadetBlue: "#879AAC",
-        Dandelion: "#F2EC1D",
-        SkyBlueMist: "#C0D5FB",
-        LightSkyBlue: "#B2D5EA",
-        Salem: "#1C7C52",
-        YellowRating: "#FAB446",
-        PaleCerulean: "#A3BBD1",
-        PeriwinkleBorder:"#C0D5FB",
-        LightBlueBorder: "#4F8BFB",
-        OceanDepthsDarkBorder: "#224767",
-        PowderBlueBorder: "#E1F1F6",
-        darkLineColor: "#24497c",
-        darkmode: "#011120",
-        darklight: "#0d1a2c",
-        darktext: "#7F8487",
-        dark_border: "#224767",
-        dark_input: "#1B2430",
+        primary: '#2F73F2',
+        secondary: '#102C46',
+        SereneSky: '#8FACC6',
+        ElectricAqua: '#46C4FF',
+        RegalBlue: '#13439B',
+        LightYellow: '#FFE15A',
+        IcyBreeze: '#EFFBFF',
+        PaleCyan: '#CFF4FF',
+        Aquamarine: '#7DF9C2',
+        MidnightNavyText: '#102D47',
+        SlateBlueText : '#547593',
+        PaleSkyBlu: '#E0F7FF',
+        MistyTealText: '#6F9DAC',
+        OliveDrab: '#73713C',
+        CadetBlue: '#879AAC',
+        Dandelion: '#F2EC1D',
+        SkyBlueMist: '#C0D5FB',
+        LightSkyBlue: '#B2D5EA',
+        Salem: '#1C7C52',
+        YellowRating: '#FAB446',
+        PaleCerulean: '#A3BBD1',
+        PeriwinkleBorder:'#C0D5FB',
+        LightBlueBorder: '#4F8BFB',
+        OceanDepthsDarkBorder: '#224767',
+        PowderBlueBorder: '#E1F1F6',
+        darkLineColor: '#24497c',
+        darkmode: '#011120',
+        darklight: '#0d1a2c',
+        darktext: '#7F8487',
+        dark_border: '#224767',
+        dark_input: '#1B2430',
       },
       fontSize: {
         58: [
-          "3.625rem",
+          '3.625rem',
           {
-            lineHeight: "5.375rem",
+            lineHeight: '5.375rem',
           },
         ],
         53: [
-          "3.3125rem",
+          '3.3125rem',
           {
-            lineHeight: "3.875rem",
+            lineHeight: '3.875rem',
           },
         ],
         40: [
-          "2.5rem",
+          '2.5rem',
           {
-            lineHeight: "3.4375rem",
+            lineHeight: '3.4375rem',
           },
         ],
         48: [
-          "3rem",
+          '3rem',
           {
-            lineHeight: "3.39rem",
+            lineHeight: '3.39rem',
           },
         ],
         36: [
-          "2.25rem",
+          '2.25rem',
           {
-            lineHeight: "2.625rem",
+            lineHeight: '2.625rem',
           },
         ],
         34: [
-          "2.125rem",
+          '2.125rem',
           {
-            lineHeight: "2.7669rem",
+            lineHeight: '2.7669rem',
           },
         ],
         32: [
-          "2rem",
+          '2rem',
           {
-            lineHeight: "2.5rem",
+            lineHeight: '2.5rem',
           },
         ],
         28: [
-          "1.75rem",
+          '1.75rem',
           {
-            lineHeight: "2.25rem",
+            lineHeight: '2.25rem',
           },
         ],
         26: [
-          "1.625rem",
+          '1.625rem',
           {
-            lineHeight: "2.1156rem",
+            lineHeight: '2.1156rem',
           },
         ],
         24: [
-          "1.5rem",
+          '1.5rem',
           {
-            lineHeight: "2rem",
+            lineHeight: '2rem',
           },
         ],
         22: [
-          "1.375rem",
+          '1.375rem',
           {
-            lineHeight: "2rem",
+            lineHeight: '2rem',
           },
         ],
         20: [
-          "1.25rem",
+          '1.25rem',
           {
-            lineHeight: "2.125rem",
+            lineHeight: '2.125rem',
           },
         ],
         19: [
-          "1.1875rem",
+          '1.1875rem',
           {
-            lineHeight: "1.625rem",
+            lineHeight: '1.625rem',
           },
         ],
         17: [
-          "1.0625rem",
+          '1.0625rem',
           {
-            lineHeight: "1.4875rem",
+            lineHeight: '1.4875rem',
           },
         ],
         16: [
-          "1rem",
+          '1rem',
           {
-            lineHeight: "1.6875rem",
+            lineHeight: '1.6875rem',
           },
         ],
         15: [
-          "0.9375rem",
+          '0.9375rem',
           {
-            lineHeight: "1.4375rem",
+            lineHeight: '1.4375rem',
           },
         ],
         14: [
-          "0.875rem",
+          '0.875rem',
           {
-            lineHeight: "1.225rem",
+            lineHeight: '1.225rem',
           },
         ],
       },
       backgroundImage: {
-        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-        "gradient-conic":
-          "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+        'gradient-conic':
+          'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
       },
     },
   },
   plugins: [],
-};
-export default config;
+}
+
+export default config

@@ -9,27 +9,21 @@ import EventTicket from '@/components/Home/EventTicket'
 import Features from '@/components/Home/Features'
 import Hero from '@/components/Home/Hero'
 import Mission from '@/components/Home/Mission'
-
-
 import Preview from '@/components/Home/Preview'
-
-
-import { TeamTypes } from '@/types/team.interface'
-
-import TestimonialsGrid from './Testimonials'
-
 import TicketSection from '@/components/Home/TicketSection'
 import WorkSpeakers from '@/components/Home/WorkSpeakers'
 import Highlight from '@/components/Home/YearHighlight/page'
 import { Api } from '@/services'
 import { HomeTypes } from '@/types/home.interface'
-import PreLoader from '../Common/PreLoader'
+import { TeamTypes } from '@/types/team.interface'
 
+import PreLoader from '../Common/PreLoader'
 import ContactInfo from '../Contact/ContactInfo'
 
 import AboutSectionOne from './About'
 import Conferences from './Conferences'
 import CalendarWithEvents from './EventsCalendar'
+import TestimonialsGrid from './Testimonials'
 
 export const metadata: Metadata = {
   title: 'Intellect pro school',
