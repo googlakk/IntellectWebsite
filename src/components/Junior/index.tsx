@@ -4,6 +4,7 @@ import { motion } from 'framer-motion'
 import Image from 'next/image'
 import { FaInstagram, FaMapMarkerAlt, FaPhoneAlt } from 'react-icons/fa'
 
+import heroJunior from '../../../public/images/aboutUS/img1.png'
 import HistoryAchievements from '../About/HistoryAchivments'
 
 export default function Junior() {
@@ -13,15 +14,11 @@ export default function Junior() {
         id="preview"
         className="relative z-10 h-screen flex items-center justify-center overflow-hidden"
       >
-        <video
-          autoPlay
-          loop
-          muted
+        <Image
+          src={heroJunior}
           className="absolute top-0 left-0 w-full h-full object-cover z-0"
-        >
-          <source src="/video/openDay.mp4" type="video/mp4" />
-          Ваш браузер не поддерживает видео.
-        </video>
+          alt="junior"
+        />
 
         <div className="absolute top-0 left-0 w-full h-full bg-black/50 z-10" />
 
@@ -30,14 +27,19 @@ export default function Junior() {
             <div className="w-full px-4">
               <div className="mx-auto max-w-[800px] text-center">
                 <h1 className="mb-5 text-3xl font-bold leading-tight text-white sm:text-4xl sm:leading-tight md:text-5xl md:leading-tight">
-                  Добро пожаловать в <br /> <span className=" font-bold text-transparent bg-clip-text bg-gradient-to-r  from-blue-400 to-purple-400 mb-4"> Intellect Junior! </span> <br />
+                  Добро пожаловать в <br />{' '}
+                  <span className=" font-bold text-transparent bg-clip-text bg-gradient-to-r  from-blue-400 to-purple-400 mb-4">
+                    {' '}
+                    Intellect Junior!{' '}
+                  </span>{' '}
+                  <br />
                   Школа, где начинается умное детство ✨
                 </h1>
                 <p className="mb-12 text-base !leading-relaxed text-white/80 sm:text-lg md:text-xl">
-                  Мы помогаем детям раскрыть их потенциал, развивать память, внимание и мышление с первых лет жизни.
-                  Сильная программа, тёплая атмосфера и индивидуальный подход к каждому ученику.
+                  Мы помогаем детям раскрыть их потенциал, развивать память,
+                  внимание и мышление с первых лет жизни. Сильная программа,
+                  тёплая атмосфера и индивидуальный подход к каждому ученику.
                 </p>
-
               </div>
             </div>
           </div>
@@ -69,20 +71,27 @@ export default function Junior() {
               className="space-y-8"
             >
               <div>
-                <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">О нашей школе</h3>
+                <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+                  О нашей школе
+                </h3>
                 <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
-                  «INTELLECT JUNIOR SCHOOL» — это частная начальная школа (0-3 классы),
-                  основанная на базе образовательного центра Intellect. Мы создали среду,
-                  где дети получают классическое образование через игровые методики.
+                  «INTELLECT JUNIOR SCHOOL» — это частная начальная школа (0-3
+                  классы), основанная на базе образовательного центра Intellect.
+                  Мы создали среду, где дети получают классическое образование
+                  через игровые методики.
                 </p>
               </div>
 
               <div>
-                <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">Наши уникальные программы</h3>
+                <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+                  Наши уникальные программы
+                </h3>
                 <ul className="space-y-4 text-gray-600 dark:text-gray-300">
                   <li className="flex items-start">
                     <span className="text-blue-500 mr-2 mt-1">•</span>
-                    <span>Основы программирования через Scratch и игровые тренажеры</span>
+                    <span>
+                      Основы программирования через Scratch и игровые тренажеры
+                    </span>
                   </li>
                   <li className="flex items-start">
                     <span className="text-blue-500 mr-2 mt-1">•</span>
@@ -90,20 +99,27 @@ export default function Junior() {
                   </li>
                   <li className="flex items-start">
                     <span className="text-blue-500 mr-2 mt-1">•</span>
-                    <span>Ментальная арифметика на специальных детских абакусах</span>
+                    <span>
+                      Ментальная арифметика на специальных детских абакусах
+                    </span>
                   </li>
                   <li className="flex items-start">
                     <span className="text-blue-500 mr-2 mt-1">•</span>
-                    <span>Спорт-стекинг для развития моторики и концентрации</span>
+                    <span>
+                      Спорт-стекинг для развития моторики и концентрации
+                    </span>
                   </li>
                 </ul>
               </div>
 
               <div className="bg-blue-50 dark:bg-blue-900/20 p-6 rounded-xl">
-                <h4 className="text-xl font-semibold text-blue-600 dark:text-blue-400 mb-3">Результаты первых лет</h4>
+                <h4 className="text-xl font-semibold text-blue-600 dark:text-blue-400 mb-3">
+                  Результаты первых лет
+                </h4>
                 <p className="text-gray-600 dark:text-gray-300">
-                  Наши младшие школьники осваивают базовые навыки счета и чтения в 2 раза быстрее,
-                  начинают говорить на английском и создают первые цифровые проекты уже к 3 классу.
+                  Наши младшие школьники осваивают базовые навыки счета и чтения
+                  в 2 раза быстрее, начинают говорить на английском и создают
+                  первые цифровые проекты уже к 3 классу.
                 </p>
               </div>
             </motion.div>
@@ -173,7 +189,9 @@ export default function Junior() {
               ].map((item, index) => (
                 <div key={index} className="flex items-start">
                   <span className="text-green-500 mr-2 mt-1">✓</span>
-                  <span className="text-gray-700 dark:text-gray-300">{item}</span>
+                  <span className="text-gray-700 dark:text-gray-300">
+                    {item}
+                  </span>
                 </div>
               ))}
               {[
@@ -184,7 +202,9 @@ export default function Junior() {
               ].map((item, index) => (
                 <div key={index} className="flex items-start">
                   <span className="text-green-500 mr-2 mt-1">✓</span>
-                  <span className="text-gray-700 dark:text-gray-300">{item}</span>
+                  <span className="text-gray-700 dark:text-gray-300">
+                    {item}
+                  </span>
                 </div>
               ))}
             </div>
@@ -233,6 +253,5 @@ export default function Junior() {
         </div>
       </section>
     </>
-
   )
 }

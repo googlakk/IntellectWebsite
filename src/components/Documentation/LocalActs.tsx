@@ -1,40 +1,28 @@
 const LocalActs = () => {
   const documents = [
     {
-      title: 'Устав школы ОФ \'ИНТЕЛЛЕКТ ПРО СКУЛ\'',
-      type: 'pdf',
-      icon: '📄',
-      url: '/documents/charter.pdf',
-    },
-    {
       title: 'Лицензия на образовательную деятельность',
       type: 'pdf',
       icon: '📄',
-      url: '/documents/license.pdf',
+      url: 'https://drive.google.com/file/d/13w9_Fx-w-S6hpxS5wa2ms-aPdzbAWMnb/view?usp=sharing',
     },
     {
       title: 'Свидетельство о государственной регистрации',
       type: 'pdf',
       icon: '📄',
-      url: '/documents/registration.pdf',
+      url: 'https://drive.google.com/file/d/1c7fC1c6H8G8__kvfyMuxUsDZrg4X3J1T/view?usp=sharing',
     },
     {
-      title: 'Правила поведения учащихся',
+      title: 'Правила для родителей',
       type: 'pdf',
       icon: '📝',
-      url: '/documents/student_rules.pdf',
+      url: 'https://drive.google.com/file/d/1Z_Zf9xLfcdGstDQEF0O0KOmW1eqFWLZ5/view?usp=sharing',
     },
     {
-      title: 'Образовательная программа',
+      title: 'Правила для учащихся',
       type: 'pdf',
       icon: '📚',
-      url: '/documents/program.pdf',
-    },
-    {
-      title: 'Положение о защите персональных данных',
-      type: 'pdf',
-      icon: '🔒',
-      url: '/documents/privacy_policy.pdf',
+      url: 'https://drive.google.com/file/d/1jc01TippSlkAOYyQOXMeQTeptJcYwVJm/view?usp=sharing',
     },
   ]
 

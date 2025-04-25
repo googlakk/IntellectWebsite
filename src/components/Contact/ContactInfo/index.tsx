@@ -27,10 +27,22 @@ const ContactsSection = () => {
   }, [])
 
   const socialLinks = [
-    { name: 'Instagram', url: '#', icon: 'instagram' },
-    { name: 'Facebook', url: '#', icon: 'facebook' },
-    { name: 'WhatsApp', url: '#', icon: 'whatsapp' },
-    { name: 'YouTube', url: '#', icon: 'youtube' },
+    {
+      name: 'Instagram',
+      url: 'https://www.instagram.com/intellect_pro_school/',
+      icon: 'instagram',
+    },
+    {
+      name: 'Facebook',
+      url: 'https://www.facebook.com/p/%D0%A8%D0%BA%D0%BE%D0%BB%D0%B0-%D0%98%D0%BD%D1%82%D0%B5%D0%BB%D0%BB%D0%B5%D0%BA%D1%82-100070964040881/',
+      icon: 'facebook',
+    },
+    { name: 'WhatsApp', url: ' https://wa.me/996705889889', icon: 'whatsapp' },
+    {
+      name: 'YouTube',
+      url: 'https://www.youtube.com/watch?v=8xX7T_tdvjw',
+      icon: 'youtube',
+    },
   ]
 
   const SocialIcon = ({ icon }: { icon: string }) => {

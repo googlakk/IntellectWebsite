@@ -91,7 +91,7 @@ const Header: React.FC = () => {
       submenu: [
         {
           label: 'Потеряшки',
-          href: '/google-drive',
+          href: 'https://drive.google.com/drive/folders/1S9O9NrE93LnYXzIJRCipvU5O8nK5X9Ir?usp=sharing',
         },
         {
           label: 'Edupage',
