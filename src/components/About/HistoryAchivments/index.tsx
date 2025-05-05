@@ -1,39 +1,24 @@
+/* eslint-disable react/jsx-key */
 import { useEffect, useState } from 'react'
 
 import { motion } from 'framer-motion'
+import { useTranslations } from 'next-intl'
 import { FaGlobe, FaGraduationCap, FaTrophy, FaUsers } from 'react-icons/fa'
 
 const HistoryAchievements = () => {
+  const t = useTranslations('AboutPage')
   const fadeIn = {
     hidden: { opacity: 0, y: 30 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
   }
-
-  const achievements = [
-    {
-      icon: <FaGraduationCap className="text-3xl text-blue-600" />,
-      number: '10 000+',
-      title: 'учеников',
-      description: 'обучено с 2016 года',
-    },
-    {
-      icon: <FaGlobe className="text-3xl text-green-600" />,
-      number: '20+',
-      title: 'филиалов',
-      description: 'в 4 странах мира',
-    },
-    {
-      icon: <FaTrophy className="text-3xl text-amber-600" />,
-      number: '5',
-      title: 'чемпионатов мира',
-      description: 'официальные представители',
-    },
-    {
-      icon: <FaUsers className="text-3xl text-purple-600" />,
-      number: 'Вундеркинды',
-      title: 'из Бишкека',
-      description: 'звезды Central Asia\'s Got Talent',
-    },
+  const MainAchievements = t.raw('mainAchivments.items')
+  const KeyAchivments = t.raw('achivments.items')
+  // Создаем массив иконок для удобства сопоставления
+  const icons = [
+    <FaGraduationCap className="text-3xl text-blue-600" />,
+    <FaGlobe className="text-3xl text-green-600" />,
+    <FaTrophy className="text-3xl text-amber-600" />,
+    <FaUsers className="text-3xl text-purple-600" />,
   ]
 
   return (
@@ -52,14 +37,13 @@ const HistoryAchievements = () => {
             variants={fadeIn}
             className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400 mb-4"
           >
-            Наша история
+            {t('historyAchivments.title')}
           </motion.h2>
           <motion.p
             variants={fadeIn}
             className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto"
           >
-            Основанный в 2016 году Жакшылыком Матановым, центр INTELLECT стал
-            флагманом современного образования в регионе
+            {t('historyAchivments.subTitle')}
           </motion.p>
         </motion.div>
 
@@ -76,42 +60,23 @@ const HistoryAchievements = () => {
             <motion.div variants={fadeIn}>
               <div className="bg-primary bg-opacity-10 py-5 p-6 rounded-xl">
                 <h4 className="text-xl font-semibold text-primary mb-3">
-                  Наша миссия
+                  {t('missionBlock.title')}
                 </h4>
-                <p>
-                  Подготовка лидеров нового поколения, владеющих IT-технологиями
-                  и английским языком на уровне, достаточном для международной
-                  карьеры.
-                </p>
+                <p>{t('missionBlock.subTitle')}</p>
               </div>
             </motion.div>
 
             <motion.div variants={fadeIn}>
               <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
-                Ключевые достижения
+                {t('achivments.title')}
               </h3>
               <ul className="space-y-4 text-gray-600 dark:text-gray-300">
-                <li className="flex items-start">
-                  <span className="text-blue-500 mr-2 mt-1">•</span>
-                  <span>
-                    Разработали уникальные методики обучения с лучшими
-                    педагогами страны
-                  </span>
-                </li>
-                <li className="flex items-start">
-                  <span className="text-blue-500 mr-2 mt-1">•</span>
-                  <span>
-                    Стали официальными представителями мировых чемпионатов по
-                    ментальной арифметике и памяти
-                  </span>
-                </li>
-                <li className="flex items-start">
-                  <span className="text-blue-500 mr-2 mt-1">•</span>
-                  <span>
-                    Наши ученики покорили миллионы зрителей на Central Asia”s
-                    Got Talent
-                  </span>
-                </li>
+                {KeyAchivments.map((item: any, idx: number) => (
+                  <li key={idx} className="flex items-start">
+                    <span className="text-blue-500 mr-2 mt-1">•</span>
+                    <span>{item.text}</span>
+                  </li>
+                ))}
               </ul>
             </motion.div>
           </motion.div>
@@ -125,14 +90,14 @@ const HistoryAchievements = () => {
             }}
             className="grid grid-cols-1 sm:grid-cols-2 gap-6"
           >
-            {achievements.map((item, index) => (
+            {MainAchievements.map((item: any, index: number) => (
               <motion.div
                 key={index}
                 variants={fadeIn}
                 whileHover={{ y: -5 }}
                 className="bg-gray-50 dark:bg-gray-800 p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow"
               >
-                <div className="flex items-center mb-4">{item.icon}</div>
+                <div className="flex items-center mb-4"> {icons[index]}</div>
                 <h4 className="text-3xl font-bold text-gray-900 dark:text-white mb-1">
                   {item.number}
                 </h4>
@@ -168,12 +133,9 @@ const HistoryAchievements = () => {
           `}</style>
 
           <div className="max-w-4xl mx-auto text-center relative z-10">
-            <h3 className="text-2xl font-bold mb-4">Наши звёзды</h3>
+            <h3 className="text-2xl font-bold mb-4">{t('vunderkind.title')}</h3>
             <p className="mb-6 text-blue-100 relative z-10">
-              Команда ”Вундеркинды из Бишкека” в составе Арсена Рахымбекова,
-              Байэла Рахымбекова, Альбины Орозакуновой, Нурболота Исматтиллаева
-              и Чынгыза Торобаева показала выдающиеся результаты на
-              международных соревнованиях и телешоу.
+              {t('vunderkind.text')}
             </p>
             <div className="flex flex-wrap justify-center gap-4 relative z-10">
               {[
@@ -202,12 +164,12 @@ export default HistoryAchievements
 const StarsBackground = () => {
   const [stars, setStars] = useState<
     Array<{
-      id: number;
-      left: string;
-      top: string;
-      size: string;
-      rotation: string;
-      delay: string;
+      id: number
+      left: string
+      top: string
+      size: string
+      rotation: string
+      delay: string
     }>
   >([])
 

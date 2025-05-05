@@ -38,7 +38,7 @@ const Mission: React.FC<Props> = ({ t }) => {
               <span className="block text-2xl md:text-3xl font-bold mb-6">
                 {t('missionTitle')}
               </span>
-              <p className="leading-relaxed text-justify">
+              <p className="leading-relaxed text-left px-5">
                 {t('missionText')}
               </p>
             </div>
@@ -54,7 +54,7 @@ const Mission: React.FC<Props> = ({ t }) => {
               <span className="block text-2xl md:text-3xl font-bold mb-6">
                 {t('visionTitle')}
               </span>
-              <p className="leading-relaxed text-justify">
+              <p className="leading-relaxed text-left px-5">
                 {t('visionText')}
               </p>
             </div>

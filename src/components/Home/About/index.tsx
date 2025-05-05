@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { useTranslations } from 'next-intl'
+import { useLocale, useTranslations } from 'next-intl'
 
 import { HomeTypes } from '@/types/home.interface'
 
@@ -11,6 +11,7 @@ interface Props {
 
 const AboutSectionOne: React.FC<Props> = ({ gallery }) => {
   const t = useTranslations()
+  const locale = useLocale()
 
   return (
     <section className="bg-IcyBreeze dark:bg-darklight relative overflow-hidden before:absolute before:content-[''] before:bg-PaleSkyBlu before:dark:bg-secondary before:w-687 before:h-687 before:-bottom-1/2 before:rounded-full before:xl:inline-block before:hidden">
@@ -27,7 +28,7 @@ const AboutSectionOne: React.FC<Props> = ({ gallery }) => {
               {t('AboutSection.paragraph')}
             </p>
             <Link
-              href="/aboutUs"
+              href={`${locale}/aboutUs`}
               className="btn_outline btn-2 hover-outline-slide-down"
             >
               <span>{t('btnMore')}</span>

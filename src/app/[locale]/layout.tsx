@@ -1,6 +1,6 @@
 // src/app/[locale]/layout.tsx
 import '../globals.css'
-import { DM_Sans } from 'next/font/google'
+
 import { notFound } from 'next/navigation'
 import { NextIntlClientProvider } from 'next-intl'
 import { getMessages } from 'next-intl/server'
@@ -20,7 +20,7 @@ interface RootLayoutProps {
   params: Promise<{ locale: string | any }>
 }
 
-const dmsans = DM_Sans({ subsets: ['latin'] })
+// const dmsans = DM_Sans({ subsets: ['latin'] })
 
 export default async function LocaleLayout({
   children,
@@ -36,7 +36,7 @@ export default async function LocaleLayout({
 
   return (
     <html lang={locale} suppressHydrationWarning>
-      <body className={dmsans.className}>
+      <body style={{ fontFamily: 'Verdana, sans-serif' }}>
         <NextIntlClientProvider locale={locale} messages={messages}>
           <AuthDialogProvider>
             <ThemeProvider

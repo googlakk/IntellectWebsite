@@ -10,7 +10,6 @@ import { useTheme } from 'next-themes'
 import { HeaderItem } from '@/types/menu'
 
 import EnImage from '../../../../public/svgs/header/en.svg'
-import KgImage from '../../../../public/svgs/header/kg.svg'
 import RuImage from '../../../../public/svgs/header/ru.svg'
 import HeaderLink from '../Header/Navigation/HeaderLink'
 import MobileHeaderLink from '../Header/Navigation/MobileHeaderLink'
@@ -107,7 +106,6 @@ const Header: React.FC = () => {
 
   const languages = [
     { code: 'ru', icon: RuImage },
-    { code: 'kg', icon: KgImage },
     { code: 'en', icon: EnImage },
   ]
 

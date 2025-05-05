@@ -1,17 +1,18 @@
-
 import { useEffect, useState } from 'react'
 
 import { motion } from 'framer-motion'
+import { useTranslations } from 'next-intl'
 
 const AchievementCounter = () => {
   const [studentsCount, setStudentsCount] = useState(0)
   const [citiesCount, setCitiesCount] = useState(0)
   const [centersCount, setCentersCount] = useState(0)
+  const t = useTranslations('AboutPage.statsBlock')
 
   useEffect(() => {
     const animateCounters = () => {
       const studentsInterval = setInterval(() => {
-        setStudentsCount(prev => {
+        setStudentsCount((prev) => {
           const step = Math.ceil(10000 / 50)
 
           return prev + step > 10000 ? 10000 : prev + step
@@ -19,7 +20,7 @@ const AchievementCounter = () => {
       }, 20)
 
       const citiesInterval = setInterval(() => {
-        setCitiesCount(prev => {
+        setCitiesCount((prev) => {
           const step = Math.ceil(15 / 30)
 
           return prev + step > 15 ? 15 : prev + step
@@ -27,7 +28,7 @@ const AchievementCounter = () => {
       }, 50)
 
       const centersInterval = setInterval(() => {
-        setCentersCount(prev => {
+        setCentersCount((prev) => {
           const step = Math.ceil(20 / 30)
 
           return prev + step > 20 ? 20 : prev + step
@@ -76,7 +77,7 @@ const AchievementCounter = () => {
               {studentsCount.toLocaleString()}+
             </div>
             <div className="text-lg font-medium text-gray-700 dark:text-gray-300">
-              учеников обучили<br />в наших центрах
+              {t('students')}
             </div>
           </motion.div>
 
@@ -90,7 +91,7 @@ const AchievementCounter = () => {
               {citiesCount}+
             </div>
             <div className="text-lg font-medium text-gray-700 dark:text-gray-300">
-              городов с нашими<br />центрами развития
+              {t('city')}
             </div>
           </motion.div>
 
@@ -104,7 +105,7 @@ const AchievementCounter = () => {
               {centersCount}+
             </div>
             <div className="text-lg font-medium text-gray-700 dark:text-gray-300">
-              центров открыто<br />в Кыргызстане и за рубежом
+              {t('centers')}
             </div>
           </motion.div>
         </div>

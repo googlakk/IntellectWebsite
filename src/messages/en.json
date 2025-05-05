@@ -68,29 +68,263 @@
   "CtaTitle": "Give your child the gift of a joyful, fulfilling future!",
   "AboutPage": {
     "historyAchivments": {
-      "title": "Наша история",
-      "subTitle": "Основанный в 2016 году Жакшылыком Матановым, центр INTELLECT стал флагманом современного образования в регионе"
+      "title": "Our History",
+      "subTitle": "Founded in 2016 by Zhakshylyk Matanov, the INTELLECT center has become a flagship of modern education in the region"
     },
     "missionBlock": {
-      "title": "Наша миссия",
-      "subTitle": "    Подготовка лидеров нового поколения, владеющих IT-технологиями и английским языком на уровне, достаточном для международной карьеры."
+      "title": "Our Mission",
+      "subTitle": "Preparing the new generation of leaders who master IT technologies and English language at a level sufficient for an international career."
     },
     "achivments": {
-      "title": " Ключевые достижения",
+      "title": "Key Achievements",
       "items": [
         {
           "id": 1,
-          "text": "Разработали уникальные методики обучения с лучшими педагогами страны"
+          "text": "Developed unique teaching methodologies with the best educators in the country"
         },
         {
           "id": 2,
-          "text": "Стали официальными представителями мировых чемпионатов по ментальной арифметике и памяти"
+          "text": "Became official representatives of world championships in mental arithmetic and memory"
         },
         {
           "id": 3,
-          "text": "Наши ученики покорили миллионы зрителей на Central Asia's Got Talent"
+          "text": "Our students amazed millions of viewers on Central Asia's Got Talent"
         }
       ]
+    },
+    "mainAchivments": {
+      "items": [
+        {
+          "id": 1,
+          "number": "10,000+",
+          "title": "students",
+          "description": "trained since 2016"
+        },
+        {
+          "id": 2,
+          "number": "20+",
+          "title": "branches",
+          "description": "in 4 countries worldwide"
+        },
+        {
+          "id": 3,
+          "number": "5",
+          "title": "world championships",
+          "description": "official representatives"
+        },
+        {
+          "id": 4,
+          "number": "Child prodigies",
+          "title": "from Bishkek",
+          "description": "stars of Central Asia's Got Talent"
+        }
+      ]
+    },
+    "vunderkind": {
+      "title": "Our Stars",
+      "text": "The team 'Wunderkinds from Bishkek' consisting of Arsen Rakhymbekov, Bayel Rakhymbekov, Albina Orozakunova, Nurbolot Ismattilaev, and Chingiz Torobaev has demonstrated outstanding results in international competitions and TV shows."
+    },
+
+    "aboutSchool": {
+      "hero": {
+        "title": "INTELLECT SCHOOL",
+        "subtitle": "Modern education for future leaders of the digital age"
+      },
+      "about": {
+        "title": "About Our School",
+        "description": "«INTELLECT SCHOOL» is a private comprehensive school founded on the basis of the educational center of the same name. Our program combines classical education with innovative methods of intellectual development."
+      },
+      "features": {
+        "title": "Unique Features",
+        "items": [
+          "In-depth study of programming (IT) and English",
+          "Proprietary courses: mental arithmetic, speed reading, 'super memory' development",
+          "Sport stacking for coordination and cognitive skills development"
+        ]
+      },
+      "results": {
+        "title": "Learning Outcomes",
+        "description": "Our students acquire not only a comprehensive educational foundation but also relevant IT skills, fluent English, and unique intellectual abilities developed through proprietary methods."
+      },
+      "benefits": {
+        "title": "What Your Child Gains",
+        "items": [
+          "A complete educational foundation",
+          "Advanced IT and programming skills",
+          "Fluency in English",
+          "Developed memory and thinking speed",
+          "Self-confidence",
+          "A healthy thirst for knowledge",
+          "Strong friendships with like-minded peers",
+          "Skills for a successful future"
+        ]
+      },
+      "imageAlts": {
+        "classLesson": "Class at INTELLECT SCHOOL",
+        "codingLesson": "Programming lesson",
+        "memoryTraining": "Memory training",
+        "sportStacking": "Sport stacking"
+      }
+    },
+    "founderBlock": {
+      "titles": {
+        "founderDirector": "Founder and Director",
+        "name": "Zhakshylyk Matanov",
+        "position": "Innovative Educator, Public Figure",
+        "historyTitle": "Journey History"
+      },
+      "quotes": {
+        "mission": "”My mission is to create an environment where every child can realize their potential, regardless of their background”",
+        "dream": "”I knew all difficulties were temporary. I was guided by my dream to give children the education I couldn't receive as a child”"
+      },
+      "bio": {
+        "age": "At 32 years old",
+        "school": "Intellect School",
+        "pitch": "realized a childhood dream - opened a school",
+        "journey": "having gone from shining shoes at Osh market to creating a network of educational centers."
+      },
+      "achievements": {
+        "items": [
+          "Founded 20+ educational centers across Kyrgyzstan",
+          "Author of unique memory and intelligence development methods",
+          "Mentored champions of international competitions"
+        ]
+      },
+      "badges": [
+        "Educator with 20 years of experience",
+        "Ambassador of World Memory Championship"
+      ],
+      "signature": {
+        "name": "Zhakshylyk Matanov",
+        "position": "Founder of Intellect School"
+      },
+      "history": {
+        "title": "History of the path",
+        "items": [
+          {
+            "year": "1995",
+            "text": "6-year-old Zhakshylyk loses his father and starts working at Osh market"
+          },
+          {
+            "year": "2011",
+            "text": "Returns from Turkey with a diploma and a dream to transform education in Kyrgyzstan"
+          },
+          {
+            "year": "2021",
+            "text": "Opens Intellect School for 300 students"
+          }
+        ]
+      },
+      "imageAlt": "Zhakshylyk Matanov - founder of Intellect School"
+    },
+    "statsBlock": {
+      "students": "students trained\nin our centers",
+      "city": "cities with our\ndevelopment centers",
+      "centers": "centers opened\nin Kyrgyzstan and abroad"
+    }
+  },
+  "JuniorPage": {
+    "hero": {
+      "titlePart1": "Welcome to",
+      "titleHighlight": "Intellect Junior!",
+      "titlePart2": "School where smart childhood begins ✨",
+      "description": "We help children unlock their potential, develop memory, attention and thinking from the first years of life. Strong curriculum, warm atmosphere and individual approach to each student."
+    },
+    "about": {
+      "title": "INTELLECT JUNIOR SCHOOL",
+      "subtitle": "First steps to success in the modern world for children 6-10 years old",
+      "sectionTitle": "About our school",
+      "description": "«INTELLECT JUNIOR SCHOOL» is a private elementary school (grades 0-4) based at the Intellect educational center. We've created an environment where children receive classical education through game-based methods.",
+      "programsTitle": "Our unique programs",
+      "programs": [
+        "Programming basics through Scratch and game simulators",
+        "English with native speakers in game format",
+        "Mental arithmetic on special children's abacuses",
+        "Sport stacking for motor skills and concentration development"
+      ],
+      "resultsTitle": "First years results",
+      "resultsText": "Our elementary students master basic counting and reading skills twice as fast, start speaking English and create their first digital projects by 4rd grade."
+    },
+    "benefits": {
+      "title": "What a child gets at Intellect Junior",
+      "items": [
+        "Strong elementary education foundation",
+        "Basics of logic and algorithmic thinking",
+        "Love for English language",
+        "Mental calculation skills",
+        "Developed memory and concentration",
+        "Confidence in their abilities",
+        "First like-minded friends",
+        "Foundation for future success"
+      ]
+    },
+    "contacts": {
+      "title": "Contacts",
+      "subtitle": "Contact us in any convenient way",
+      "phone": "+996 705 889 889",
+      "address": "Bishkek, Bakaeva str. 119",
+      "instagram": "@intellect.junior"
+    },
+    "imageAlts": {
+      "lesson": "Lesson at INTELLECT SCHOOL",
+      "coding": "Programming lesson",
+      "memory": "Memory training",
+      "sportStacking": "Sport stacking",
+      "hero": "Children at Intellect Junior"
+    }
+  },
+  "AdmissionProcess": {
+    "hero": {
+      "titlePart1": "Admission to",
+      "titlePart2": "Intellect Pro School"
+    },
+    "steps": [
+      {
+        "title": "Submit application",
+        "description": "Consultation / School tour"
+      },
+      {
+        "title": "Schedule an exam",
+        "description": "We assess English and math skills to identify strengths and areas needing improvement"
+      },
+      {
+        "title": "Interview",
+        "description": "We interview students and families to understand educational needs"
+      },
+      {
+        "title": "Document submission",
+        "description": "Successful candidates must submit documents and sign agreement"
+      }
+    ],
+    "documents": {
+      "title": "Required documents",
+      "list": [
+        "Copy of birth certificate and TIN",
+        "Copy of father's passport",
+        "Copy of mother's passport",
+        "Medical record No. 026",
+        "Medical form No. 063",
+        "Photos (3*4) - 3 pcs",
+        "Application to director",
+        "Student application form",
+        "Personal file from previous school"
+      ],
+      "note": "P.S. Application and questionnaire are issued at school reception."
+    },
+    "application": {
+      "title": "Ready to apply?",
+      "description": "Submit your application and our administrator will contact you",
+      "form": {
+        "namePlaceholder": "Your name",
+        "phonePlaceholder": "Phone",
+        "submitButton": "Submit application",
+        "loadingButton": "Loading..."
+      }
+    },
+    "alerts": {
+      "phoneError": "Please enter full phone number (9 digits after +996)",
+      "success": "Application submitted successfully",
+      "error": "Error occurred, please try again"
     }
   }
 }

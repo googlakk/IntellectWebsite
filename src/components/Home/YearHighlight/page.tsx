@@ -3,8 +3,8 @@
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
 
-import { useState } from 'react'
 import React from 'react'
+import { useState } from 'react'
 
 import Image from 'next/image'
 import Link from 'next/link'
@@ -38,15 +38,15 @@ const Highlight: React.FC<Props> = ({ highLights }) => {
               data-aos-delay="200"
               data-aos-duration="1000"
             >
-              <h2>{highLights?.title}</h2>
+              <h2 className=" text-4xl">{highLights?.title}</h2>
               <p className="text-lg font-normal text-SlateBlueText dark:text-white/60 max-w-404 pt-7 pb-11">
                 {highLights?.description}
               </p>
               <div className="flex items-center flex-wrap gap-30">
-                {highLights?.statistikas.map((item , index) => (
+                {highLights?.statistikas.map((item, index) => (
                   <div key={index} className="text-start sm:pb-0 pb-5">
-                    <h2 className="text-primary">{item.title}</h2>
-                    <p className="text-lg font-medium text-secondary dark:text-darktext">
+                    <h2 className="text-primary text-4xl">{item.title}</h2>
+                    <p className="text-lg  font-normal  text-secondary dark:text-darktext">
                       {item.text}
                     </p>
                   </div>

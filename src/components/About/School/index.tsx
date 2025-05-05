@@ -1,6 +1,6 @@
-
 import { motion } from 'framer-motion'
 import Image from 'next/image'
+import { useTranslations } from 'next-intl'
 
 import AboutUsImage1 from '../../../../public/images/aboutUS/img1.png'
 import AboutUsImage2 from '../../../../public/images/aboutUS/img2.png'
@@ -8,6 +8,10 @@ import AboutUsImage3 from '../../../../public/images/aboutUS/img3.png'
 import AboutUsImage4 from '../../../../public/images/aboutUS/img4.jpeg'
 
 const AboutSchool = () => {
+  const t = useTranslations('AboutPage.aboutSchool')
+  const features = t.raw('features.items')
+  const benefits = t.raw('benefits.items')
+
   return (
     <section className="py-16 px-4 sm:px-6 lg:px-8 bg-white dark:bg-gray-900">
       <div className="max-w-7xl mx-auto">
@@ -19,10 +23,10 @@ const AboutSchool = () => {
           className="text-center mb-16"
         >
           <h2 className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400 mb-4">
-            INTELLECT SCHOOL
+            {t('hero.title')}
           </h2>
           <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-            Современное образование для будущих лидеров цифровой эпохи
+            {t('hero.subtitle')}
           </p>
         </motion.div>
 
@@ -36,54 +40,33 @@ const AboutSchool = () => {
           >
             <div>
               <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
-                О нашей школе
+                {t('about.title')}
               </h3>
               <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
-                «INTELLECT SCHOOL» — это общеобразовательная частная школа,
-                основанная на базе одноименного образовательного центра. Наша
-                программа сочетает классическое образование с инновационными
-                методиками развития интеллекта.
+                {t('about.description')}
               </p>
             </div>
 
             <div>
               <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
-                Уникальные особенности
+                {t('features.title')}
               </h3>
               <ul className="space-y-4 text-gray-600 dark:text-gray-300">
-                <li className="flex items-start">
-                  <span className="text-blue-500 mr-2 mt-1">•</span>
-                  <span>
-                    Углубленное изучение программирования (IT) и английского
-                    языка
-                  </span>
-                </li>
-                <li className="flex items-start">
-                  <span className="text-blue-500 mr-2 mt-1">•</span>
-                  <span>
-                    Авторские курсы: ментальная арифметика, скорочтение,
-                    развитие «суперпамяти»
-                  </span>
-                </li>
-                <li className="flex items-start">
-                  <span className="text-blue-500 mr-2 mt-1">•</span>
-                  <span>
-                    Спорт-стекинг для развития координации и когнитивных
-                    способностей
-                  </span>
-                </li>
+                {features.map((item: any, idx: number) => (
+                  <li key={idx} className="flex items-start">
+                    <span className="text-blue-500 mr-2 mt-1">•</span>
+                    <span>{item}</span>
+                  </li>
+                ))}
               </ul>
             </div>
 
             <div className="bg-blue-50 dark:bg-blue-900/20 p-6 rounded-xl">
               <h4 className="text-xl font-semibold text-blue-600 dark:text-blue-400 mb-3">
-                Результаты обучения
+                {t('results.title')}
               </h4>
               <p className="text-gray-600 dark:text-gray-300">
-                Наши ученики получают не только общеобразовательную базу, но и
-                актуальные IT-навыки, свободный английский язык, а также
-                уникальные интеллектуальные способности, развитые через
-                авторские методики.
+                {t('results.description')}
               </p>
             </div>
           </motion.div>
@@ -142,27 +125,11 @@ const AboutSchool = () => {
           className="mt-16 bg-gray-50 dark:bg-gray-800 rounded-2xl p-8"
         >
           <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6 text-center">
-            Что приобретает ваш ребенок
+            {t('benefits.title')}
           </h3>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {[
-              'Полноценную общеобразовательную базу',
-              'Продвинутые IT-навыки и программирование',
-              'Свободное владение английским языком',
-              'Развитую память и скорость мышления',
-            ].map((item, index) => (
-              <div key={index} className="flex items-start">
-                <span className="text-green-500 mr-2 mt-1">✓</span>
-                <span className="text-gray-700 dark:text-gray-300">{item}</span>
-              </div>
-            ))}
-            {[
-              'Уверенность в своих силах',
-              'Здоровую тягу к знаниям',
-              'Крепкую дружбу с единомышленниками',
-              'Навыки для успешного будущего',
-            ].map((item, index) => (
-              <div key={index} className="flex items-start">
+            {benefits.map((item: any, idx: number) => (
+              <div key={idx} className="flex items-start">
                 <span className="text-green-500 mr-2 mt-1">✓</span>
                 <span className="text-gray-700 dark:text-gray-300">{item}</span>
               </div>
