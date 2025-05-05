@@ -14,7 +14,10 @@ const SingleFeature = ({ feature }: {feature: Feature}) => {
     >
       <div className="flex flex-col h-full">
         <div className="mb-3 flex h-[70px] w-[70px] items-center justify-center rounded-md bg-primary bg-opacity-10 text-primary">
-          <Image src={icon} alt="logo"       width={0}
+          <Image
+            src={icon}
+            alt="logo"
+            width={0}
             height={0}
             quality={100}
             layout="responsive"
@@ -23,7 +26,7 @@ const SingleFeature = ({ feature }: {feature: Feature}) => {
         </div>
 
         <div className="mb-2 min-h-[80px] flex items-start">
-          <h3 className="text-xl font-bold text-black dark:text-white sm:text-2xl leading-snug">
+          <h3 className="text-xl font-bold text-black dark:text-white sm:text-xl leading-snug">
             {title}
           </h3>
         </div>
@@ -35,7 +38,6 @@ const SingleFeature = ({ feature }: {feature: Feature}) => {
         </div>
       </div>
     </div>
-
   )
 }
 

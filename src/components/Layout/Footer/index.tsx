@@ -78,51 +78,59 @@ const Footer: FC = () => {
   return (
     <footer className="bg-secondary">
       <div className="container">
-        <div className="flex flex-col ">
-          <div className="flex items-center justify-between flex-wrap md:pt-44 pt-16 pb-4  border-b border-solid border-dark_border">
-            <div>
-              <Link href="/">
-                <Image
-                  src="/images/logo/logoInt.jpeg"
-                  alt="logo"
-                  width={70}
-                  height={64}
-                  style={{ width: '80px', height: 'auto' }}
-                  quality={100}
-                />
-              </Link>
-            </div>
-            <div>
-              <ul className="flex items-center flex-wrap md:gap-30 gap-3 md:py-0 py-5">
-                {headerData.map((item, idx) => (
-                  <li
-                    key={idx}
-                    className="text-PaleCerulean  text-[14px] font-normal transition-all duration-0.4s hover:text-primary"
-                  >
-                    <Link href={item.href}>{item.label}</Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div className="flex space-x-4">
-              {socialLinks.map((social) => (
-                <Link
-                  key={social.name}
-                  href={social.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-10 h-10 rounded-full bg-gray-100 dark:bg-gray-700 flex items-center justify-center text-gray-700 dark:text-gray-200 hover:bg-primary hover:text-white dark:hover:bg-blue-500 transition-colors"
-                  aria-label={social.name}
-                >
-                  <svg
-                    className="w-5 h-5"
-                    viewBox="0 0 24 24"
-                    fill="currentColor"
-                  >
-                    <SocialIcon icon={social.icon} />
-                  </svg>
+        <div className="w-full border-b border-solid border-dark_border md:pt-44 pt-16 pb-4 ">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="flex flex-col md:flex-row md:items-center md:justify-between py-4 md:py-10 gap-4">
+              {/* ЛОГОТИП */}
+              <div className="flex justify-center md:justify-start">
+                <Link href="/">
+                  <Image
+                    src="/images/logo/logoInt.jpeg"
+                    alt="logo"
+                    width={70}
+                    height={64}
+                    style={{ width: '80px', height: 'auto' }}
+                    quality={100}
+                    className="object-contain"
+                  />
                 </Link>
-              ))}
+              </div>
+
+              {/* МЕНЮ */}
+              <div className="flex justify-center">
+                <ul className="flex flex-wrap justify-center items-center gap-4">
+                  {headerData.map((item, idx) => (
+                    <li
+                      key={idx}
+                      className="text-PaleCerulean text-sm font-normal transition-all duration-300 hover:text-primary"
+                    >
+                      <Link href={item.href}>{item.label}</Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              {/* СОЦ СЕТИ */}
+              <div className="flex justify-center md:justify-end space-x-3">
+                {socialLinks.map((social) => (
+                  <Link
+                    key={social.name}
+                    href={social.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-10 h-10 rounded-full bg-gray-100 dark:bg-gray-700 flex items-center justify-center text-gray-700 dark:text-gray-200 hover:bg-primary hover:text-white dark:hover:bg-blue-500 transition-colors"
+                    aria-label={social.name}
+                  >
+                    <svg
+                      className="w-5 h-5"
+                      viewBox="0 0 24 24"
+                      fill="currentColor"
+                    >
+                      <SocialIcon icon={social.icon} />
+                    </svg>
+                  </Link>
+                ))}
+              </div>
             </div>
           </div>
         </div>
