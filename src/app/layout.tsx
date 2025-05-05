@@ -1,18 +1,19 @@
-import type { Metadata } from 'next'
 import './globals.css'
 
+import type { Metadata } from 'next'
+
 export const metadata: Metadata = {
-  title: 'Symposium',
-  description: 'Symposium website',
+  title: 'Intellect',
+  description: 'Intellect website',
   icons: {
-    icon: '/favicon.png',
+    icon: '/favicon.ico',
   },
 }
 
 export default function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode;
+  children: React.ReactNode
 }>) {
   return children
 }

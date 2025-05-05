@@ -22,6 +22,7 @@ const SingleFeature = ({ feature }: {feature: Feature}) => {
             quality={100}
             layout="responsive"
             sizes="100vh"
+            unoptimized
           />
         </div>
 
