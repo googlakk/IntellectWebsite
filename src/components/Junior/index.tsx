@@ -6,6 +6,10 @@ import { useTranslations } from 'next-intl'
 import { FaInstagram, FaMapMarkerAlt, FaPhoneAlt } from 'react-icons/fa'
 
 import heroJunior from '../../../public/images/aboutUS/img1.png'
+import img1 from '../../../public/images/aboutUS/img1.png'
+import img2 from '../../../public/images/aboutUS/img2.png'
+import img3 from '../../../public/images/aboutUS/img3.png'
+import img4 from '../../../public/images/aboutUS/img4.jpeg'
 import HistoryAchievements from '../About/HistoryAchivments'
 
 export default function Junior() {
@@ -117,7 +121,7 @@ export default function Junior() {
             >
               <div className="relative h-64 rounded-xl overflow-hidden">
                 <Image
-                  src="/images/aboutUs/img1.png"
+                  src={img1}
                   alt="Урок в INTELLECT SCHOOL"
                   fill
                   className="object-cover"
@@ -126,7 +130,7 @@ export default function Junior() {
               </div>
               <div className="relative h-64 rounded-xl overflow-hidden">
                 <Image
-                  src="/images/aboutUs/img2.png"
+                  src={img2}
                   alt="Урок программирования"
                   fill
                   className="object-cover"
@@ -135,7 +139,7 @@ export default function Junior() {
               </div>
               <div className="relative h-64 rounded-xl overflow-hidden">
                 <Image
-                  src="/images/aboutUs/img3.png"
+                  src={img3}
                   alt="Тренировка памяти"
                   fill
                   className="object-cover"
@@ -144,7 +148,7 @@ export default function Junior() {
               </div>
               <div className="relative h-64 rounded-xl overflow-hidden">
                 <Image
-                  src="/images/aboutUs/img4.jpeg"
+                  src={img4}
                   alt="Спорт-стекинг"
                   fill
                   className="object-cover"
