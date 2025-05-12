@@ -16,15 +16,12 @@ const AboutUs = () => {
 
   return (
     <div>
-
       <HistoryAchievements />
       <AboutSchool />
       <FounderBlock />
       <section>
-
         <AchievementCounter />
-
-        <Mission t={t}/>
+        <Mission t={t} />
         <EventTicket />
       </section>
 
