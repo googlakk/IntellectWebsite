@@ -11,6 +11,7 @@ export namespace BlogsTypes {
     text: string;
     image: Image;
     documentId: string
+    updatedAt: string
   }
 
   export interface Image {

@@ -1,11 +1,14 @@
 import React from 'react'
 
-import { Metadata } from 'next'
-
 import Junior from '@/components/Junior'
+import { buildMetadata } from '@/utils/seo'
 
-export const metadata: Metadata = {
-  title: 'Intellect Junior | Intelect Pro School',
+export async function generateMetadata(
+  props: { params: Promise<string | any> },
+) {
+  const { locale } = await props.params
+
+  return buildMetadata(locale, 'junior')
 }
 
 const JuniorPage = () => {

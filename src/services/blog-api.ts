@@ -27,3 +27,14 @@ export const BlogDetailGET = async (blog_id: string, locale: string) => {
     console.log('Failed to fetch blog detail', error)
   }
 }
+
+export const BlogDetailHeadGET = async (id: string, locale: string) => {
+  const url = `${process.env.NEXT_PUBLIC_SITE_URL}/api/blog/${id}?locale=${locale}`
+  const res = await fetch(url, { cache: 'no-store' })
+
+  if (!res.ok) throw new Error('Failed to fetch')
+
+  const json = await res.json()
+
+  return json.data?.data
+}

@@ -1,57 +1,58 @@
 import Blog from '@/components/SharedComponent/Blog'
+import type { Locale } from '@/i18n/routing'
+import { BlogDetailHeadGET } from '@/services/blog-api'
+import { buildMetadata } from '@/utils/seo'
 
-interface Props {
-  params: Promise<{ blog_id: string }>
-}
+type RouteParams = { locale: Locale; blog_id: string }
 
-export async function generateMetadata() {
-  const siteName = process.env.SITE_NAME || 'Your Site Name'
-  const authorName = process.env.AUTHOR_NAME || 'Your Author Name'
+export async function generateMetadata(
+  props: { params: Promise<RouteParams> },
+) {
+  const { locale, blog_id } = await props.params
+  const post = await BlogDetailHeadGET(blog_id, locale)
 
-  if (siteName) {
-    const metadata = {
-      title: `${'Blog Post Page'} | ${siteName}`,
-      author: authorName,
-      robots: {
-        index: true,
-        follow: true,
-        nocache: true,
-        googleBot: {
-          index: true,
-          follow: false,
-          'max-video-preview': -1,
-          'max-image-preview': 'large',
-          'max-snippet': -1,
-        },
-      },
-    }
+  if (!post) return buildMetadata(locale, 'blog')
 
-    return metadata
-  } else {
-    return {
-      title: 'Not Found',
-      description: 'No blog article has been found',
-      author: authorName,
-      robots: {
-        index: false,
-        follow: false,
-        nocache: false,
-        googleBot: {
-          index: false,
-          follow: false,
-          'max-video-preview': -1,
-          'max-image-preview': 'large',
-          'max-snippet': -1,
-        },
-      },
-    }
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BlogPosting',
+    headline: post.title,
+    image: [post.image],
+    datePublished: post.date,
+    dateModified: post.date,
+    author: [{ '@type': 'Person', name: 'Intellect school' }],
+    publisher: {
+      '@type': 'Organization',
+      name: 'Intellect Pro School',
+      logo: { '@type': 'ImageObject', url: 'https://intellect.kg/favicon.ico' },
+    },
+    description: post.text,
   }
+
+  return buildMetadata(locale, 'blogPost', {
+    title: post.title,
+    description: post.text,
+    openGraph: {
+      title: post.title,
+      description: post.text,
+      type: 'article',
+      publishedTime: post.date,
+      modifiedTime: post.date,
+      images: [post.image],
+    },
+    twitter: {
+      title: post.title,
+      description: post.text,
+      images: [post.image],
+    },
+    other: { 'jsonLd:blog': JSON.stringify(jsonLd) },
+  })
 }
 
-export default async function Post({ params }: Props) {
-  const args = (await params).blog_id
+export default async function Post(
+  props: { params: Promise<RouteParams> },
+) {
+  const { blog_id } = await props.params
 
-  return (
-    <Blog params={args}/>
-  )
+  return <Blog params={blog_id} />
 }
