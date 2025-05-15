@@ -1,10 +1,13 @@
-import { Metadata } from 'next'
-
 import { Documentation } from '@/components/Documentation/Documentation'
 import TicketSection from '@/components/Home/TicketSection'
+import { buildMetadata } from '@/utils/seo'
 
-export const metadata: Metadata = {
-  title: 'Documents | Intellect Pro School',
+export async function generateMetadata(
+  props: { params: Promise<string | any> },
+) {
+  const { locale } = await props.params
+
+  return buildMetadata(locale, 'documentation')
 }
 
 export default function Page() {

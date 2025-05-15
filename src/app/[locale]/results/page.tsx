@@ -1,10 +1,15 @@
-import { Metadata } from 'next'
 
 import StudentResultsBlock from '@/components/Results-page'
+import { buildMetadata } from '@/utils/seo'
 
-export const metadata: Metadata = {
-  title: 'For parents | Intellect Pro School',
+export async function generateMetadata(
+  props: { params: Promise<string | any> },
+) {
+  const { locale } = await props.params
+
+  return buildMetadata(locale, 'results')
 }
+
 const Results = () => {
 
   return (

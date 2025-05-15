@@ -1,11 +1,14 @@
-import { Metadata } from 'next'
-
 import TicketSection from '@/components/Home/TicketSection'
 import HeroSub from '@/components/SharedComponent/HeroSub'
 import Team from '@/components/Team'
+import { buildMetadata } from '@/utils/seo'
 
-export const metadata: Metadata = {
-  title: 'Teams | Intellect Pro School',
+export async function generateMetadata(
+  props: { params: Promise<string | any> },
+) {
+  const { locale } = await props.params
+
+  return buildMetadata(locale, 'teams')
 }
 
 export default function Page() {

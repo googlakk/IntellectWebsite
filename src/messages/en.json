@@ -326,5 +326,52 @@
       "success": "Application submitted successfully",
       "error": "Error occurred, please try again"
     }
+  },
+  "seo": {
+    "home": {
+      "title": "Intellect Pro School — Private IT School in Bishkek",
+      "desc": "Advanced English, programming, and mental arithmetic. 20+ branches, 10,000+ students.",
+      "keywords": "private school, Bishkek, IT education, English for kids, mental arithmetic, Intellect School"
+      },
+    "about": {
+      "title": "About the School | Intellect Pro School",
+      "desc": "History, mission, team, and achievements of the INTELLECT educational network.",
+      "keywords": "about the school, Intellect, history, mission, Zhakshylyk Matanov"
+    },
+    "junior": {
+      "title": "Intellect Junior — Primary School for Children Aged 6–10",
+      "desc": "An elementary education program with a focus on IT, English, and mental arithmetic. Individual approach and game-based learning.",
+      "keywords": "primary school, Intellect Junior, mental arithmetic, English for children, programming for kids, Bishkek"
+    },
+    "teams": {
+      "title": "Our Team | Intellect Pro School",
+      "desc": "Inspiring teachers and passionate professionals making learning vibrant, modern, and accessible for every student.",
+      "keywords": "Intellect team, teachers, educators, Intellect Pro School, Bishkek"
+    },
+    "forParents": {
+      "title": "For Parents | Intellect Pro School",
+      "desc": "Step-by-step admission guide: application, exam, interview, and documents. Everything parents need to know.",
+      "keywords": "admission, documents, parents, Intellect Pro School, admissions office, Bishkek"
+    },
+    "results": {
+      "title": "Student Achievements | Intellect Pro School",
+      "desc": "Our students’ success at international olympiads and competitions. Stories of victory and global recognition.",
+      "keywords": "results, student achievements, olympiads, contests, Intellect Pro School, Bishkek"
+    },
+    "blog": {
+      "title": "Blog | Intellect Pro School",
+      "desc": "School news, learning tips, and development advice. Stay updated with our educational journey!",
+      "keywords": "blog, school news, tips for parents, Intellect Pro School, Bishkek"
+    },
+    "documentation": {
+      "title": "Documentation | Intellect Pro School",
+      "desc": "Licenses, certificates, and rules for students and parents. All official school documents.",
+      "keywords": "documentation, license, school rules, Intellect Pro School, Bishkek"
+    },
+    "contact": {
+      "title": "Contacts | Intellect Pro School",
+      "desc": "Reach us in any convenient way. Address, phone, and social media of Intellect Pro School.",
+      "keywords": "contacts, school address, phone, Intellect Pro School, Bishkek"
+    }
   }
 }
