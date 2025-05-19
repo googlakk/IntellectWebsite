@@ -67,7 +67,7 @@ const GroupedTables = () => {
   })
 
   return (
-    <section className="p-4 md:p-6 mt-20 overflow-hidden">
+    <section className="p-4 md:p-6 mt-20 overflow-hidden bg-IcyBreeze dark:bg-darklight">
       <div
         className="transform scale-90"
         style={{ transformOrigin: 'top center' }}
@@ -108,12 +108,10 @@ const GroupedTables = () => {
                   <table className="w-full text-sm text-left table-fixed">
                     <tbody>
                       {item.students.map((student) => (
-
                         <tr
                           key={student.id}
                           className="border-b dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800"
                         >
-
                           <td className="p-1 w-[35%]">{student.name}</td>
                           <td className="p-1 w-[15%]">{student.parallel}</td>
                           <td className="p-1 w-[20%] text-center">
@@ -136,7 +134,6 @@ const GroupedTables = () => {
                     </tbody>
                   </table>
                 </div>
-
               </div>
             </motion.div>
           ))}
