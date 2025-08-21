@@ -4,25 +4,25 @@ const LocalActs = () => {
       title: 'Лицензия на образовательную деятельность',
       type: 'pdf',
       icon: '📄',
-      url: 'https://drive.google.com/file/d/13w9_Fx-w-S6hpxS5wa2ms-aPdzbAWMnb/view?usp=sharing',
+      url: 'https://drive.google.com/file/d/1qLYtyLwleA2uca2hBkY9UTExWbcqgf70/view?usp=sharing',
     },
     {
       title: 'Свидетельство о государственной регистрации',
       type: 'pdf',
       icon: '📄',
-      url: 'https://drive.google.com/file/d/1c7fC1c6H8G8__kvfyMuxUsDZrg4X3J1T/view?usp=sharing',
+      url: 'https://drive.google.com/file/d/1JxA43dpbOTT_3AEPMOR2NBydfHQLJlXC/view?usp=sharing',
     },
     {
       title: 'Правила для родителей',
       type: 'pdf',
       icon: '📝',
-      url: 'https://drive.google.com/file/d/1Z_Zf9xLfcdGstDQEF0O0KOmW1eqFWLZ5/view?usp=sharing',
+      url: 'https://drive.google.com/file/d/1H6a5bCdDJdsQ-9Sb5_wCpD2yTzQpe071/view?usp=sharing',
     },
     {
       title: 'Правила для учащихся',
       type: 'pdf',
       icon: '📚',
-      url: 'https://drive.google.com/file/d/1jc01TippSlkAOYyQOXMeQTeptJcYwVJm/view?usp=sharing',
+      url: 'https://drive.google.com/file/d/1TdjxkTQ3-KshnBvzNVtvMGzfO5eShbPL/view?usp=sharing',
     },
   ]
 
