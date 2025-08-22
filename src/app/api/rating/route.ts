@@ -15,6 +15,7 @@ export async function GET(request: NextRequest) {
     return NextResponse.json({ success: true, data: data })
   } catch (error) {
     console.log(error)
-    NextResponse.json({ success: false , error: 500 })
+
+    return NextResponse.json({ success: false , error: 500 })
   }
 }

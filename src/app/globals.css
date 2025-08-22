@@ -3,19 +3,21 @@
 @tailwind utilities;
 @import "@/Style/style.css";
 
-html {
-  scroll-behavior: smooth;
-  @apply overflow-x-hidden;
-}
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    @apply overflow-x-hidden;
+  }
 
-body {
-  @apply overflow-x-hidden dark:bg-darkmode;
-}
+  body {
+    @apply overflow-x-hidden dark:bg-darkmode;
+  }
 
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
 }
 
 @layer components {

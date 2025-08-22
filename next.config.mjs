@@ -1,6 +1,10 @@
 import createNextIntlPlugin from 'next-intl/plugin'
+import withBundleAnalyzer from '@next/bundle-analyzer'
 
 const withNextIntl = createNextIntlPlugin()
+const bundleAnalyzer = withBundleAnalyzer({
+  enabled: process.env.ANALYZE === 'true',
+})
 const nextConfig = {
   images: {
     remotePatterns: [
@@ -22,6 +26,23 @@ const nextConfig = {
       },
     ],
   },
+  reactStrictMode: true,
+  experimental: {
+    optimizePackageImports: ['@iconify/react', 'framer-motion'],
+  },
+  async headers() {
+    return [
+      {
+        source: '/(.*)',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=31536000, stale-while-revalidate=86400',
+          },
+        ],
+      },
+    ]
+  },
 }
 
-export default withNextIntl(nextConfig)
+export default bundleAnalyzer(withNextIntl(nextConfig))

@@ -1,29 +1,64 @@
 'use client'
 
-import React from 'react'
+import React, { Suspense } from 'react'
 
 import { Metadata } from 'next'
-import { useLocale, useTranslations } from 'next-intl'
+import dynamic from 'next/dynamic'
+import { useTranslations } from 'next-intl'
 
-import EventTicket from '@/components/Home/EventTicket'
 import Features from '@/components/Home/Features'
 import Hero from '@/components/Home/Hero'
 import Mission from '@/components/Home/Mission'
 import Preview from '@/components/Home/Preview'
-import TicketSection from '@/components/Home/TicketSection'
-import WorkSpeakers from '@/components/Home/WorkSpeakers'
-import Highlight from '@/components/Home/YearHighlight/page'
-import { Api } from '@/services'
+import { useCombinedHomeData } from '@/hooks/queries/useHomeData'
 import { HomeTypes } from '@/types/home.interface'
-import { TeamTypes } from '@/types/team.interface'
 
 import PreLoader from '../Common/PreLoader'
-import ContactInfo from '../Contact/ContactInfo'
 
-import AboutSectionOne from './About'
-import Conferences from './Conferences'
-import CalendarWithEvents from './EventsCalendar'
-import TestimonialsGrid from './Testimonials'
+const EventTicket = dynamic(() => import('@/components/Home/EventTicket'), {
+  loading: () => <div className="h-32 bg-gray-100 animate-pulse rounded" />,
+  ssr: false,
+})
+
+const TicketSection = dynamic(() => import('@/components/Home/TicketSection'), {
+  loading: () => <div className="h-32 bg-gray-100 animate-pulse rounded" />,
+  ssr: false,
+})
+
+const WorkSpeakers = dynamic(() => import('@/components/Home/WorkSpeakers'), {
+  loading: () => <div className="h-64 bg-gray-100 animate-pulse rounded" />,
+  ssr: false,
+})
+
+const Highlight = dynamic(() => import('@/components/Home/YearHighlight/page'), {
+  loading: () => <div className="h-48 bg-gray-100 animate-pulse rounded" />,
+  ssr: false,
+})
+
+const ContactInfo = dynamic(() => import('../Contact/ContactInfo'), {
+  loading: () => <div className="h-64 bg-gray-100 animate-pulse rounded" />,
+  ssr: false,
+})
+
+const AboutSectionOne = dynamic(() => import('./About'), {
+  loading: () => <div className="h-48 bg-gray-100 animate-pulse rounded" />,
+  ssr: false,
+})
+
+const Conferences = dynamic(() => import('./Conferences'), {
+  loading: () => <div className="h-48 bg-gray-100 animate-pulse rounded" />,
+  ssr: false,
+})
+
+const CalendarWithEvents = dynamic(() => import('./EventsCalendar'), {
+  loading: () => <div className="h-64 bg-gray-100 animate-pulse rounded" />,
+  ssr: false,
+})
+
+const TestimonialsGrid = dynamic(() => import('./Testimonials'), {
+  loading: () => <div className="h-48 bg-gray-100 animate-pulse rounded" />,
+  ssr: false,
+})
 
 export const metadata: Metadata = {
   title: 'Intellect pro school',
@@ -31,144 +66,85 @@ export const metadata: Metadata = {
 
 export default function Home() {
   const t = useTranslations()
-  const locale = useLocale()
-  const [mainImage, setMainImage] = React.useState<
-    HomeTypes.MainImage[] | null
-  >(null)
-  const [mainImageLoading, setMainImageLoading] = React.useState(false)
-  const [invite, setInvite] = React.useState<HomeTypes.Invite[] | null>(null)
-  const [gallery, setGallery] = React.useState<HomeTypes.Gallery[] | null>(null)
-  const [highLights, setHighLights] = React.useState<
-    HomeTypes.HighLights[] | null
-  >(null)
-  const [event, setEvent] = React.useState<HomeTypes.EventItem[]>([])
-  const [team, setTeam] = React.useState<TeamTypes.ItemResponse | null>(null)
-  const [reviews, setReviews] =
-    React.useState<HomeTypes.ReviewItemResponse | null>(null)
-  const [teamLoading, setTeamLoading] = React.useState(false)
+  const {
+    mainImages,
+    invites,
+    gallery,
+    highlights,
+    team,
+    events,
+    reviews,
+    isLoading,
+    isError,
+    teamLoading,
+  } = useCombinedHomeData()
 
-  const loadMainImages = async () => {
-    setMainImageLoading(true)
-    try {
-      const response = await Api.home.MainImageGET(locale)
-
-      setMainImage(response.data.data)
-    } catch (error) {
-      console.log('Failed to fetch events', error)
-    } finally {
-      setMainImageLoading(false)
-    }
-  }
-
-  const loadInvites = async () => {
-    try {
-      const response = await Api.home.InviteHomeGET(locale)
-
-      setInvite(response.data.data)
-    } catch (error) {
-      console.log('Failed to fetch events', error)
-    }
-  }
-
-  const loadGallery = async () => {
-    try {
-      const response = await Api.home.GalleryHomeGET(locale)
-
-      setGallery(response.data.data)
-    } catch (error) {
-      console.log('Failed to fetch events', error)
-    }
-  }
-
-  const loadHighLights = async () => {
-    try {
-      const response = await Api.home.HighlightsHomeGET(locale)
-
-      setHighLights(response.data.data)
-    } catch (error) {
-      console.log('Failed to fetch events', error)
-    }
-  }
-
-  const loadTeam = async () => {
-    setTeamLoading(true)
-    try {
-      const response = await Api.team.TeamGET(locale)
-
-      setTeam(response.data)
-    } catch (error) {
-      console.log(error)
-    } finally {
-      setTeamLoading(false)
-    }
-  }
-
-  const loadEvent = async () => {
-    try {
-      const response = await Api.home.EventGET(locale)
-
-      setEvent(response.data.data)
-    } catch (error) {
-      console.log('Failed to fetch events', error)
-    }
-  }
-
-  const loadReviews = async () => {
-    try {
-      const response = await Api.home.ReviewsGET(locale)
-
-      setReviews(response.data)
-    } catch (error) {
-      console.log('Failed to fetch events', error)
-    }
-  }
-
-  React.useEffect(() => {
-    loadTeam()
-    loadEvent()
-    loadReviews()
-    loadMainImages()
-    loadInvites()
-    loadGallery()
-    loadHighLights()
-  }, [])
-
-  if (mainImageLoading) {
+  if (isLoading) {
     return (
-      <main style={{ marginBottom: `${mainImageLoading ? '100vh' : ''}` }}>
+      <main style={{ marginBottom: '100vh' }}>
         <PreLoader />
+      </main>
+    )
+  }
+
+  if (isError) {
+    return (
+      <main>
+        <div className="flex items-center justify-center min-h-screen">
+          <p className="text-red-500">Ошибка загрузки данных</p>
+        </div>
       </main>
     )
   }
 
   return (
     <main>
-      {mainImage?.map((item, index) => (
-        <Preview mainImage={item} key={index} />
+      {mainImages?.map((item: HomeTypes.MainImage, index: number) => (
+        <Preview mainImage={item} key={`preview-${index}`} />
       ))}
-      {invite?.map((item, index) => (
-        <Hero invite={item} key={index} />
+      {invites?.map((item: HomeTypes.Invite, index: number) => (
+        <Hero invite={item} key={`hero-${index}`} />
       ))}
-      {gallery?.map((item, index) => (
-        <Conferences gallery={item} key={index} />
+      {gallery?.map((item: HomeTypes.Gallery, index: number) => (
+        <Suspense key={`conferences-${index}`} fallback={<div className="h-48 bg-gray-100 animate-pulse rounded" />}>
+          <Conferences gallery={item} />
+        </Suspense>
       ))}
       <Mission t={t} />
       <Features />
-      {highLights?.map((item, index) => (
-        <Highlight highLights={item} key={index} />
+      {highlights?.map((item: HomeTypes.HighLights, index: number) => (
+        <Suspense key={`highlight-${index}`} fallback={<div className="h-48 bg-gray-100 animate-pulse rounded" />}>
+          <Highlight highLights={item} />
+        </Suspense>
       ))}
-      {teamLoading ? null : <WorkSpeakers team={team} />}
-      {gallery?.map((item, index) => (
-        <AboutSectionOne gallery={item} key={index} />
+      {!teamLoading && team && (
+        <Suspense fallback={<div className="h-64 bg-gray-100 animate-pulse rounded" />}>
+          <WorkSpeakers team={team} />
+        </Suspense>
+      )}
+      {gallery?.map((item: HomeTypes.Gallery, index: number) => (
+        <Suspense key={`about-${index}`} fallback={<div className="h-48 bg-gray-100 animate-pulse rounded" />}>
+          <AboutSectionOne gallery={item} />
+        </Suspense>
       ))}
 
-      <EventTicket />
-      <CalendarWithEvents event={event} />
-      <TestimonialsGrid reviews={reviews} />
+      <Suspense fallback={<div className="h-32 bg-gray-100 animate-pulse rounded" />}>
+        <EventTicket />
+      </Suspense>
+      <Suspense fallback={<div className="h-64 bg-gray-100 animate-pulse rounded" />}>
+        <CalendarWithEvents event={events || []} />
+      </Suspense>
+      <Suspense fallback={<div className="h-48 bg-gray-100 animate-pulse rounded" />}>
+        <TestimonialsGrid reviews={reviews || null} />
+      </Suspense>
 
-      <ContactInfo />
+      <Suspense fallback={<div className="h-64 bg-gray-100 animate-pulse rounded" />}>
+        <ContactInfo />
+      </Suspense>
 
-      <TicketSection />
+      <Suspense fallback={<div className="h-32 bg-gray-100 animate-pulse rounded" />}>
+        <TicketSection />
+      </Suspense>
     </main>
   )
 }

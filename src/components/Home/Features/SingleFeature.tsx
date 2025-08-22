@@ -1,8 +1,14 @@
+import React, { memo } from 'react'
+
 import Image from 'next/image'
 
 import { Feature } from '@/types/feture'
 
-const SingleFeature = ({ feature }: {feature: Feature}) => {
+interface SingleFeatureProps {
+  feature: Feature
+}
+
+const SingleFeature = memo(({ feature }: SingleFeatureProps) => {
   const { id, icon, title, paragraph } = feature
 
   return (
@@ -16,13 +22,12 @@ const SingleFeature = ({ feature }: {feature: Feature}) => {
         <div className="mb-3 flex h-[70px] w-[70px] items-center justify-center rounded-md bg-primary bg-opacity-10 text-primary">
           <Image
             src={icon}
-            alt="logo"
-            width={0}
-            height={0}
-            quality={100}
-            layout="responsive"
-            sizes="100vh"
-            unoptimized
+            alt={`${title} icon`}
+            width={70}
+            height={70}
+            quality={85}
+            sizes="70px"
+            priority={id <= 3}
           />
         </div>
 
@@ -40,6 +45,8 @@ const SingleFeature = ({ feature }: {feature: Feature}) => {
       </div>
     </div>
   )
-}
+})
+
+SingleFeature.displayName = 'SingleFeature'
 
 export default SingleFeature

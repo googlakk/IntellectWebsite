@@ -1,25 +1,28 @@
+import { useTranslations } from 'next-intl'
+
 const LocalActs = () => {
+  const t = useTranslations('Documentation')
   const documents = [
     {
-      title: 'Лицензия на образовательную деятельность',
+      title: t('documents.license'),
       type: 'pdf',
       icon: '📄',
       url: 'https://drive.google.com/file/d/1qLYtyLwleA2uca2hBkY9UTExWbcqgf70/view?usp=sharing',
     },
     {
-      title: 'Свидетельство о государственной регистрации',
+      title: t('documents.registration'),
       type: 'pdf',
       icon: '📄',
       url: 'https://drive.google.com/file/d/1JxA43dpbOTT_3AEPMOR2NBydfHQLJlXC/view?usp=sharing',
     },
     {
-      title: 'Правила для родителей',
+      title: t('documents.parentRules'),
       type: 'pdf',
       icon: '📝',
       url: 'https://drive.google.com/file/d/1H6a5bCdDJdsQ-9Sb5_wCpD2yTzQpe071/view?usp=sharing',
     },
     {
-      title: 'Правила для учащихся',
+      title: t('documents.studentRules'),
       type: 'pdf',
       icon: '📚',
       url: 'https://drive.google.com/file/d/1TdjxkTQ3-KshnBvzNVtvMGzfO5eShbPL/view?usp=sharing',
@@ -52,7 +55,7 @@ const LocalActs = () => {
                     href={doc.url}
                     className="inline-flex items-center text-sm text-blue-600 dark:text-blue-400 hover:underline"
                   >
-                    Скачать документ
+                    {t('documents.downloadText')}
                     <svg
                       className="w-4 h-4 ml-1"
                       fill="none"

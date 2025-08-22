@@ -327,6 +327,18 @@
       "error": "Error occurred, please try again"
     }
   },
+  "Documentation": {
+    "title": "Documentation",
+    "subtitle": "We have all the necessary permits and documents",
+    "navTitle": "Main Documents",
+    "documents": {
+      "license": "Educational Activity License",
+      "registration": "State Registration Certificate", 
+      "parentRules": "Rules for Parents",
+      "studentRules": "Rules for Students",
+      "downloadText": "Download document"
+    }
+  },
   "seo": {
     "home": {
       "title": "Intellect Pro School — Private IT School in Bishkek",

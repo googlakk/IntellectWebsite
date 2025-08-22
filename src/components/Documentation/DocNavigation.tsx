@@ -3,9 +3,10 @@
 import { useState } from 'react'
 
 import Link from 'next/link'
+import { useTranslations } from 'next-intl'
 
 export const DocNavigation = () => {
-
+  const t = useTranslations('Documentation')
   const [navItem, setNavItem] = useState('version')
 
   function getNavItem(item:string) {
@@ -15,7 +16,7 @@ export const DocNavigation = () => {
   const DocsNav = [
     {
       id: 1,
-      navItem: 'Основные документы',
+      navItem: t('navTitle'),
       hash: 'acts',
     },
   ]
