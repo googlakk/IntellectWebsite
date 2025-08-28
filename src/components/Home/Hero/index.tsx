@@ -68,8 +68,8 @@ const Hero: React.FC<Props> = ({ invite }) => {
           >
             <div className="relative w-full max-w-[520px]">
               <Image
-                src={`https://intellect.soulist.life${invite.organizator1.avatar.url}`}
-                alt={`${invite.organizator1.name} photo`}
+                src={invite?.organizator1?.avatar?.url ? `https://intellect.soulist.life${invite.organizator1.avatar.url}` : '/images/logo/logoInt.jpeg'}
+                alt={`${invite?.organizator1?.name || 'Organizer'} photo`}
                 width={400}
                 height={520}
                 quality={100}
@@ -80,10 +80,10 @@ const Hero: React.FC<Props> = ({ invite }) => {
 
               <div className="backdrop-blur-md bg-white/80 dark:bg-darkmode/60 border border-white/40 text-center rounded-22 shadow-hero-box py-4 px-5 absolute bottom-6 left-6">
                 <p className="text-base md:text-lg font-bold text-yellow-900 dark:text-white">
-                  {invite.organizator1.name}
+                  {invite?.organizator1?.name || 'Organizer'}
                 </p>
                 <p className="text-sm md:text-base font-medium text-yellow-900/90 dark:text-white/80 text-center">
-                  {invite.organizator1.role}
+                  {invite?.organizator1?.role || 'Teacher'}
                 </p>
               </div>
             </div>

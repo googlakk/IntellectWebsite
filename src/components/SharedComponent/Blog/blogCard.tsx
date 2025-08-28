@@ -13,7 +13,7 @@ const BlogCard = ({ blog }: { blog: BlogsTypes.Item}) => {
         <div className="mb-8 overflow-hidden rounded">
           <Link href={`blog/${blog.documentId}`} aria-label="blog cover" className="block">
             <Image
-              src={`https://intellect.soulist.life${blog.image.url}` || 'no image'}
+              src={blog.image?.url ? `https://intellect.soulist.life${blog.image.url}` : '/images/logo/logoInt.jpeg'}
               alt="image"
               className="w-full transition group-hover:scale-125"
               width={408}

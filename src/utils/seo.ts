@@ -32,7 +32,7 @@ export async function buildMetadata(
     title,
     description,
     keywords,
-    icons: { icon: '/images/logoInt.jpeg' },
+    icons: { icon: '/images/logo/logoInt.jpeg' },
     alternates: {
       canonical: `/${locale}/${pageKey === 'home' ? '' : pageKey}`,
       languages: {

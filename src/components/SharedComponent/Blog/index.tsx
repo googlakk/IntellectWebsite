@@ -79,7 +79,7 @@ export default function Blog({ params }: Props) {
             <div className="w-full px-4">
               <div className="z-20 mb-16 overflow-hidden rounded">
                 <Image
-                  src={`https://intellect.soulist.life${blogData?.image.url}`}
+                  src={blogData?.image?.url ? `https://intellect.soulist.life${blogData.image.url}` : '/images/logo/logoInt.jpeg'}
                   alt="image"
                   width={1170}
                   height={766}

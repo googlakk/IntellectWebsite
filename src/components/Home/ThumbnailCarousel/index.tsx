@@ -100,7 +100,7 @@ const ThumbnailCarousel: React.FC<Props> = ({ images }) => {
           {images?.map((item, index) => (
             <div key={index}>
               <Image
-                src={`https://intellect.soulist.life${item.url}`}
+                src={item?.url ? `https://intellect.soulist.life${item.url}` : '/images/logo/logoInt.jpeg'}
                 alt="Thumbnail"
                 width={0}
                 height={0}
@@ -116,7 +116,7 @@ const ThumbnailCarousel: React.FC<Props> = ({ images }) => {
           {images?.map((item, index) => (
             <div key={index}>
               <Image
-                src={`https://intellect.soulist.life${item.url}`}
+                src={item?.url ? `https://intellect.soulist.life${item.url}` : '/images/logo/logoInt.jpeg'}
                 alt="Thumbnail"
                 width={0}
                 height={0}
