@@ -3,9 +3,9 @@ import createMiddleware from 'next-intl/middleware'
 export default createMiddleware({
   locales: ['ru', 'kg', 'en'],
   defaultLocale: 'ru',
-  localeDetection: false,
+  localeDetection: true,
 })
 
 export const config = {
-  matcher: ['/', '/(ru|kg|en)/:path*'],
+  matcher: ['/((?!api|_next|_vercel|.*\\..*).*)'],
 }

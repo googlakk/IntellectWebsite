@@ -19,6 +19,7 @@ export function QueryProvider({ children }: QueryProviderProps) {
             gcTime: 10 * 60 * 1000,
             refetchOnWindowFocus: false,
             retry: 3,
+            retryDelay: 1000,
           },
         },
       }),
@@ -27,7 +28,7 @@ export function QueryProvider({ children }: QueryProviderProps) {
   useEffect(() => {
     const handleAdminUpdate = (event: CustomEvent) => {
       const { type } = event.detail
-      
+
       if (type === 'all') {
         queryClient.invalidateQueries()
       } else if (type === 'home') {
@@ -43,7 +44,7 @@ export function QueryProvider({ children }: QueryProviderProps) {
     }
 
     window.addEventListener('admin-data-updated', handleAdminUpdate as EventListener)
-    
+
     return () => {
       window.removeEventListener('admin-data-updated', handleAdminUpdate as EventListener)
     }

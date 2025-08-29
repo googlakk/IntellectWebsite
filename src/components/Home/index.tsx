@@ -60,6 +60,11 @@ const TestimonialsGrid = dynamic(() => import('./Testimonials'), {
   ssr: false,
 })
 
+const NewsPreview = dynamic(() => import('./NewsPreview'), {
+  loading: () => <div className="h-64 bg-gray-100 animate-pulse rounded" />,
+  ssr: false,
+})
+
 export const metadata: Metadata = {
   title: 'Intellect pro school',
 }
@@ -102,6 +107,9 @@ export default function Home() {
       {mainImages?.map((item: HomeTypes.MainImage, index: number) => (
         <Preview mainImage={item} key={`preview-${index}`} />
       ))}
+      <Suspense fallback={<div className="h-64 bg-gray-100 animate-pulse rounded" />}>
+        <NewsPreview />
+      </Suspense>
       {invites?.map((item: HomeTypes.Invite, index: number) => (
         <Hero invite={item} key={`hero-${index}`} />
       ))}
@@ -110,6 +118,7 @@ export default function Home() {
           <Conferences gallery={item} />
         </Suspense>
       ))}
+
       <Mission t={t} />
       <Features />
       {highlights?.map((item: HomeTypes.HighLights, index: number) => (

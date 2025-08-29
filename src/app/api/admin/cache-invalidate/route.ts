@@ -7,16 +7,16 @@ export async function POST(request: NextRequest) {
 
     // Trigger client-side cache invalidation via Server-Sent Events
     // or use revalidateTag/revalidatePath for Next.js cache
-    
-    return NextResponse.json({ 
-      success: true, 
+
+    return NextResponse.json({
+      success: true,
       message: 'Cache invalidation triggered',
-      timestamp: Date.now()
+      timestamp: Date.now(),
     })
   } catch (error) {
     return NextResponse.json(
       { success: false, error: 'Failed to invalidate cache' },
-      { status: 500 }
+      { status: 500 },
     )
   }
 }

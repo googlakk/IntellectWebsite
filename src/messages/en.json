@@ -8,7 +8,7 @@
     "lostThings": "Lost & Found",
     "edupage": "Edupage",
     "results": "Exam",
-    "blog": "Our blog",
+    "blog": "News",
     "docs": "Documentation",
     "contact": "Contacts"
   },
@@ -385,5 +385,12 @@
       "desc": "Reach us in any convenient way. Address, phone, and social media of Intellect Pro School.",
       "keywords": "contacts, school address, phone, Intellect Pro School, Bishkek"
     }
+  },
+  "newsPreview": {
+    "title": "Latest News",
+    "description": "Stay updated with important events and achievements of our school",
+    "importantNews": "Important News",
+    "readMore": "Read more",
+    "allNews": "All News"
   }
 }

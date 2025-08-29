@@ -2,28 +2,28 @@ import React from 'react'
 
 import { Metadata } from 'next'
 
-import BlogList from '@/components/Blog/BlogList'
 import TicketSection from '@/components/Home/TicketSection'
+import NewsList from '@/components/News/NewsList'
 import HeroSub from '@/components/SharedComponent/HeroSub'
 
 export const metadata: Metadata = {
-  title: 'Blog | Intellect Pro School',
+  title: 'Новости | Intellect Pro School',
 }
 
 const BlogPage = () => {
   const breadcrumbLinks = [
     { href: '/', text: 'Главная' },
-    { href: '/blog', text: 'Блог' },
+    { href: '/blog', text: 'Новости' },
   ]
 
   return (
     <>
       <HeroSub
-        title="Наша жизнь"
-        description="Актуальные события школы, советы по обучению и развитию. Будьте в курсе нашего образовательного процесса!"
+        title="Новости школы"
+        description="Последние новости, события и достижения школы Intellect Pro. Следите за нашими успехами и важными анонсами!"
         breadcrumbLinks={breadcrumbLinks}
       />
-      <BlogList />
+      <NewsList />
       <TicketSection />
     </>
   )
